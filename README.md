@@ -29,7 +29,7 @@ CREATE TABLE "user" (
 );
 ```
 
-If you would like to name your database something else, you will need to change `prime_app` to the name of your new database name in `server/modules/pool.js`
+If you would like to name your database something else, you will need to change `reveal` to the name of your new database name in `server/modules/pool.js`
 
 ## Development Setup Instructions
 

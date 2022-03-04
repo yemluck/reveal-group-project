@@ -104,19 +104,13 @@ function App() {
             }
           </Route>
 
-          <Route
+          <ProtectedRoute
+            // logged in shows InfoPage else shows LoginPage
             exact
             path="/companies/:id"
           >
-            {user.id ?
-              // If the user is already logged in, 
-              // redirect them to the /user page
-              <Redirect to="/user" />
-              :
-              // Otherwise, show the registration page
-              <CompanyDetails />
-            }
-          </Route>
+            <CompanyDetails />
+          </ProtectedRoute>
 
           <Route
             exact

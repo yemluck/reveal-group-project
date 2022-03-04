@@ -32,6 +32,7 @@ function RegisterForm() {
           Username:
           <input
             type="text"
+            placeholder="Enter email address"
             name="username"
             value={username}
             required

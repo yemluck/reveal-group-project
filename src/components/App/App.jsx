@@ -26,6 +26,8 @@ import CompanyDetails from '../CompanyDetails/CompanyDetails';
 import ContactUs from '../ContactUs/ContactUs';
 import AddRule from '../AddRule/AddRule';
 
+import Messages from '../Messages/Messages';
+
 import './App.css';
 
 function App() {
@@ -107,6 +109,20 @@ function App() {
             path="/home"
           >
             {user.id ?
+              // If the user is already logged in, 
+              // redirect them to the /user page
+              <Redirect to="/user" />
+              :
+              // Otherwise, show the Landing page
+              <LandingPage />
+            }
+          </Route>
+
+          <Route
+            exact
+            path="/messages"
+          >
+            {user.id ? 
               // If the user is already logged in, 
               // redirect them to the /user page
               <Redirect to="/user" />

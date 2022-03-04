@@ -22,20 +22,40 @@ function Nav() {
         )}
 
         {/* If a user is logged in, show these links */}
-        {user.id && (
+        {user.id && user.authLevel === 0 && (
           <>
-            <Link className="navLink" to="/user">
-              Home
+            <Link className="navLink" to="/survey">
+              Survey
             </Link>
 
-            <Link className="navLink" to="/info">
-              Info Page
+            <Link className="navLink" to="/companies">
+              Companies
+            </Link>
+
+            <Link className="navLink" to="/contactUs">
+              Contact Us
             </Link>
 
             <LogOutButton className="navLink" />
           </>
         )}
 
+        {/* If an admin is logged in, show these links */}
+        {user.id && user.authLevel === 1 && (
+          <>
+            <Link className="navLink" to="/users">
+              Users
+            </Link>
+
+            <Link className="navLink" to="/addRules">
+              Add Rules
+            </Link>
+
+            <Link className="navLink" to="/messages">
+              Messages
+            </Link>
+          </>
+        )}
         <Link className="navLink" to="/about">
           About
         </Link>

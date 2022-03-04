@@ -54,6 +54,8 @@ function Nav() {
             <Link className="navLink" to="/messages">
               Messages
             </Link>
+
+            <LogOutButton className="navLink" />
           </>
         )}
         <Link className="navLink" to="/about">

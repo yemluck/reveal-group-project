@@ -8,10 +8,12 @@ CREATE TABLE "user" (
 	"id" serial NOT NULL,
 	"email_address" varchar(255) NOT NULL,
 	"password" varchar(255) NOT NULL,
+	"auth_level" integer NOT NULL DEFAULT 0,
 	CONSTRAINT "user_pk" PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
 );
+
 
 
 CREATE TABLE "value" (
@@ -23,15 +25,17 @@ CREATE TABLE "value" (
 );
 
 
+
 CREATE TABLE "preference" (
 	"id" serial NOT NULL,
 	"user_id" integer NOT NULL,
 	"value_id" integer NOT NULL,
-	"priority" integer NOT NULL DEFAULT '5',
+	"priority" integer NOT NULL DEFAULT 5,
 	CONSTRAINT "preference_pk" PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
 );
+
 
 
 CREATE TABLE "score_rule" (

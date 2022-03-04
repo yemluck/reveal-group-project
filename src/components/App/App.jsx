@@ -24,7 +24,6 @@ import TheCompanies from '../TheCompanies/TheCompanies';
 import CompanyDetails from '../CompanyDetails/CompanyDetails';
 import ContactUs from '../ContactUs/ContactUs';
 import AddRules from '../AddRules/AddRules';
-
 import Messages from '../Messages/Messages';
 
 import './App.css';
@@ -68,6 +67,14 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
+            // logged in shows companies else shows LoginPage
+            exact
+            path="/companies"
+          >
+            <TheCompanies />
+          </ProtectedRoute>
+
+          <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
             exact
             path="/info"
@@ -78,9 +85,17 @@ function App() {
           <ProtectedRoute
             // logged in shows admin messages else shows LoginPage
             exact
-            path="/messages"
+            path="/admin/messages"
           >
             <Messages />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+
+            exact
+            path="/admin/add-rules"
+          >
+            <AddRules />
           </ProtectedRoute>
 
           <Route
@@ -99,7 +114,7 @@ function App() {
 
           <Route
             exact
-            path="/registration"
+            path="/companies/:id"
           >
             {user.id ?
               // If the user is already logged in, 
@@ -107,7 +122,7 @@ function App() {
               <Redirect to="/user" />
               :
               // Otherwise, show the registration page
-              <RegisterPage />
+              <CompanyDetails />
             }
           </Route>
 
@@ -125,6 +140,20 @@ function App() {
             }
           </Route>
 
+          <ProtectedRoute
+            exact
+            path="/survey"
+          >
+            <Survey />
+          </ProtectedRoute>
+
+          <Route
+            exact
+            path="/contact"
+          >
+            <ContactUs />
+          </Route>
+
           <Route
             exact
             path="/messages"
@@ -132,7 +161,7 @@ function App() {
             {(user.auth_level == 1) ? 
               // If the admin is already logged in, 
               // redirect them to the /messages page
-              <Redirect to="/messages" />
+              <Redirect to="/admin/messages" />
               :
               // Otherwise, show the Landing page
               <LandingPage />

@@ -24,7 +24,6 @@ import TheCompanies from '../TheCompanies/TheCompanies';
 import CompanyDetails from '../CompanyDetails/CompanyDetails';
 import ContactUs from '../ContactUs/ContactUs';
 import AddRules from '../AddRules/AddRules';
-
 import Messages from '../Messages/Messages';
 
 import './App.css';
@@ -65,6 +64,14 @@ function App() {
             path="/user"
           >
             <UserPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows companies else shows LoginPage
+            exact
+            path="/companies"
+          >
+            <TheCompanies />
           </ProtectedRoute>
 
           <ProtectedRoute

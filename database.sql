@@ -82,3 +82,8 @@ ALTER TABLE "score_rule" ADD CONSTRAINT "score_rule_fk0" FOREIGN KEY ("value_id"
 ALTER TABLE "membership_rule" ADD CONSTRAINT "membership_rule_fk0" FOREIGN KEY ("value_id") REFERENCES "value"("id");
 
 ALTER TABLE "comments" ADD CONSTRAINT "comments_fk0" FOREIGN KEY ("user_id") REFERENCES "user"("id");
+
+INSERT INTO "value" ("name")
+	VALUES	('Transparency'),
+			('Environmental'),
+			('Human Rights');

@@ -15,7 +15,6 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
@@ -23,6 +22,7 @@ import Survey from '../Survey/Survey';
 import TheCompanies from '../TheCompanies/TheCompanies';
 import CompanyDetails from '../CompanyDetails/CompanyDetails';
 import ContactUs from '../ContactUs/ContactUs';
+import Users from '../Users/Users';
 import AddRules from '../AddRules/AddRules';
 import Messages from '../Messages/Messages';
 
@@ -43,7 +43,7 @@ function App() {
         <Nav />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
-          <Redirect exact from="/" to="/home" />
+          <Redirect exact from="/" to="/companies" />
 
           {/* Visiting localhost:3000/about will show the about page. */}
           <Route
@@ -67,6 +67,14 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
+            //logged in shows Survey page else shows LoginPage
+            exact
+            path="/survey"
+          >
+            <Survey />
+          </ProtectedRoute>
+
+          <ProtectedRoute
             // logged in shows companies else shows LoginPage
             exact
             path="/companies"
@@ -75,11 +83,35 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
+            // logged in shows TheCompanies page else shows LoginPage
             exact
-            path="/info"
+            path="/companies/:id"
           >
-            <InfoPage />
+            <CompanyDetails />
+          </ProtectedRoute>
+
+          <Route
+            // logged in shows ContactUs page else shows LoginPage
+            exact
+            path="/contactUs"
+          >
+            <ContactUs />
+          </Route>
+
+          <ProtectedRoute
+            // logged in shows admin Users page else shows LoginPage
+            exact
+            path="/admin/users"
+          >
+            <Users />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows admin AddRules page else shows LoginPage
+            exact
+            path="/admin/addRules"
+          >
+            <AddRules />
           </ProtectedRoute>
 
           <ProtectedRoute
@@ -90,22 +122,51 @@ function App() {
             <Messages />
           </ProtectedRoute>
 
-          <ProtectedRoute
-
-            exact
-            path="/admin/add-rules"
-          >
-            <AddRules />
-          </ProtectedRoute>
-
           <Route
             exact
             path="/login"
           >
-            {user.id ?
+            {(user.id && user.auth_level ===0) ?
               // If the user is already logged in, 
               // redirect to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/about" />
+              :
+              // Otherwise, show the login page
+              <LoginPage />
+            }
+
+            {/* {(user.id && user.auth_level === 1) ?
+              // If the user is already logged in, 
+              // redirect to the /user page
+              <Redirect to="/users" />
+              :
+              // Otherwise, show the login page
+              <LoginPage />
+            } */}
+          </Route>
+
+          <Route
+            exact
+            path="/registration"
+          >
+            {(user.id && user.auth_level === 0) ?
+              // If the user is already logged in, 
+              // redirect them to the /user page
+              <Redirect to="/about" />
+              :
+              // Otherwise, show the registration page
+              <RegisterPage />
+            }
+          </Route>
+
+          <Route
+            exact
+            path="/survey"
+          >
+            {(user.id && user.auth_level === 0) ?
+              // If the user is already logged in, 
+              // redirect to the /survey page
+              <Redirect to="/survey" />
               :
               // Otherwise, show the login page
               <LoginPage />
@@ -114,44 +175,72 @@ function App() {
 
           <Route
             exact
-            path="/companies/:id"
+            path="/companies"
           >
-            {user.id ?
+            {(user.id && user.auth_level === 0) ?
               // If the user is already logged in, 
-              // redirect them to the /user page
-              <Redirect to="/user" />
-              :
-              // Otherwise, show the registration page
-              <CompanyDetails />
-            }
-          </Route>
-
-          <Route
-            exact
-            path="/home"
-          >
-            {user.id ?
-              // If the user is already logged in, 
-              // redirect them to the /user page
-              <Redirect to="/user" />
+              // redirect them to the /companies page
+              <Redirect to="/companies" />
               :
               // Otherwise, show the Landing page
               <LandingPage />
             }
           </Route>
 
-          <ProtectedRoute
+          <Route
             exact
-            path="/survey"
+            path="/companies"
           >
-            <Survey />
-          </ProtectedRoute>
+            {(user.id && user.auth_level === 0) ?
+              // If the user is already logged in, 
+              // redirect them to the /companies/:id page
+              <Redirect to="/companies/:id" />
+              :
+              // Otherwise, show the Landing page
+              <LandingPage />
+            }
+          </Route>
 
           <Route
             exact
             path="/contact"
           >
-            <ContactUs />
+            {(user.id && user.auth_level === 0) ?
+              // If the user is already logged in, 
+              // redirect them to the /contactUs page
+              <Redirect to="/contactUs" />
+              :
+              // Otherwise, show the Landing page
+              <LandingPage />
+            }
+          </Route>
+
+          <Route
+            exact
+            path="/users"
+          >
+            {(user.id && user.auth_level === 1) ?
+              // If the user is already logged in, 
+              // redirect them to the /admin/users page
+              <Redirect to="/admin/users" />
+              :
+              // Otherwise, show the Landing page
+              <LandingPage />
+            }
+          </Route>
+
+          <Route
+            exact
+            path="/addRules"
+          >
+            {(user.id && user.auth_level === 1) ?
+              // If the user is already logged in, 
+              // redirect them to the /admin/addRules page
+              <Redirect to="/admin/addRules" />
+              :
+              // Otherwise, show the Landing page
+              <LandingPage />
+            }
           </Route>
 
           <Route
@@ -160,7 +249,7 @@ function App() {
           >
             {(user.auth_level == 1) ? 
               // If the admin is already logged in, 
-              // redirect them to the /messages page
+              // redirect them to the /admin/messages page
               <Redirect to="/admin/messages" />
               :
               // Otherwise, show the Landing page

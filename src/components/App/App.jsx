@@ -24,6 +24,7 @@ import Survey from '../Survey/Survey';
 import TheCompanies from '../TheCompanies/TheCompanies';
 import CompanyDetails from '../CompanyDetails/CompanyDetails';
 import ContactUs from '../ContactUs/ContactUs';
+import AddRule from '../AddRule/AddRule';
 
 import './App.css';
 

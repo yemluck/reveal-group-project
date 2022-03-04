@@ -132,6 +132,13 @@ function App() {
             }
           </Route>
 
+          <ProtectedRoute
+            exact
+            path="/survey"
+          >
+            <Survey />
+          </ProtectedRoute>
+
           <Route
             exact
             path="/messages"

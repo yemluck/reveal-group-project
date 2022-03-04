@@ -83,14 +83,15 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
+            // logged in shows admin messages else shows LoginPage
             exact
-            path="/info"
+            path="/admin/messages"
           >
-            <InfoPage />
+            <Messages />
           </ProtectedRoute>
 
           <ProtectedRoute
+
             exact
             path="/admin/add-rules"
           >
@@ -151,10 +152,10 @@ function App() {
             exact
             path="/messages"
           >
-            {user.id ?
-              // If the user is already logged in, 
-              // redirect them to the /user page
-              <Redirect to="/user" />
+            {(user.auth_level == 1) ? 
+              // If the admin is already logged in, 
+              // redirect them to the /messages page
+              <Redirect to="/admin/messages" />
               :
               // Otherwise, show the Landing page
               <LandingPage />

@@ -8,7 +8,7 @@ function UserPage() {
   const user = useSelector((store) => store.user);
   return (
     <div className="container">
-      <h2>Welcome, {user.username}!</h2>
+      <h2>Welcome, {user.id}!</h2>
       <p>Your ID is: {user.id}</p>
       {/* once you figure your stuff out
       DES, you can remove the code I'm putting

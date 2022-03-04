@@ -141,9 +141,16 @@ function App() {
 
           <Route
             exact
+            path="/contact"
+          >
+            <ContactUs />
+          </Route>
+
+          <Route
+            exact
             path="/messages"
           >
-            {user.id ? 
+            {user.id ?
               // If the user is already logged in, 
               // redirect them to the /user page
               <Redirect to="/user" />

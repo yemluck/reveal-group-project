@@ -75,6 +75,14 @@ function App() {
             <InfoPage />
           </ProtectedRoute>
 
+          <ProtectedRoute
+            // logged in shows InfoPage else shows LoginPage
+            exact
+            path="/admin/add-rules"
+          >
+            <AddRules />
+          </ProtectedRoute>
+
           <Route
             exact
             path="/login"

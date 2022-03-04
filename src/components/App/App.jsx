@@ -19,12 +19,11 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
-import Messages from '../Messages/Messages';
 import Survey from '../Survey/Survey';
 import TheCompanies from '../TheCompanies/TheCompanies';
 import CompanyDetails from '../CompanyDetails/CompanyDetails';
 import ContactUs from '../ContactUs/ContactUs';
-import AddRule from '../AddRule/AddRule';
+import AddRules from '../AddRules/AddRules';
 
 import Messages from '../Messages/Messages';
 
@@ -76,6 +75,22 @@ function App() {
             <InfoPage />
           </ProtectedRoute>
 
+          <ProtectedRoute
+            // logged in shows InfoPage else shows LoginPage
+            exact
+            path="/info"
+          >
+            <InfoPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows InfoPage else shows LoginPage
+            exact
+            path="/messages"
+          >
+            <Messages />
+          </ProtectedRoute>
+
           <Route
             exact
             path="/login"
@@ -125,7 +140,7 @@ function App() {
             {user.id ? 
               // If the user is already logged in, 
               // redirect them to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/messages" />
               :
               // Otherwise, show the Landing page
               <LandingPage />

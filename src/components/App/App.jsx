@@ -19,6 +19,11 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import Messages from '../Messages/Messages';
+import Survey from '../Survey/Survey';
+import TheCompanies from '../TheCompanies/TheCompanies';
+import CompanyDetails from '../CompanyDetails/CompanyDetails';
+import ContactUs from '../ContactUs/ContactUs';
 
 import './App.css';
 

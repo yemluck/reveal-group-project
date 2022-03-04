@@ -112,6 +112,14 @@ function App() {
           </Route>
 
           {/* If none of the other routes matched, we will show a 404. */}
+
+          <ProtectedRoute
+            // logged in shows InfoPage else shows LoginPage
+            exact
+            path="/admin/rules"
+          >
+            <AddRulePage />
+          </ProtectedRoute>
           <Route>
             <h1>404</h1>
           </Route>

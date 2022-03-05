@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
+import './ContactUs.css';
+
 
 // user component
 // where user can send a message to Reveal
@@ -35,14 +37,33 @@ function ContactUs() {
   // form for user's name and message
   return (
     <div className="cuContainer">
+
       <div className="grid-cuContainer">
-        <form onSubmit={handleMessage}>
+        <div className="cu1">
+          <h1>
+            Contact Us!
+          </h1>
+        </div>
+
+        <div className="cu2">
+          <p>
+            Do you need help with something or want to let us know something?
+            Please fill out the form below with your name and message.
+            Click the send button for Reveal to recieve your message.
+          </p>
+        </div>
+
+        <form 
+          className="cuForm"
+          onSubmit={handleMessage}
+        >
 
           {/* input field for user's name */}
-          <div>
+          <div className="cu3">
             Name:
           </div>
           <input
+            className="cu4"
             type="text"
             placeholder="Enter your name"
             onChange={(e) => setName(e.target.value)}
@@ -50,10 +71,11 @@ function ContactUs() {
           />
 
           {/* input field for user's message */}
-          <div>
+          <div className="cu5">
             Message:
           </div>
           <textarea
+            className="cu6"
             type="text"
             placeholder="How can we help?"
             onChange={(e) => setMessage(e.target.value)}
@@ -61,16 +83,20 @@ function ContactUs() {
           />
 
           {/* submit button for form */}
-          <div>
+          <div className="cu7">
             <button
               type="submit"
               className="cont btn"
+              disabled={!name || !message}
             >
               Send
             </button>
           </div>
+
         </form>
+
       </div>
+
     </div>
   );
 }

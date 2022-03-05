@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import useReduxStore from '../../hooks/useReduxStore';
 
+import './Messages.css';
+
 // admin component
 // where the admin can see user messages
 function Messages() {
@@ -28,11 +30,19 @@ function Messages() {
         dispatch({
             type: 'DELETE_MESSAGE',
             payload: id
-        })
+        });
     }
 
     return (
         <div className="mContainer">
+            <h1 className="message1">
+                User Messages
+            </h1>
+
+            <p className="message2">
+                Below are user messages from the Contact Us page.
+            </p>
+
             {/* table contains user messages from ContactUs component */}
             <table>
                 <thead>
@@ -63,7 +73,7 @@ function Messages() {
                                 {words.name}
                             </td>
 
-                            <td>
+                            <td className="message3">
                                 {words.comment}
                             </td>
 
@@ -72,7 +82,7 @@ function Messages() {
                                     className="mess btn"
                                     onClick={() => deleteMessage(words.id)}
                                 >
-                                    Delete
+                                    Delete Message
                                 </button>
                             </td>
                         </tr>

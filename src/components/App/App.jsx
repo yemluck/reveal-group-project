@@ -129,7 +129,7 @@ function App() {
             {(user.id && user.auth_level ===0) ?
               // If the user is already logged in, 
               // redirect to the /user page
-              <Redirect to="/about" />
+              <Redirect to="/user" />
               :
               // Otherwise, show the login page
               <LoginPage />

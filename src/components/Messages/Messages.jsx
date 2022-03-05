@@ -9,19 +9,31 @@ function Messages() {
     // setup dispatch
     const dispatch = useDispatch();
 
-    // gain access to global variables
-    const store = useReduxStore();
-    const message = store.messages;
-    console.log('user messages', message);
-
-    // call functiion when page first loads
+    // call function when page first loads
     useEffect(() => {
         // watch for message saga
         dispatch({ type: 'FETCH_MESSAGES' });
     }, []);
 
+    // gain access to global variables
+    const store = useReduxStore();
+    const message = store.messages;
+    console.log('user messages', message);
+
+    // function called with delete button
+    const deleteMessage = (id) => {
+        console.log('in deleteMessage', id);
+    
+        // watch for message saga
+        dispatch({
+            type: 'DELETE_MESSAGE',
+            payload: id
+        })
+    }
+
     return (
         <div className="mContainer">
+            {/* table contains user messages from ContactUs component */}
             <table>
                 <thead>
                     <tr>
@@ -41,7 +53,30 @@ function Messages() {
                     </tr>
                 </thead>
                 <tbody>
+                    {message.map((words, id) => (
+                        <tr key={id}>
+                            <td>
+                                {words.email_address}
+                            </td>
 
+                            <td>
+                                {words.name}
+                            </td>
+
+                            <td>
+                                {words.comment}
+                            </td>
+
+                            <td>
+                                <button 
+                                    className="mess btn"
+                                    onClick={() => deleteMessage(words.id)}
+                                >
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </div>

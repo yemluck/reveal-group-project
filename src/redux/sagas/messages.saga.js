@@ -18,7 +18,7 @@ function* createMessage(action) {
         };
 
         // send request to messages router
-        yield axios.post('/api/messages', {config, userMessage});
+        yield axios.post('/api/messages', { config, userMessage });
 
         // then call fetchMessages function
         yield put({ type: 'FETCH_MESSAGES' });
@@ -39,7 +39,7 @@ function* fetchMessages() {
         };
 
         // send request to messages router
-        const response = yield axios.get('/api/messages', {config});
+        const response = yield axios.get('/api/messages', { config });
         // check response
         console.log('messages saga GET response', response.data);
 
@@ -47,7 +47,28 @@ function* fetchMessages() {
         yield put({
             type: 'SET_MESSAGES',
             payload: response.data
-        })
+        });
+        } catch (error) {
+            console.log('message saga POST failed', error);
+    }
+}
+
+function* deleteMessage(action) {
+    console.log('in deleteMessage saga');
+    const id = action.payload;
+
+    // passport security
+    try {
+        const config = {
+            headers: { 'Content-Type': 'application/json' },
+            withCredentials: true,
+        };
+
+        // send request to messages router
+        yield axios.delete(`/api/messages/${id}`, { config, id });
+
+        // then call fetchMessages function
+        yield put({ type: 'FETCH_MESSAGES' });
         } catch (error) {
             console.log('message saga POST failed', error);
     }
@@ -58,6 +79,8 @@ function* messagesSaga() {
     yield takeLatest( 'CREATE_MESSAGE', createMessage );
 
     yield takeLatest( 'FETCH_MESSAGES', fetchMessages );
+
+    yield takeLatest( 'DELETE_MESSAGE', deleteMessage );
 }
 
 export default messagesSaga;

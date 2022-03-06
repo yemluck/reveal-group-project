@@ -20,9 +20,9 @@ function Survey() {
 
   },[])
 
-  const [transparency, setTransparency] = useState(5);
-  const [environmental, setEnvironmental] = useState(5);
-  const [humanRights, setHumanRights] = useState(5);
+  // const [transparency, setTransparency] = useState(5);
+  // const [environmental, setEnvironmental] = useState(5);
+  // const [humanRights, setHumanRights] = useState(5);
 
   //console.log('humanRights:', humanRights);
   //console.log('environmental:', environmental);
@@ -32,7 +32,7 @@ function Survey() {
     event.preventDefault();
 
     dispatch({
-      type: 'CREATE_PREFERENCE',
+      type: 'EDIT_PREFERENCE',
       payload: {
         transparency: Number(transparency),
         environmental: Number(environmental),
@@ -67,8 +67,11 @@ function Survey() {
               min={1}
               max={10}
               step={1}
-              value={transparency}
-              onChange={(event) => setTransparency(event.target.value)}
+              value={preference.transparency}
+              onChange={(event) => dispatch({
+                type: 'UPDATE_ACTIVE_SURVEY',
+                payload: {transparency: event.target.value}
+              })}
             />
             
         </div>        
@@ -80,11 +83,14 @@ function Survey() {
               //type="number"
               //name="environmental"
               //required
-              value={environmental}
+              value={preference.environmental}
               min={1}
               max={10}
               step={1}
-              onChange={(event) => setEnvironmental(event.target.value)}
+              onChange={(event) => dispatch({
+              type: 'UPDATE_ACTIVE_SURVEY',
+              payload: { environmental: event.target.value }
+            })}
             />
            
         </div>        
@@ -96,11 +102,14 @@ function Survey() {
               //type="number"
               //name="humanRights"
               //required
-              value={humanRights}
+              value={preference.humanRights}
               min={1}
               max={10}
               step={1}
-              onChange={(event) => setHumanRights(event.target.value)}
+            onChange={(event) => dispatch({
+              type: 'UPDATE_ACTIVE_SURVEY',
+              payload: { humanRights: event.target.value }
+            }) }
             />
            
         </div>

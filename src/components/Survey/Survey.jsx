@@ -2,18 +2,21 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './Survey.css';
+// MUI
+import Slider from '@mui/material/Slider';
+
 
 function Survey() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const [transparency, setTransparency] = useState('');
-  const [environmental, setEnvironmental] = useState('');
-  const [humanRights, setHumanRights] = useState('');
+  const [transparency, setTransparency] = useState(5);
+  const [environmental, setEnvironmental] = useState(5);
+  const [humanRights, setHumanRights] = useState(5);
 
-  console.log('humanRights', humanRights);
-  console.log('environmental', environmental);
-  console.log('transparency', transparency);
+  console.log('humanRights:', humanRights);
+  console.log('environmental:', environmental);
+  console.log('transparency:', transparency);
 
   const savePreference = (event) => {
     event.preventDefault();
@@ -38,9 +41,10 @@ function Survey() {
       </div>
       <form onSubmit={savePreference}>
         <div>
-          <label htmlFor='transparency'>
+          <label htmlFor='transparency' style={{marginRight: 30}}>
             Transparency🔍 :
-            <input
+          </label>
+            {/* <input
               type="number"
               name="transparency"
               required
@@ -48,36 +52,47 @@ function Survey() {
               min="1"
               max="10"
               onChange={(event) => setTransparency(event.target.value)}
+            /> */}
+            <Slider sx={{width: 300, marginLeft: "5px" }}
+              min={1}
+              max={10}
+              step={1}
+              value={transparency}
+              onChange={(event) => setTransparency(event.target.value)}
             />
-            </label>
+            
         </div>        
         <div>
-          <label htmlFor='environmental'>
+          <label htmlFor='environmental' style={{marginRight: 30}}>
             Environmental🔍 :
-            <input
-              type="number"
-              name="environmental"
-              required
+          </label>
+          <Slider sx={{ width: 300, marginLeft: "5px" }}
+              //type="number"
+              //name="environmental"
+              //required
               value={environmental}
-              min="1"
-              max="10"
+              min={1}
+              max={10}
+              step={1}
               onChange={(event) => setEnvironmental(event.target.value)}
             />
-            </label>
+           
         </div>        
         <div>
-          <label htmlFor='humanRights'>
+          <label htmlFor='humanRights' style={{marginRight: 30}}>
             Human Rights 🔍 :
-            <input
-              type="number"
-              name="humanRights"
-              required
+          </label>
+          <Slider sx={{ width: 300, marginLeft: "5px" }}
+              //type="number"
+              //name="humanRights"
+              //required
               value={humanRights}
-              min="1"
-              max="10"
+              min={1}
+              max={10}
+              step={1}
               onChange={(event) => setHumanRights(event.target.value)}
             />
-            </label>
+           
         </div>
         <div>
           <input className="btn" type="submit" name="save" value="save" />

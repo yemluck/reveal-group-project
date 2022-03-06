@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './Survey.css';
@@ -9,14 +9,24 @@ import Slider from '@mui/material/Slider';
 function Survey() {
   const history = useHistory();
   const dispatch = useDispatch();
+  //const user = useSelector(store => store.user);
+  //console.log('this is the user:', user);
+  const preference = useSelector(store => store.survey)
+  console.log('this is the preference from redux store:',preference);
+
+  useEffect(() => {
+    // dispatch to fetch user preference
+    dispatch({type: 'FETCH_PREFERENCE'})
+
+  },[])
 
   const [transparency, setTransparency] = useState(5);
   const [environmental, setEnvironmental] = useState(5);
   const [humanRights, setHumanRights] = useState(5);
 
-  console.log('humanRights:', humanRights);
-  console.log('environmental:', environmental);
-  console.log('transparency:', transparency);
+  //console.log('humanRights:', humanRights);
+  //console.log('environmental:', environmental);
+  //console.log('transparency:', transparency);
 
   const savePreference = (event) => {
     event.preventDefault();

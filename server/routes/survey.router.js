@@ -44,6 +44,28 @@ router.post('/survey', rejectUnauthenticated, (req, res) => {
     
 })
 
+router.get('/survey', rejectUnauthenticated, (req,res) => {
+
+    const queryText = `
+        SELECT 
+            ARRAY_AGG ("priority") FROM "preference"
+            WHERE user_id = $1
+            GROUP BY user_id;
+    `;
+
+    const queryParams = [req.user.id];
+
+    pool.query(queryText, queryParams)
+        .then( result => {
+            res.send(result.rows[0])
+            console.log('this is result.rows:', result.rows[0])
+        })
+        .catch( err => {
+            console.log('Error getting preference', err);
+            res.sendStatus(500);
+            
+        })
+} )
 
 
 module.exports = router;

@@ -1,28 +1,32 @@
-import React from 'react';
+import { useEffect } from 'react';
 //import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+
+
+// sub components to add to this page:
+/*************************************
+- search bar (form) component to send queries & filter the companies list*/
+import CompanySearch from './CompanySearch';
+
+//- a company list component to hold & display the companies, either raw or filtered lists
+import List from './List';
+//   - company item components to render individual companies in redux.store.companies
+//- pagination component to interact with api & offset #
+//*************************************/
+
+
 
 function Companies() {
 
   const history = useHistory();
-  const companies = ['apple', 'google', 'Netflix', 'meta'];
-
-  const  selectCompany = (company) => {
-    history.push(`/companies/${company}`)
-  }
+  //   const companies = ['apple', 'google', 'Netflix', 'meta'];
 
   return (
     <div className="container">
       <div>
-        <p>TheCompanies</p>
-        {
-          companies.map((company, i) => {
-            return(<div key={i}>
-                <h3>{company}</h3>
-                <button onClick={() => selectCompany(company)}> select </button>
-            </div>)
-          })
-        }
+        <CompanySearch />
+        <p>Companies</p>
+        <List />
       </div>
     </div>
   );

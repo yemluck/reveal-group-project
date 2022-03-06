@@ -6,12 +6,10 @@ import './Survey.css';
 function Survey() {
   const history = useHistory();
   const dispatch = useDispatch();
-  // this is the logged in user
-  const user = useSelector(store => store.user);
 
-  const [transparency, setTransparency] = useState(5);
-  const [environmental, setEnvironmental] = useState(5);
-  const [humanRights, setHumanRights] = useState(5);
+  const [transparency, setTransparency] = useState('');
+  const [environmental, setEnvironmental] = useState('');
+  const [humanRights, setHumanRights] = useState('');
 
   console.log('humanRights', humanRights);
   console.log('environmental', environmental);
@@ -26,7 +24,6 @@ function Survey() {
         transparency: Number(transparency),
         environmental: Number(environmental),
         humanRights: Number(humanRights),
-        userId: user.id
       }
     })
     // will push to user page after dispatch
@@ -46,6 +43,7 @@ function Survey() {
             <input
               type="number"
               name="transparency"
+              required
               value={transparency}
               min="1"
               max="10"
@@ -59,6 +57,7 @@ function Survey() {
             <input
               type="number"
               name="environmental"
+              required
               value={environmental}
               min="1"
               max="10"
@@ -72,6 +71,7 @@ function Survey() {
             <input
               type="number"
               name="humanRights"
+              required
               value={humanRights}
               min="1"
               max="10"

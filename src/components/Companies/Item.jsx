@@ -1,5 +1,8 @@
+import { useHistory } from 'react-router-dom';
+
 function Item({ company }) {
 
+  const history = useHistory();
 
   const selectCompany = (company) => {
     history.push(`/companies/${company}`)
@@ -8,9 +11,7 @@ function Item({ company }) {
 
   return (
     <div>
-      Item
-      <h3>{company}</h3>
-      <button onClick={() => selectCompany(company)}> select </button>
+      <h3 className="company-link" onClick={() => selectCompany(company)}>{company}</h3>
     </div>
   )
 }

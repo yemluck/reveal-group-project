@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 //import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 
 
 // sub components to add to this page:
@@ -18,8 +17,6 @@ import List from './List';
 
 function Companies() {
 
-  const history = useHistory();
-  //   const companies = ['apple', 'google', 'Netflix', 'meta'];
 
   return (
     <div className="container">

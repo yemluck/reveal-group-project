@@ -67,5 +67,36 @@ router.get('/survey', rejectUnauthenticated, (req,res) => {
         })
 } )
 
+router.put('/survey', rejectUnauthenticated, (req, res) => {
+    console.log('this is req.body in put', req.body);
+
+    const queryText = `
+        UPDATE "preference"
+        SET "priority" = CASE value_id
+            WHEN 1 THEN $1
+            WHEN 2 THEN $2
+            WHEN 3 THEN $3
+        ELSE priority END
+        WHERE user_id = $4
+    `
+    const queryParams = [
+        req.body.transparency,
+        req.body.environmental,
+        req.body.humanRights,
+        req.user.id
+    ]
+
+    pool.query(queryText, queryParams)
+        .then((result) => {
+            res.sendStatus(200)
+        })
+        .catch((error) => {
+            console.log('Error making database query', error);
+            res.sendStatus(500);
+            
+        })
+    
+})
+
 
 module.exports = router;

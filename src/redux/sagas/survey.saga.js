@@ -39,10 +39,21 @@ function* fetchPreference(action) {
     }
 } // end function fetch preference
 
+function* savePreference(action) {
+    try {
+        yield axios.put('api/survey', action.payload)
+    } catch (err) {
+        console.log('Error editing preference', err);
+        
+    }
+
+} // end function savePreference
+
 // watch for functions
 function* surveySaga() {
-    yield takeLatest('CREATE_PREFERENCE', createPreference);
-    yield takeLatest ('FETCH_PREFERENCE', fetchPreference)
+    //yield takeLatest('CREATE_PREFERENCE', createPreference);
+    yield takeLatest ('FETCH_PREFERENCE', fetchPreference);
+    yield takeLatest ('SAVE_PREFERENCE_CHANGES', savePreference);
 
 }
 

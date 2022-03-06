@@ -32,12 +32,9 @@ function Survey() {
     event.preventDefault();
 
     dispatch({
-      type: 'EDIT_PREFERENCE',
-      payload: {
-        transparency: Number(transparency),
-        environmental: Number(environmental),
-        humanRights: Number(humanRights),
-      }
+      type: 'SAVE_PREFERENCE_CHANGES',
+      payload: preference
+      
     })
     // will push to user page after dispatch
     history.push('/user')

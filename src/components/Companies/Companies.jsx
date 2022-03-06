@@ -2,7 +2,7 @@ import React from 'react';
 //import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-function TheCompanies() {
+function Companies() {
 
   const history = useHistory();
   const companies = ['apple', 'google', 'Netflix', 'meta'];
@@ -28,5 +28,5 @@ function TheCompanies() {
   );
 }
 
-export default TheCompanies;
+export default Companies;
 

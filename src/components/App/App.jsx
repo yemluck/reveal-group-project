@@ -19,7 +19,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import Survey from '../Survey/Survey';
-import TheCompanies from '../TheCompanies/TheCompanies';
+import Companies from '../Companies/Companies';
 import CompanyDetails from '../CompanyDetails/CompanyDetails';
 import ContactUs from '../ContactUs/ContactUs';
 import Users from '../Users/Users';
@@ -79,11 +79,11 @@ function App() {
             exact
             path="/companies"
           >
-            <TheCompanies />
+            <Companies />
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows TheCompanies page else shows LoginPage
+            // logged in shows companyDetails page else shows LoginPage
             exact
             path="/companies/:id"
           >
@@ -151,7 +151,7 @@ function App() {
           >
             {(user.id && user.auth_level === 0) ?
               // If the user is already logged in, 
-              // redirect them to the /user page
+              // redirect them to the /about page
               <Redirect to="/about" />
               :
               // Otherwise, show the registration page
@@ -165,7 +165,7 @@ function App() {
           >
             {(user.id && user.auth_level === 0) ?
               // If the user is already logged in, 
-              // redirect to the /survey page
+              // show the /survey page
               <Redirect to="/survey" />
               :
               // Otherwise, show the login page

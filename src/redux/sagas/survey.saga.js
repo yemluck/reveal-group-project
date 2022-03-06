@@ -51,7 +51,8 @@ function* savePreference(action) {
 
 // watch for functions
 function* surveySaga() {
-    //yield takeLatest('CREATE_PREFERENCE', createPreference);
+    //yield takeLatest('CREATE_PREFERENCE', createPreference); 
+    // LEFT the above in case we rethink strategy
     yield takeLatest ('FETCH_PREFERENCE', fetchPreference);
     yield takeLatest ('SAVE_PREFERENCE_CHANGES', savePreference);
 

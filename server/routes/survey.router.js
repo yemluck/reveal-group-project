@@ -18,31 +18,32 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 });
 
 // POST endpoint
-router.post('/survey', rejectUnauthenticated, (req, res) => {
-    console.log('this is req.body', req.body);
+// LEFT THIS HERE IN CASE WE RETHINK STRATEGY
+// router.post('/survey', rejectUnauthenticated, (req, res) => {
+//     console.log('this is req.body', req.body);
     
-    const queryText = `
-        INSERT INTO "preference" ("user_id", "value_id", "priority")
-        VALUES ($4, 1, $1  ), ($4, 2, $2), ($4, 3, $3);
-    `;
+//     const queryText = `
+//         INSERT INTO "preference" ("user_id", "value_id", "priority")
+//         VALUES ($4, 1, $1  ), ($4, 2, $2), ($4, 3, $3);
+//     `;
 
-    const queryParams = [
-        req.body.transparency,
-        req.body.environmental,
-        req.body.humanRights,
-        req.user.id
-    ];
+//     const queryParams = [
+//         req.body.transparency,
+//         req.body.environmental,
+//         req.body.humanRights,
+//         req.user.id
+//     ];
 
-    pool.query(queryText, queryParams)
-        .then(() => res.sendStatus(201))
-        .catch((err) => {
-            console.log('Create Preference failed:', err);
-            res.sendStatus(500);
+//     pool.query(queryText, queryParams)
+//         .then(() => res.sendStatus(201))
+//         .catch((err) => {
+//             console.log('Create Preference failed:', err);
+//             res.sendStatus(500);
             
-        })
+//         })
     
     
-})
+// })
 
 router.get('/survey', rejectUnauthenticated, (req,res) => {
 

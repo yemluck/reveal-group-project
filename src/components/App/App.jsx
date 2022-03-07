@@ -126,7 +126,7 @@ function App() {
             exact
             path="/login"
           >
-            {(user.id && user.auth_level ===0) ?
+            {user.id ?
               // If the user is already logged in, 
               // redirect to the /user page
               <Redirect to="/about" />
@@ -163,7 +163,7 @@ function App() {
             exact
             path="/survey"
           >
-            {(user.id && user.auth_level === 0) ?
+            {user.id ?
               // If the user is already logged in, 
               // redirect to the /survey page
               <Redirect to="/survey" />
@@ -177,7 +177,7 @@ function App() {
             exact
             path="/companies"
           >
-            {(user.id && user.auth_level === 0) ?
+            {user.id ?
               // If the user is already logged in, 
               // redirect them to the /companies page
               <Redirect to="/companies" />
@@ -191,7 +191,7 @@ function App() {
             exact
             path="/companies"
           >
-            {(user.id && user.auth_level === 0) ?
+            {user.id ?
               // If the user is already logged in, 
               // redirect them to the /companies/:id page
               <Redirect to="/companies/:id" />
@@ -247,7 +247,7 @@ function App() {
             exact
             path="/messages"
           >
-            {(user.auth_level == 1) ? 
+            {(user.id && user.auth_level == 1) ? 
               // If the admin is already logged in, 
               // redirect them to the /admin/messages page
               <Redirect to="/admin/messages" />

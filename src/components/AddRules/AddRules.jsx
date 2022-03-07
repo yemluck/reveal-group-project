@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 function AddRules() {
+  const dispatch = useDispatch();
   const [membershipName, setMembershipName] = useState('');
   const [pointsEarned, setPointsEarned] = useState('');
   const [industryCategory, setIndustryCategory] = useState('');
@@ -9,9 +11,17 @@ function AddRules() {
   const [pointsEarnedScore, setPointsEarnedScore] = useState('');
   const [industryCategoryScore, setIndustryCategoryScore] = useState('');
 
-  const addMembershipRule = () => {
-    // evt.preventDefault();
+  const addMembershipRule = (evt) => {
+    evt.preventDefault();
     console.log('In addMembershipRule');
+    dispatch({
+      type: 'ADD_MEMBERSHIP_RULE',
+        membershipRule: {
+          membershipName: membershipName,
+          pointsEarned: pointsEarned,
+          industryCategory: industryCategory
+        }
+    })
   }
 
   return (
@@ -45,7 +55,7 @@ function AddRules() {
             value={industryCategory}
             onChange={(evt) => setIndustryCategory(evt.target.value)}
           />
-          <button type="button" >Submit</button>
+          <button type="submit" >Submit</button>
         </form>
       </section>
       <section>

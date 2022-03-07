@@ -149,7 +149,7 @@ function App() {
             exact
             path="/registration"
           >
-            {(user.id && user.auth_level === 0) ?
+            {user.id ?
               // If the user is already logged in, 
               // redirect them to the /about page
               <Redirect to="/about" />
@@ -205,7 +205,7 @@ function App() {
             exact
             path="/contact"
           >
-            {(user.id && user.auth_level === 0) ?
+            {user.id ?
               // If the user is already logged in, 
               // redirect them to the /contactUs page
               <Redirect to="/contactUs" />

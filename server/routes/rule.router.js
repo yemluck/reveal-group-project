@@ -6,17 +6,16 @@ const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 router.get('/', rejectUnauthenticated, (req, res) => {
 });
 
-router.post('/addnewrule', rejectUnauthenticated, (req, res) => {
-    console.log('In rule router POST');
+router.post('/', rejectUnauthenticated, (req, res) => {
+    console.log('In rule router POST', req.body);
     const queryText = `
         INSERT INTO "membership_rule"
-            ("organization", "points", "industry")
+            ("organization", "points", "industry", "value_id")
         VALUES
-            ($1, $2, $3)
-        WHERE "user".auth_level = 1
+            ($1, $2, $3, $4)
         ;`;
-    const queryParams = [req.body.organization, req.body.points, req.body.industry];
-    console.log(queryText);
+        // WHERE "user".auth_level = 1 (don't remember the right way to write this)
+    const queryParams = [req.body.organization, req.body.points, req.body.industry, req.body.value_id];
 });
 
 module.exports = router;

@@ -12,6 +12,7 @@ const userRouter = require('./routes/user.router');
 const messagesRouter = require('./routes/messages.router');
 const surveyRouter = require('./routes/survey.router');
 const companiesRouter = require('./routes/companies.router');
+const ruleRouter = require('./routes/rule.router');
 
 
 // Body parser middleware
@@ -30,6 +31,7 @@ app.use('/api/user', userRouter);
 app.use('/api/messages', messagesRouter);
 app.use('/api/', surveyRouter);
 app.use('/api/companies', companiesRouter);
+app.use('/admin/addnewrule', ruleRouter);
 
 // Serve static files
 app.use(express.static('build'));

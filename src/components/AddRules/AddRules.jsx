@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 
 function AddRules() {
   const dispatch = useDispatch();
+  const [valueCategory, setValueCategory] = useState(''); // this will be just the value id number for now
   const [membershipName, setMembershipName] = useState('');
   const [pointsEarned, setPointsEarned] = useState('');
   const [industryCategory, setIndustryCategory] = useState('');
@@ -17,6 +18,7 @@ function AddRules() {
     dispatch({
       type: 'ADD_MEMBERSHIP_RULE',
       payload: {
+        value: valueCategory,
         organization: membershipName,
         points: pointsEarned,
         industry: industryCategory
@@ -32,6 +34,15 @@ function AddRules() {
       {console.log(membershipName)}
       <section>
         <form id="membership-rule" action="submit" onSubmit={(evt) => addMembershipRule(evt)} >
+          <input 
+            type="text" 
+            id="value-category" 
+            className="form-control"
+            placeholder="Value Category" 
+            value={valueCategory}
+            onChange={(evt) => setValueCategory(evt.target.value)}
+            /* This will be just the value id number for now */
+            />
           <input 
             type="text" 
             id="membership-name" 

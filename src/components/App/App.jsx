@@ -19,7 +19,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import Survey from '../Survey/Survey';
-import TheCompanies from '../TheCompanies/TheCompanies';
+import Companies from '../Companies/Companies';
 import CompanyDetails from '../CompanyDetails/CompanyDetails';
 import ContactUs from '../ContactUs/ContactUs';
 import Users from '../Users/Users';
@@ -81,11 +81,11 @@ function App() {
             exact
             path="/companies"
           >
-            <TheCompanies />
+            <Companies />
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows TheCompanies page else shows LoginPage
+            // logged in shows companyDetails page else shows LoginPage
             exact
             path="/companies/:id"
           >
@@ -128,7 +128,7 @@ function App() {
             exact
             path="/login"
           >
-            {(user.id && user.auth_level ===0) ?
+            {user.id ?
               // If the user is already logged in, 
               // redirect to the /user page
               <Redirect to="/user" />
@@ -151,9 +151,9 @@ function App() {
             exact
             path="/registration"
           >
-            {(user.id && user.auth_level === 0) ?
+            {user.id ?
               // If the user is already logged in, 
-              // redirect them to the /user page
+              // redirect them to the /about page
               <Redirect to="/about" />
               :
               // Otherwise, show the registration page
@@ -165,9 +165,9 @@ function App() {
             exact
             path="/survey"
           >
-            {(user.id && user.auth_level === 0) ?
+            {user.id ?
               // If the user is already logged in, 
-              // redirect to the /survey page
+              // show the /survey page
               <Redirect to="/survey" />
               :
               // Otherwise, show the login page
@@ -179,7 +179,7 @@ function App() {
             exact
             path="/companies"
           >
-            {(user.id && user.auth_level === 0) ?
+            {user.id ?
               // If the user is already logged in, 
               // redirect them to the /companies page
               <Redirect to="/companies" />
@@ -193,7 +193,7 @@ function App() {
             exact
             path="/companies"
           >
-            {(user.id && user.auth_level === 0) ?
+            {user.id ?
               // If the user is already logged in, 
               // redirect them to the /companies/:id page
               <Redirect to="/companies/:id" />
@@ -207,7 +207,7 @@ function App() {
             exact
             path="/contact"
           >
-            {(user.id && user.auth_level === 0) ?
+            {user.id ?
               // If the user is already logged in, 
               // redirect them to the /contactUs page
               <Redirect to="/contactUs" />
@@ -249,7 +249,7 @@ function App() {
             exact
             path="/messages"
           >
-            {(user.auth_level == 1) ? 
+            {(user.id && user.auth_level == 1) ? 
               // If the admin is already logged in, 
               // redirect them to the /admin/messages page
               <Redirect to="/admin/messages" />

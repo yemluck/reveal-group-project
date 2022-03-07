@@ -24,7 +24,7 @@ function Nav() {
         )}
 
         {/* If a user is logged in, show these links */}
-        {user.auth_level === 0 && (
+        {user.id && (
           <>
             <Link className="navLink" to="/survey">
               Survey
@@ -37,8 +37,6 @@ function Nav() {
             <Link className="navLink" to="/contactUs">
               Contact Us
             </Link>
-
-            <LogOutButton className="navLink" />
           </>
         )}
 
@@ -56,13 +54,18 @@ function Nav() {
             <Link className="navLink" to="/messages">
               Messages
             </Link>
-
-            <LogOutButton className="navLink" />
           </>
         )}
         <Link className="navLink" to="/about">
           About
         </Link>
+
+        {/* If a user is logged in, show show logout */}
+        {user.id && (
+          <>
+          <LogOutButton className="navLink" />
+          </>
+        )}
       </div>
     </div>
   );

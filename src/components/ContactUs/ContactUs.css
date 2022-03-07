@@ -1,0 +1,34 @@
+.cuContainer {
+    margin: 0 5rem 0 5rem;
+}
+
+.grid-cuContainer {
+    display: grid;
+}
+
+.cu1, .cu2 {
+    text-align: center;
+    padding: 0 5rem 0 5rem;
+}
+
+/* .cu2 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
+
+.cu3 {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 3;
+    grid-row-end: 4;
+} */
+
+.cuForm {
+    margin-bottom: 5rem;
+    margin-left: 50%;
+    position: relative;
+    text-align: center;
+    transform: translateX(-50%);
+}

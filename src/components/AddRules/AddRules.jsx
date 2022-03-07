@@ -23,7 +23,39 @@ function AddRules() {
         points: pointsEarned,
         industry: industryCategory
       }
-    })
+    });
+    clearMembershipInputs();
+  }
+
+  const clearMembershipInputs = () => {
+    setValueCategory('');
+    setMembershipName('');
+    setPointsEarned('');
+    setIndustryCategory('');
+
+  }
+
+  const addScoreRule = (evt) => {
+    evt.preventDefault();
+    console.log('In addScoreRule');
+    dispatch({
+      type: 'ADD_SCORE_RULE',
+      payload:  {
+        metricName: metricName,
+        minimumPointsNeeded: minimumPointsNeeded,
+        pointsEarnedScore: pointsEarnedScore, 
+        industryCategoryScore: industryCategoryScore
+      }
+    });
+    clearScoreInputs();
+  }
+
+  const clearScoreInputs = () => {
+    setMetricName('');
+    setMinimumPointsNeeded('');
+    setPointsEarnedScore('');
+    setIndustryCategoryScore('');
+
   }
 
   return (
@@ -71,7 +103,7 @@ function AddRules() {
         </form>
       </section>
       <section>
-        <form id="score-rule" action="submit">
+        <form id="score-rule" action="submit" onSubmit={(evt) => addScoreRule(evt)} >
           <input 
             type="text" 
             id="metric-name" 

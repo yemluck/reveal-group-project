@@ -35,6 +35,8 @@ function App() {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
+    // dispatch to fetch user preference
+    dispatch({ type: 'FETCH_PREFERENCE'})
   }, [dispatch]);
 
   return (

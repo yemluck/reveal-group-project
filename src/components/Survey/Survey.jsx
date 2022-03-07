@@ -14,11 +14,12 @@ function Survey() {
   const preference = useSelector(store => store.survey)
   console.log('this is the preference from redux store:',preference);
 
-  useEffect(() => {
-    // dispatch to fetch user preference
-    dispatch({type: 'FETCH_PREFERENCE'})
+  // Moving to app.js 
+  // useEffect(() => {
+  //   // dispatch to fetch user preference
+  //   dispatch({type: 'FETCH_PREFERENCE'})
 
-  },[])
+  // },[])
 
   // const [transparency, setTransparency] = useState(5);
   // const [environmental, setEnvironmental] = useState(5);

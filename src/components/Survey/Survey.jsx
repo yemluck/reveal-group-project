@@ -9,26 +9,11 @@ import Slider from '@mui/material/Slider';
 function Survey() {
   const history = useHistory();
   const dispatch = useDispatch();
-  //const user = useSelector(store => store.user);
-  //console.log('this is the user:', user);
   const preference = useSelector(store => store.survey)
   console.log('this is the preference from redux store:',preference);
 
-  // Moving to app.js 
-  // useEffect(() => {
-  //   // dispatch to fetch user preference
-  //   dispatch({type: 'FETCH_PREFERENCE'})
-
-  // },[])
-
-  // const [transparency, setTransparency] = useState(5);
-  // const [environmental, setEnvironmental] = useState(5);
-  // const [humanRights, setHumanRights] = useState(5);
-
-  //console.log('humanRights:', humanRights);
-  //console.log('environmental:', environmental);
-  //console.log('transparency:', transparency);
-
+  
+  // function to run on save of preference
   const savePreference = (event) => {
     event.preventDefault();
 
@@ -52,15 +37,6 @@ function Survey() {
           <label htmlFor='transparency' style={{marginRight: 30}}>
             Transparency🔍 :
           </label>
-            {/* <input
-              type="number"
-              name="transparency"
-              required
-              value={transparency}
-              min="1"
-              max="10"
-              onChange={(event) => setTransparency(event.target.value)}
-            /> */}
             <Slider sx={{width: 300, marginLeft: "5px" }}
               min={1}
               max={10}
@@ -78,9 +54,6 @@ function Survey() {
             Environmental🔍 :
           </label>
           <Slider sx={{ width: 300, marginLeft: "5px" }}
-              //type="number"
-              //name="environmental"
-              //required
               value={preference.environmental}
               min={1}
               max={10}
@@ -97,9 +70,6 @@ function Survey() {
             Human Rights 🔍 :
           </label>
           <Slider sx={{ width: 300, marginLeft: "5px" }}
-              //type="number"
-              //name="humanRights"
-              //required
               value={preference.humanRights}
               min={1}
               max={10}

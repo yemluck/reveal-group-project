@@ -42,7 +42,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 // Handles POST request for user's message
 router.post('/', rejectUnauthenticated, (req, res) => {
     console.log('in messages router POST');
-    // check variales to POST
+    // check variables to POST
     console.log('user id', req.user.id);
     console.log('message saga payload', req.body.userMessage);
 

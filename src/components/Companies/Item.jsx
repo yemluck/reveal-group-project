@@ -11,7 +11,7 @@ function Item({ company }) {
 
   return (
     <div>
-      <h3 className="company-link" onClick={() => selectCompany(company)}>{company}</h3>
+      <h4 className="company-link" onClick={() => selectCompany(company)}>{company}</h4>
     </div>
   )
 }

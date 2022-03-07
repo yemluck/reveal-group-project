@@ -3,14 +3,14 @@ import {Link , useParams} from 'react-router-dom';
 
 function CompanyDetails() {
   const params = useParams;
-  let { id: company } = useParams();
+  let { name: companyName } = useParams();
   console.log(params)
 
   return (
     <div className="container">
       <div>
-        <p>CompanyDetails</p>
-        <p>Name: {company} (this is grabbed from url in address bar)</p>
+        <h2>Company Details</h2>
+        <h3>{companyName} </h3>
         <Link to="/companies"><button> Back </button></Link>
       </div>
     </div>

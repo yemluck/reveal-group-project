@@ -35,8 +35,6 @@ function App() {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
-    // dispatch to fetch user preference
-    dispatch({ type: 'FETCH_PREFERENCE'})
   }, [dispatch]);
 
   return (
@@ -90,7 +88,7 @@ function App() {
           <ProtectedRoute
             // logged in shows companyDetails page else shows LoginPage
             exact
-            path="/companies/:id"
+            path="/companies/details/:name"
           >
             <CompanyDetails />
           </ProtectedRoute>
@@ -114,7 +112,7 @@ function App() {
           <ProtectedRoute
             // logged in shows admin AddRules page else shows LoginPage
             exact
-            path="/admin/addRules"
+            path="/admin/addnewrule"
           >
             <AddRules />
           </ProtectedRoute>

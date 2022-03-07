@@ -6,7 +6,7 @@
   "dependencies": {
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",
-    "@mui/material": "^5.4.4",
+    "@mui/material": "^5.5.0",
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "cookie-session": "^2.0.0",
@@ -31,7 +31,8 @@
     "server": "nodemon --watch server server/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "database": "createdb reveal && psql reveal < database.sql"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"

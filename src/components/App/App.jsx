@@ -111,7 +111,7 @@ function App() {
           <ProtectedRoute
             // logged in shows admin AddRules page else shows LoginPage
             exact
-            path="/admin/addRules"
+            path="/admin/addnewrule"
           >
             <AddRules />
           </ProtectedRoute>

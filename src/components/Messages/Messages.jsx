@@ -18,7 +18,7 @@ function Messages() {
     }, []);
 
     // gain access to global variables
-    const store = useReduxStore();
+    const store = useReduxStore();// useSelector (store =>)
     const message = store.messages;
     console.log('user messages', message);
 

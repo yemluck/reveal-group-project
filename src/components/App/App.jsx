@@ -35,6 +35,8 @@ function App() {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
+    // dispatch to fetch user preference
+    dispatch({ type: 'FETCH_PREFERENCE'})
   }, [dispatch]);
 
   return (
@@ -129,7 +131,7 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect to the /user page
-              <Redirect to="/about" />
+              <Redirect to="/user" />
               :
               // Otherwise, show the login page
               <LoginPage />

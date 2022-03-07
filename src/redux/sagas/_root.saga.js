@@ -3,6 +3,7 @@ import loginSaga from './login.saga';
 import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
 import messages from './messages.saga';
+import survey from './survey.saga';
 import companies from './companies.saga';
 
 // rootSaga is the primary saga.
@@ -18,6 +19,7 @@ export default function* rootSaga() {
     registrationSaga(),
     userSaga(),
     messages(), // contains user name and message
+    survey() // contains preferences ratings and user.id
     companies(), // for interacting with wikirate API
   ]);
 }

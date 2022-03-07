@@ -16,19 +16,20 @@ function AddRules() {
     console.log('In addMembershipRule');
     dispatch({
       type: 'ADD_MEMBERSHIP_RULE',
-        membershipRule: {
-          membershipName: membershipName,
-          pointsEarned: pointsEarned,
-          industryCategory: industryCategory
-        }
+      membershipRule: {
+        membershipName: membershipName,
+        pointsEarned: pointsEarned,
+        industryCategory: industryCategory
+      }
     })
   }
 
   return (
     <div className="container">
       <div>
-        <p>AddRules</p>
+        <p>Add Rules</p>
       </div>
+      {console.log(membershipName)}
       <section>
         <form id="membership-rule" action="submit" onSubmit={(evt) => addMembershipRule(evt)} >
           <input 

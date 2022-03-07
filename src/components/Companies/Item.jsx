@@ -1,4 +1,4 @@
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 function Item({ company }) {
 
@@ -12,7 +12,7 @@ function Item({ company }) {
 
   return (
     <div>
-      <h4 className="company-link" onClick={() => selectCompany(company)}>{company}</h4>
+      <h4 className="company-link" ><Link to={`/companies/details/${company}`}><span>{company}</span></Link></h4>
     </div>
   )
 }

@@ -1,8 +1,6 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Item from './Item';
 import Pagination from './Pagination'
-
-// const companies = ['apple', 'google', 'Netflix', 'meta'];
 
 
 

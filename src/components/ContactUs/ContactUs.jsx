@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import './ContactUs.css';
 
@@ -83,6 +84,7 @@ function ContactUs() {
           />
 
           {/* submit button for form */}
+          <Link to="/companies">
           <div className="cu7">
             <button
               type="submit"
@@ -92,6 +94,7 @@ function ContactUs() {
               Send
             </button>
           </div>
+          </Link>
 
         </form>
 

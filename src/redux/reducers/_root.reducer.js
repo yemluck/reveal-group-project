@@ -16,7 +16,7 @@ const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
   messages, // will have user's email, name, and message
-  survey // will have preference rating for users
+  survey, // will have preference rating for users
   companies, // contains a list of the actively displayed companies
   activeCompany, // contains details about the currently selected company
 });

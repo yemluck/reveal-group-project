@@ -5,26 +5,20 @@
   align-items: center;
 
   margin: 0 0 30px;
-  background-color: #00acb0;
+  background-color: #f6ded7;
   overflow: hidden;
 }
 
 .nav a {
+  display: inline-block;
   text-decoration: none;
 }
 
-.nav-title {
-  font-size: 24px;
-  font-weight: 700;
-  color: #f2f2f2;
-  padding-left: 10px;
-  margin: 0;
-}
-
 .navLink {
-  display: inline-block;
-  color: #f2f2f2;
-  background-color: #00acb0;
+  display: flex;
+  color: #6d2978;
+  background-color: #f6ded7;
+  justify-content: space-between;
   text-align: center;
   padding: 24px 10px;
   text-decoration: none;

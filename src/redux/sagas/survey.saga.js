@@ -41,7 +41,7 @@ function* fetchPreference(action) {
 
 function* savePreference(action) {
     try {
-        yield axios.put('api/survey', action.payload)
+        yield axios.put('api/survey', action.payload);
     } catch (err) {
         console.log('Error editing preference', err);
         

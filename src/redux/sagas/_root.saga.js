@@ -19,7 +19,7 @@ export default function* rootSaga() {
     registrationSaga(),
     userSaga(),
     messages(), // contains user name and message
-    survey() // contains preferences ratings and user.id
-    companies(), // for interacting with wikirate API
+    survey(), // contains preferences ratings and user.id
+    companies() // for interacting with wikirate API
   ]);
 }

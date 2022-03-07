@@ -16,10 +16,10 @@ function AddRules() {
     console.log('In addMembershipRule');
     dispatch({
       type: 'ADD_MEMBERSHIP_RULE',
-      membershipRule: {
-        membershipName: membershipName,
-        pointsEarned: pointsEarned,
-        industryCategory: industryCategory
+      payload: {
+        organization: membershipName,
+        points: pointsEarned,
+        industry: industryCategory
       }
     })
   }

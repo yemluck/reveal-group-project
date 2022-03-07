@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { put, takeEvery } from 'redux-saga/effects';
 
-function* addNewRule(action) {
-    console.log('In addNewRule');
+function* addMembershipRule(action) {
+    console.log('In addNewRule', action);
     try {
-        yield axios.post('/addrule', action.payload);
+        yield axios.post('/admin/addrule', action.payload);
         yield put({
             type:   'FETCH_RULES'
         });
@@ -15,7 +15,8 @@ function* addNewRule(action) {
 }
 
 function* ruleSaga() {
-  yield takeEvery('ADD_MEMBERSHIP_RULE', addNewRule);
+    console.log('ruleSaga');
+  yield takeEvery('ADD_MEMBERSHIP_RULE', addMembershipRule);
 }
 
 export default ruleSaga;

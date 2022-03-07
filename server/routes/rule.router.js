@@ -15,7 +15,7 @@ router.post('/addrule', rejectUnauthenticated, (req, res) => {
             ($1, $2, $3)
         WHERE "user".id = $4
         ;`;
-    const queryParams = [req.body.membershipName, req.body.pointEarned, req.body.industryCategory, req.user.id];
+    const queryParams = [req.body.organization, req.body.points, req.body.industry, req.user.id];
 });
 
 module.exports = router;

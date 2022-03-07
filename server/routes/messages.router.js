@@ -57,7 +57,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
             ( $1, $2, $3 );
         `;
     }
- 
+
     const queryParams = [
         req.body.userMessage.message,
         req.body.userMessage.name,

@@ -12,7 +12,9 @@ function Survey() {
   const preference = useSelector(store => store.survey)
   console.log('this is the preference from redux store:',preference);
 
-  
+  useEffect(()=> {
+    dispatch({ type: 'FETCH_PREFERENCE' })
+  }, [])
   // function to run on save of preference
   const savePreference = (event) => {
     event.preventDefault();
@@ -20,7 +22,6 @@ function Survey() {
     dispatch({
       type: 'SAVE_PREFERENCE_CHANGES',
       payload: preference
-      
     })
     // will push to user page after dispatch
     history.push('/user')

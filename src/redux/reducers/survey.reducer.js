@@ -1,4 +1,5 @@
-const surveyReducer = (state = {}, action) => {
+const surveyReducer = (state = {transparency: 5, environmental: 5, humanRights: 5
+}, action) => {
     switch (action.type) {
         case 'SET_PREFERENCE':
             return action.payload;

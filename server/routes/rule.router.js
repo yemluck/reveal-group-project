@@ -15,7 +15,8 @@ router.post('/', rejectUnauthenticated, (req, res) => {
             ("organization", "points", "industry", "value_id")
         VALUES
             ($1, $2, $3, $4)
-        ;`;}
+        ;`;
+    }
     const queryParams = [req.body.organization, req.body.points, req.body.industry, req.body.value];
     pool.query(queryText, queryParams)
     .then(() => {

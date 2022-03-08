@@ -35,8 +35,6 @@ function App() {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
-    // dispatch to fetch user preference
-    dispatch({ type: 'FETCH_PREFERENCE'})
   }, [dispatch]);
 
   return (
@@ -46,6 +44,7 @@ function App() {
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/companies" />
+          <Redirect exact from="/home" to="/companies" />
 
           {/* Visiting localhost:3000/about will show the about page. */}
           <Route
@@ -87,7 +86,7 @@ function App() {
           <ProtectedRoute
             // logged in shows companyDetails page else shows LoginPage
             exact
-            path="/companies/:id"
+            path="/companies/details/:name"
           >
             <CompanyDetails />
           </ProtectedRoute>
@@ -225,20 +224,6 @@ function App() {
               // If the user is already logged in, 
               // redirect them to the /admin/users page
               <Redirect to="/admin/users" />
-              :
-              // Otherwise, show the Landing page
-              <LandingPage />
-            }
-          </Route>
-
-          <Route
-            exact
-            path="/addRules"
-          >
-            {(user.id && user.auth_level === 1) ?
-              // If the user is already logged in, 
-              // redirect them to the /admin/addRules page
-              <Redirect to="/admin/addRules" />
               :
               // Otherwise, show the Landing page
               <LandingPage />

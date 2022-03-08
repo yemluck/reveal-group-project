@@ -20,34 +20,46 @@ const router = express.Router();
 /*  {
 *       query: searchBarInput
 *   }
-*/ 
+*/
 // Handles GET request for admin messages
-router.get('/', rejectUnauthenticated, (req, res) => {
+router.get('/:search', rejectUnauthenticated, (req, res) => {
     console.log('in companies router GET');
-    console.log(req.body.query)
-    //TODO
+    // console.log(req.params.search)
+    // //TODO
     // need to check validity of input box with. wikirate api...maybe need an encodeURI, maybe don't.
-    
-    // const query = encodeURI(req.body.query)
 
+    const query = encodeURI(req.params.search)
 
-    // // get list of companies
-    // axios.get(`
-    // https://wikirate.org/Commons+Standard_Industrial_Classification_Code.json?filter%5Bcompany_name%5D=${query}&filter%5Bnot_ids%5D=&limit=20&offset=0
-    // `)
-    // .then(result => {
-    //     console.log('result:', result)
-    //     // TODO
-    //     // examine & traverse the JSON that is returned for list of companies
-    //     // or.......traverse the JSON in front end
-    //     // res.status(200).send(result)
-    // })
-    // .catch(err => {
-    //     console.error(err);
-    //     res.status(500).send(err)
-    // })
+    // get list of companies
+    axios.get(`
+    https://wikirate.org/Commons+Standard_Industrial_Classification_Division+Answer.json?filter%5Bcompany_name%5D=${query}&filter%5Bnot_ids%5D=
+    `)
+        .then(wrResult => {
+            // console.log('result:', result.data.items)
+            res.status(200).send(wrResult.data.items);
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).send(err)
+        })
 
 }); // end GET
+
+router.get('/', rejectUnauthenticated, (req,res) => {
+    console.log('in companies router default GET');
+
+    axios.get(`
+    https://wikirate.org/Commons+Standard_Industrial_Classification_Division+Answer.json?filter%5Bcompany_name%5D=&filter%5Bnot_ids%5D=
+    `)
+    .then(wrResult => {
+        // console.log(wrResult.data.items);
+        res.status(200).send(wrResult.data.items)
+    })
+    .catch(err => {
+        console.error(err);
+        res.status(500).send(err)
+    })
+})
 
 
 

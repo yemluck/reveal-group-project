@@ -231,20 +231,6 @@ function App() {
 
           <Route
             exact
-            path="/addRules"
-          >
-            {(user.id && user.auth_level === 1) ?
-              // If the user is already logged in, 
-              // redirect them to the /admin/addRules page
-              <Redirect to="/admin/addRules" />
-              :
-              // Otherwise, show the Landing page
-              <LandingPage />
-            }
-          </Route>
-
-          <Route
-            exact
             path="/messages"
           >
             {(user.id && user.auth_level == 1) ? 

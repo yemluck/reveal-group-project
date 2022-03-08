@@ -1,0 +1,8 @@
+.membership-rule-form {
+    display: list-item;
+}
+
+.score-rule-form {
+    display: flex;
+    align-items: flex-end;
+}

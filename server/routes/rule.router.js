@@ -6,7 +6,7 @@ const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 router.get('/', rejectUnauthenticated, (req, res) => {
 });
 
-router.post('/', rejectUnauthenticated, (req, res) => {
+router.post('/membership', rejectUnauthenticated, (req, res) => {
     console.log('In rule router POST', req.body);
     let queryText = '';
     if(req.user.auth_level === 1) {

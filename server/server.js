@@ -31,7 +31,7 @@ app.use('/api/user', userRouter);
 app.use('/api/messages', messagesRouter);
 app.use('/api/', surveyRouter);
 app.use('/api/companies', companiesRouter);
-app.use('/admin/addnewrule', ruleRouter);
+app.use('/api/rules', ruleRouter);
 
 // Serve static files
 app.use(express.static('build'));

@@ -32,10 +32,22 @@ const registrationMessage = (state = '', action) => {
   }
 };
 
+const resultsMessage = (state = '', action) => {
+    switch (action.type) {
+        case 'CLEAR_RESULTS_ERROR':
+            return '';
+        case 'NO_RESULTS_RETURNED':
+            return "No results found, try a different company.";
+        default:
+            return state;
+    }
+}
+
 // make one object that has keys loginMessage, registrationMessage
 // these will be on the redux state at:
 // state.errors.loginMessage and state.errors.registrationMessage
 export default combineReducers({
   loginMessage,
   registrationMessage,
+  resultsMessage,
 });

@@ -4,13 +4,26 @@ import { put, takeEvery } from 'redux-saga/effects';
 function* addMembershipRule(action) {
     console.log('In addNewRule');
     try {
-        yield axios.post('/admin/addnewrule', action.payload);
+        yield axios.post('/api/rules/membership', action.payload);
         yield put({
             type:   'FETCH_RULES'
         });
     }
     catch (err) {
-        console.log('Error in addNewRule', err);
+        console.log('Error in addMembershipRule', err);
+    }
+}
+
+function* addScoreRule(action) {
+    console.log('In addScoreRule');
+    try {
+        yield axios.post('/api/rules/score', action.payload);
+        yield put({
+            type:   'FETCH_RULES'
+        });
+    }
+    catch (err) {
+        console.log('Error in addScoreRule', err);
     }
 }
 
@@ -37,9 +50,14 @@ function* fetchRules() {
 // watch for functions
 function* ruleSaga() {
     console.log('ruleSaga');
+<<<<<<< HEAD
     yield takeEvery('ADD_MEMBERSHIP_RULE', addMembershipRule);
 
     yield takeEvery( 'FETCH_RULES', fetchRules );
+=======
+  yield takeEvery('ADD_MEMBERSHIP_RULE', addMembershipRule);
+  yield takeEvery('ADD_SCORE_RULE', addScoreRule);
+>>>>>>> 69caa53466e86a39cbfaf670afcbac9389b624d6
 }
 
 export default ruleSaga;

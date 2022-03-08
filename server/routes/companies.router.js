@@ -36,9 +36,6 @@ router.get('/:search', rejectUnauthenticated, (req, res) => {
     `)
         .then(wrResult => {
             // console.log('result:', result.data.items)
-            // TODO
-            // examine & traverse the JSON that is returned for list of companies
-            // or.......traverse the JSON in front end
             res.status(200).send(wrResult.data.items);
         })
         .catch(err => {
@@ -47,6 +44,22 @@ router.get('/:search', rejectUnauthenticated, (req, res) => {
         })
 
 }); // end GET
+
+router.get('/', rejectUnauthenticated, (req,res) => {
+    console.log('in companies router default GET');
+
+    axios.get(`
+    https://wikirate.org/Commons+Standard_Industrial_Classification_Division+Answer.json?filter%5Bcompany_name%5D=&filter%5Bnot_ids%5D=
+    `)
+    .then(wrResult => {
+        // console.log(wrResult.data.items);
+        res.status(200).send(wrResult.data.items)
+    })
+    .catch(err => {
+        console.error(err);
+        res.status(500).send(err)
+    })
+})
 
 
 

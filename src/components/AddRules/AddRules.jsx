@@ -84,6 +84,7 @@ function AddRules() {
               onChange={(evt) => setValueCategory(evt.target.value)}
             >
               <option value="">Select</option>
+
               <option value="1">Transparency</option>
               <option value="2">Environment</option>
               <option value="3">Human Rights</option>

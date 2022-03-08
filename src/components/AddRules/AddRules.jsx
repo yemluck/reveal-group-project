@@ -3,14 +3,17 @@ import { useDispatch } from 'react-redux';
 
 function AddRules() {
   const dispatch = useDispatch();
-  const [valueCategory, setValueCategory] = useState(''); // this will be just the value id number for now
+  const [valueCategory, setValueCategory] = useState(''); 
   const [membershipName, setMembershipName] = useState('');
   const [pointsEarned, setPointsEarned] = useState('');
   const [industryCategory, setIndustryCategory] = useState('');
   const [metricName, setMetricName] = useState('');
   const [minimumPointsNeeded, setMinimumPointsNeeded] = useState('');
+  // adding 'Score' to the end of the next two const names below to avoid 
+  // collision with above names
   const [pointsEarnedScore, setPointsEarnedScore] = useState('');
   const [industryCategoryScore, setIndustryCategoryScore] = useState('');
+  const [valueCategoryScore, setValueCategoryScore] = useState(''); 
 
   const addMembershipRule = (evt) => {
     evt.preventDefault();
@@ -23,26 +26,74 @@ function AddRules() {
         points: pointsEarned,
         industry: industryCategory
       }
-    })
-  }
+    });
+    // Reset inputs on submit
+    clearMembershipInputs();
+  }// end addMembershipRule
+
+  const clearMembershipInputs = () => {
+    setValueCategory('');
+    setMembershipName('');
+    setPointsEarned('');
+    setIndustryCategory('');
+
+  }// end clearMembershipInputs
+
+  const addScoreRule = (evt) => {
+    evt.preventDefault();
+    console.log('In addScoreRule');
+    dispatch({
+      type: 'ADD_SCORE_RULE',
+      payload:  {
+        metric: metricName,
+        result: minimumPointsNeeded,
+        points: pointsEarnedScore, 
+        industry: industryCategoryScore,
+        value_id: valueCategoryScore
+      }
+    });
+    // Reset inputs on submit
+    clearScoreInputs();
+  }// end addScoreRule
+
+  const clearScoreInputs = () => {
+    setValueCategoryScore('');
+    setMetricName('');
+    setMinimumPointsNeeded('');
+    setPointsEarnedScore('');
+    setIndustryCategoryScore('');
+
+  }// end clearScoreInputs
 
   return (
-    <div className="container">
+    <div className="rules-form-container">
       <div>
         <p>Add Rules</p>
       </div>
-      {console.log(membershipName)}
+      {console.log(metricName)}
       <section>
         <form id="membership-rule" action="submit" onSubmit={(evt) => addMembershipRule(evt)} >
-          <input 
+          {/* <input 
             type="text" 
             id="value-category" 
             className="form-control"
             placeholder="Value Category" 
             value={valueCategory}
             onChange={(evt) => setValueCategory(evt.target.value)}
-            /* This will be just the value id number for now */
-            />
+            /> */}
+          <select
+            id="value-category"
+            className="form-control"
+            placeholder="Value Category" 
+            value={valueCategory}
+            onChange={(evt) => setValueCategory(evt.target.value)}
+            >
+              <option value="">Select Value Category</option>
+              <option value="1">Transparency</option>
+              <option value="2">Environment</option>
+              <option value="3">Human Rights</option>
+            </select>
+
           <input 
             type="text" 
             id="membership-name" 
@@ -71,7 +122,19 @@ function AddRules() {
         </form>
       </section>
       <section>
-        <form id="score-rule" action="submit">
+        <form id="score-rule" action="submit" onSubmit={(evt) => addScoreRule(evt)} >
+          <select
+            id="value-category-score"
+            className="form-control"
+            placeholder="Value Category" 
+            value={valueCategoryScore}
+            onChange={(evt) => setValueCategoryScore(evt.target.value)}
+            >
+              <option value="">Select Value Category</option>
+              <option value="1">Transparency</option>
+              <option value="2">Environment</option>
+              <option value="3">Human Rights</option>
+            </select>
           <input 
             type="text" 
             id="metric-name" 
@@ -90,7 +153,7 @@ function AddRules() {
             />
           <input 
             type="text" 
-            id="points-earned" 
+            id="points-earned-score" 
             className="form-control"
             placeholder="Points Earned" 
             value={pointsEarnedScore}
@@ -98,13 +161,13 @@ function AddRules() {
             />
           <input 
             type="text" 
-            id="industry-category" 
+            id="industry-category-score" 
             className="form-control"
             placeholder="Industry Category" 
             value={industryCategoryScore}
             onChange={(evt) => setIndustryCategoryScore(evt.target.value)}
             />
-          <button type="button" >Submit</button>
+          <button type="submit" >Submit</button>
         </form>
       </section>
     </div>

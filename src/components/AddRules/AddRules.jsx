@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 function AddRules() {
@@ -25,6 +25,11 @@ function AddRules() {
       }
     })
   }
+
+  // on page load, GET rules
+  useEffect(() => {
+    dispatch({ type: 'FETCH_RULES' });
+  }, []);
 
   return (
     <div className="container">

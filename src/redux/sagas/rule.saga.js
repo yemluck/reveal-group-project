@@ -14,9 +14,32 @@ function* addMembershipRule(action) {
     }
 }
 
+// worker Saga: will be fired on "DELETE_MESSAGE" action
+function* fetchRules() {
+    console.log('in addRules');
+
+    // passport security
+    try {
+        const config = {
+            headers: { 'Content-Type': 'application/json' },
+            withCredentials: true,
+        };
+        // send request to messages router
+        yield axios.get(`/api/addRules/${id}`, { config, id });
+
+        // then call fetchMessages function
+        yield put({ type: 'FETCH_MESSAGES' });
+        } catch (error) {
+            console.log('message saga POST failed', error);
+    }
+}
+
+// watch for functions
 function* ruleSaga() {
     console.log('ruleSaga');
-  yield takeEvery('ADD_MEMBERSHIP_RULE', addMembershipRule);
+    yield takeEvery('ADD_MEMBERSHIP_RULE', addMembershipRule);
+
+    yield takeEvery( 'FETCH_RULES', fetchRules );
 }
 
 export default ruleSaga;

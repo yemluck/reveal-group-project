@@ -3,12 +3,14 @@ import { useDispatch } from 'react-redux';
 
 function AddRules() {
   const dispatch = useDispatch();
-  const [valueCategory, setValueCategory] = useState(''); // this will be just the value id number for now
+  const [valueCategory, setValueCategory] = useState(''); 
   const [membershipName, setMembershipName] = useState('');
   const [pointsEarned, setPointsEarned] = useState('');
   const [industryCategory, setIndustryCategory] = useState('');
   const [metricName, setMetricName] = useState('');
   const [minimumPointsNeeded, setMinimumPointsNeeded] = useState('');
+  // adding 'Score' to the end of the next two const names below to avoid 
+  // collision with above names
   const [pointsEarnedScore, setPointsEarnedScore] = useState('');
   const [industryCategoryScore, setIndustryCategoryScore] = useState('');
 
@@ -24,8 +26,9 @@ function AddRules() {
         industry: industryCategory
       }
     });
+    // Reset inputs on submit
     clearMembershipInputs();
-  }
+  }// end addMembershipRule
 
   const clearMembershipInputs = () => {
     setValueCategory('');
@@ -33,7 +36,7 @@ function AddRules() {
     setPointsEarned('');
     setIndustryCategory('');
 
-  }
+  }// end clearMembershipInputs
 
   const addScoreRule = (evt) => {
     evt.preventDefault();
@@ -47,8 +50,9 @@ function AddRules() {
         industry: industryCategoryScore
       }
     });
+    // Reset inputs on submit
     clearScoreInputs();
-  }
+  }// end addScoreRule
 
   const clearScoreInputs = () => {
     setMetricName('');
@@ -56,14 +60,14 @@ function AddRules() {
     setPointsEarnedScore('');
     setIndustryCategoryScore('');
 
-  }
+  }// end clearScoreInputs
 
   return (
     <div className="rules-form-container">
       <div>
         <p>Add Rules</p>
       </div>
-      {console.log(membershipName)}
+      {console.log(metricName)}
       <section>
         <form id="membership-rule" action="submit" onSubmit={(evt) => addMembershipRule(evt)} >
           {/* <input 
@@ -147,7 +151,7 @@ function AddRules() {
             value={industryCategoryScore}
             onChange={(evt) => setIndustryCategoryScore(evt.target.value)}
             />
-          <button type="button" >Submit</button>
+          <button type="submit" >Submit</button>
         </form>
       </section>
     </div>

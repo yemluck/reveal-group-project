@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {Link , useParams} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 function CompanyDetails() {
-  const params = useParams;
+  //const params = useParams;
   let { name: companyName } = useParams();
-  console.log(params)
+  //console.log(params);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({ 
+      type:'FETCH_COMPANY_DETAILS',
+      payload: companyName
+    })
+  },[companyName])
+  
+  
 
   return (
     <div className="container">

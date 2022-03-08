@@ -6,6 +6,7 @@ import messages from './messages.saga';
 import survey from './survey.saga';
 import companies from './companies.saga';
 import rule from './rule.saga';
+import companyDetails from './companyDetails.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -22,6 +23,8 @@ export default function* rootSaga() {
     messages(), // contains user name and message
     survey(), // contains preferences ratings and user.id
     companies(), // for interacting with wikirate API
-    rule() 
+    companyDetails(), // for interacting with wikirate API
+    rule()
+
   ]);
 }

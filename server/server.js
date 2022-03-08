@@ -13,6 +13,7 @@ const messagesRouter = require('./routes/messages.router');
 const surveyRouter = require('./routes/survey.router');
 const companiesRouter = require('./routes/companies.router');
 const ruleRouter = require('./routes/rule.router');
+const companyDetailsRouter = require('./routes/companyDetails.router');
 
 
 // Body parser middleware
@@ -31,6 +32,7 @@ app.use('/api/user', userRouter);
 app.use('/api/messages', messagesRouter);
 app.use('/api/', surveyRouter);
 app.use('/api/companies', companiesRouter);
+app.use('/api/companyDetails', companyDetailsRouter);
 app.use('/admin/addnewrule', ruleRouter);
 
 // Serve static files

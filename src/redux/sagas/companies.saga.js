@@ -9,6 +9,17 @@ function* fetchCompanies(action) {
         const search = encodeURI(action.payload)
         const results = yield axios.get(`/api/companies/${search}`);
         // console.log(results.data);
+        console.log(results.data)
+        if (results.data.length === 0) {
+            yield put({
+                type: 'NO_RESULTS_RETURNED'
+            })
+        } else {
+            yield put({
+                type: 'CLEAR_RESULTS_ERROR'
+            })
+        }
+
         yield put({
             type: "SET_COMPANIES",
             payload: results.data

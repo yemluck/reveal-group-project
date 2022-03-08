@@ -13,6 +13,7 @@ function AddRules() {
   // collision with above names
   const [pointsEarnedScore, setPointsEarnedScore] = useState('');
   const [industryCategoryScore, setIndustryCategoryScore] = useState('');
+  const [valueCategoryScore, setValueCategoryScore] = useState(''); 
 
   const addMembershipRule = (evt) => {
     evt.preventDefault();
@@ -47,7 +48,8 @@ function AddRules() {
         metric: metricName,
         result: minimumPointsNeeded,
         points: pointsEarnedScore, 
-        industry: industryCategoryScore
+        industry: industryCategoryScore,
+        value_id: valueCategoryScore
       }
     });
     // Reset inputs on submit
@@ -55,6 +57,7 @@ function AddRules() {
   }// end addScoreRule
 
   const clearScoreInputs = () => {
+    setValueCategoryScore('');
     setMetricName('');
     setMinimumPointsNeeded('');
     setPointsEarnedScore('');
@@ -85,6 +88,7 @@ function AddRules() {
             value={valueCategory}
             onChange={(evt) => setValueCategory(evt.target.value)}
             >
+              <option value="">Select Value Category</option>
               <option value="1">Transparency</option>
               <option value="2">Environment</option>
               <option value="3">Human Rights</option>
@@ -119,6 +123,18 @@ function AddRules() {
       </section>
       <section>
         <form id="score-rule" action="submit" onSubmit={(evt) => addScoreRule(evt)} >
+          <select
+            id="value-category-score"
+            className="form-control"
+            placeholder="Value Category" 
+            value={valueCategoryScore}
+            onChange={(evt) => setValueCategoryScore(evt.target.value)}
+            >
+              <option value="">Select Value Category</option>
+              <option value="1">Transparency</option>
+              <option value="2">Environment</option>
+              <option value="3">Human Rights</option>
+            </select>
           <input 
             type="text" 
             id="metric-name" 

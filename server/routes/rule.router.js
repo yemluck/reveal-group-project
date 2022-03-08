@@ -8,14 +8,23 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
 router.post('/', rejectUnauthenticated, (req, res) => {
     console.log('In rule router POST', req.body);
-    const queryText = `
+    let queryText = '';
+    if(req.user.auth_level === 1) {
+    queryText = `
         INSERT INTO "membership_rule"
             ("organization", "points", "industry", "value_id")
         VALUES
             ($1, $2, $3, $4)
-        ;`;
-        // WHERE "user".auth_level = 1 (don't remember the right way to write this)
-    const queryParams = [req.body.organization, req.body.points, req.body.industry, req.body.value_id];
+        ;`;}
+    const queryParams = [req.body.organization, req.body.points, req.body.industry, req.body.value];
+    pool.query(queryText, queryParams)
+    .then(() => {
+        res.sendStatus(201);
+    })
+    .catch((err) => {
+        console.log('Rule POST error', err);
+        res.sendStatus(500);
+    });
 });
 
 module.exports = router;

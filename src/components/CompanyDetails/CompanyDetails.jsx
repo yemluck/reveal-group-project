@@ -21,15 +21,13 @@ function CompanyDetails() {
   const abc = keys[0]
   console.log('type of key', typeof keys[0]); 
   console.log('details from store', details);
-  console.log('mapping through details', details.extract);
 
   return (
     <div className="container">
       <div>
         <h2>Company Details</h2>
         <h3>{companyName} </h3>
-        {/* Yet to finish mapping through */}
-        {/* <p>{details}</p> */}
+        <p>{details[abc].extract}</p>
         <Link to="/companies"><button> Back </button></Link>
       </div>
     </div>

@@ -11,13 +11,6 @@ function Item({ company }) {
     // redo the link to make it only be the text -> and not all the way across on line... maybe make a <Link> on a <span> holding the company's name
     // or whatever
 
-    useEffect(() => {
-        dispatch({
-            type: "CHECK_ACTIVE_COMPANY",
-            payload: company.name
-        })    
-    }, []);
-
     return (
         <div>
             <h4 className="company-link" ><Link to={`/companies/details/${company.name}`}><span>{company.name}</span></Link></h4>

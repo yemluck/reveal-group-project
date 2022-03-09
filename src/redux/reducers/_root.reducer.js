@@ -6,7 +6,7 @@ import survey from './survey.reducer';
 import companies from './companies.reducer';
 import activeCompany from './activeCompany.reducer';
 import companyDetails from './companyDetails.reducer';
-import membershipRules from './membershipRules.ruducer';
+import membershipRules from './membershipRules.reducer';
 import scoreRules from './scoreRules.reducer';
 
 

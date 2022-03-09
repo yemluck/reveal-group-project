@@ -15,12 +15,12 @@ const MembershipRules = () => {
     // gain access to global variables
     const store = useReduxStore();
     console.log('membership rules', store.membershipRules);
-    const mRules = store.membershipRules;
+    // const mRules = store.membershipRules;
 
     // setup membershipRules as a local variable for editing
-    const [ contacts, setContacts ] = useState(mRules);
-    // check data
-    console.log('contacts are:', contacts);
+    // const [ contacts, setContacts ] = useState(mRules);
+    // // check data
+    // console.log('contacts are:', contacts);
 
     // function called with edit button
     // const editMembershipRule = (id) => {
@@ -71,13 +71,11 @@ const MembershipRules = () => {
                         </th>
 
                         <th></th>
-
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     {/* loop through membership rules */}
-                {contacts.map((rule, id) => (
+                {store.membershipRules.map((rule, id) => (
                     <tr key={id}>
                         <td>
                             {rule.organization}
@@ -96,19 +94,9 @@ const MembershipRules = () => {
                         </td>
 
                         <td>
-                            {/* button to edit membership rules */}
-                            {/* <button 
-                                className="btn"
-                                onClick={(e)=> handleEdit(rule.row.original)}
-                            >
-                                Edit
-                            </button> */}
-                        </td>
-
-                        <td>
                             <button
                                 className="btn"
-                                onClick={deleteMembershipRule(rule.id)}
+                                onClick={() => deleteMembershipRule(rule.id)}
                             >
                                 Delete
                             </button>

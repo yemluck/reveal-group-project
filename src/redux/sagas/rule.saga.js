@@ -5,7 +5,7 @@ import { put, takeEvery } from 'redux-saga/effects';
 function* addMembershipRule(action) {
     console.log('In addMembershipRule');
     try {
-        yield axios.post('/api/admin/rules/membership', action.payload);
+        yield axios.post('/api/rules/membership', action.payload);
         yield put({
             type: 'FETCH_RULES'
         });
@@ -19,14 +19,14 @@ function* addMembershipRule(action) {
 function* addScoreRule(action) {
     console.log('In addScoreRule');
     try {
-        yield axios.post('/api/rules/score', action.payload);
+        yield axios.post('/api/admin/rules/score', action.payload);
         yield put({
             type:   'FETCH_RULES'
         });
     }
     catch (err) {
         console.log('Error in addScoreRule', err);
-    }
+    };
 }
 
 // worker Saga: will be fired on "FETCH_MEMBERSHIP_RULES" action
@@ -40,7 +40,7 @@ function* fetchMembershipRules() {
             withCredentials: true,
         };
         // send request to rule router
-        const response = yield axios.get('/api/admin/rules/membership', { config });
+        const response = yield axios.get('/api/rules/membership', { config });
         const membershipRules = response.data;
 
         // then store membership rules in membershipRules reducer
@@ -51,7 +51,7 @@ function* fetchMembershipRules() {
 
         } catch (error) {
             console.log('rule saga POST failed', error);
-    }
+    };
 }
 
 // worker Saga: will be fired on "FETCH_SCORE_RULES" action
@@ -65,7 +65,7 @@ function* fetchScoreRules() {
             withCredentials: true,
         };
         // send request to rule router
-        const response = yield axios.get('/api/admin/rules/score', { config });
+        const response = yield axios.get('/api/rules/score', { config });
         const scoreRules = response.data;
 
         // then store score rules in scoreRules reducer
@@ -76,29 +76,7 @@ function* fetchScoreRules() {
         
         } catch (error) {
             console.log('rule saga POST failed', error);
-    }
-}
-
-// worker Saga: will be fired on "EDIT_MEMBERSHIP_RULE" action
-function* editMembershipRule(action) {
-    console.log('in editMembershipRule sage', action.payload);
-    const id = action.payload;
-
-    // passport security
-    try {
-        const config = {
-            headers: { 'Content-Type': 'application/json' },
-            withCredentials: true,
-        };
-        // send request to rule router
-        yield axios.put(`/api/admin/rules/membership/${id}`, { config, id });
-
-        // then call fetchMembershipRules function
-        yield put({ type: 'FETCH_MEMBERSHIP_RULE' });
-        
-        } catch (error) {
-            console.log('rule saga POST failed', error);
-    }
+    };
 }
 
 // worker Saga: will be fired on "DELETE_MEMBERSHIP_RULE" action
@@ -113,14 +91,36 @@ function* deleteMembershipRule(action) {
             withCredentials: true,
         };
         // send request to rule router
-        yield axios.delete(`/api/admin/rules/membership/${id}`, { config, id });
+        yield axios.delete(`/api/rules/membership/${id}`, { config, id });
 
         // then call fetchMembershipRules function
-        yield put({ type: 'FETCH_MEMBERSHIP_RULE' });
+        yield put({ type: 'FETCH_MEMBERSHIP_RULES' });
         
         } catch (error) {
             console.log('message saga POST failed', error);
-    }
+    };
+}
+
+// worker Saga: will be fired on "DELETE_SCORE_RULE" action
+function* deleteScoreRule(action) {
+    console.log('in deleteScoreRule sage', action.payload);
+    const id = action.payload;
+
+    // passport security
+    try {
+        const config = {
+            headers: { 'Content-Type': 'application/json' },
+            withCredentials: true,
+        };
+        // send request to rule router
+        yield axios.delete(`/api/rules/score/${id}`, { config, id });
+
+        // then call fetchMembershipRules function
+        yield put({ type: 'FETCH_SCORE_RULES' });
+        
+        } catch (error) {
+            console.log('message saga POST failed', error);
+    };
 }
 
 // watch for functions
@@ -134,9 +134,9 @@ function* ruleSaga() {
 
     yield takeEvery( 'FETCH_SCORE_RULES', fetchScoreRules );
 
-    yield takeEvery( 'EDIT_MEMBERSHIP_RULE', editMembershipRule );
-
     yield takeEvery( 'DELETE_MEMBERSHIP_RULE', deleteMembershipRule );
+
+    yield takeEvery( 'DELETE_SCORE_RULE', deleteScoreRule );
 }
 
 export default ruleSaga;

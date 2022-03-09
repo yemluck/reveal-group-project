@@ -9,9 +9,20 @@ function CompanyDetails() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // dispatch to fetch description
     dispatch({ 
       type:'FETCH_COMPANY_DETAILS',
       payload: companyName
+    });
+    // dispatch to fetch data
+    dispatch({
+      type: 'FETCH_COMPANY_DATA',
+      payload: companyName
+    });
+    // add viewed company as current active company
+    dispatch({
+        type: 'SET_ACTIVE_COMPANY',
+        payload: companyName
     })
   },[companyName])
   

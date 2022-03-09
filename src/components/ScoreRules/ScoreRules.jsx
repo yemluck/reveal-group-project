@@ -17,6 +17,18 @@ const ScoreRules = () => {
     console.log('membership rules', store.scoreRules);
     console.log('score rules', store.scoreRules);
 
+    // function called with delete button
+    const deleteScoreRule = (id) => {
+        console.log('in deleteScoreRule', id);
+
+        // send id to rule saga for deleting
+        dispatch({
+            type: 'DELETE_SCORE_RULE',
+            payload: id
+        });
+    }
+
+    // render to DOM
     return(
         <div className="tableContainer">
             {/* Score Rules table */}
@@ -45,6 +57,8 @@ const ScoreRules = () => {
                         <th>
                             Value Id
                         </th>
+
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -69,6 +83,15 @@ const ScoreRules = () => {
 
                         <td>
                             {rule.value_id}
+                        </td>
+                        
+                        <td>
+                            <button
+                                className="btn"
+                                onClick={() => deleteScoreRule(rule.id)}
+                            >
+                                Delete
+                            </button>
                         </td>
                     </tr>
                 ))}

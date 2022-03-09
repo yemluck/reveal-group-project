@@ -5,6 +5,8 @@ import messages from './messages.reducer';
 import survey from './survey.reducer';
 import companies from './companies.reducer';
 import activeCompany from './activeCompany.reducer';
+import membershipRules from './membershipRules.ruducer';
+import scoreRules from './scoreRules.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -19,6 +21,8 @@ const rootReducer = combineReducers({
   survey, // will have preference rating for users
   companies, // contains a list of the actively displayed companies
   activeCompany, // contains details about the currently selected company
+  membershipRules, // contains organization, points, industry, and value_id
+  scoreRules, // contains metric, results, points, industry, and value_id
 });
 
 export default rootReducer;

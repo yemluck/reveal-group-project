@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import useReduxStore from '../../hooks/useReduxStore';
+
+import MembershipRules from '../MembershipRules/MembershipRules';
+import ScoreRules from '../ScoreRules/ScoreRules';
 
 function AddRules() {
   const dispatch = useDispatch();
@@ -64,13 +68,6 @@ function AddRules() {
     setIndustryCategoryScore('');
 
   }// end clearScoreInputs
-
-  // on page load, GET rules
-  useEffect(() => {
-    dispatch({ type: 'FETCH_MEMBERSHIP_RULES' });
-
-    dispatch({ type: 'FETCH_SCORE_RULES' })
-  }, []);
 
   return (
     <div className="rules-form-container">
@@ -209,6 +206,12 @@ function AddRules() {
           <button type="submit" >Submit</button>
         </form>
       </section>
+
+      {/* show membership rules */}
+      <MembershipRules />
+
+      {/* show score rules */}
+      <ScoreRules />
     </div>
   );
 }

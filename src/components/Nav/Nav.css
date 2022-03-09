@@ -15,7 +15,7 @@
 }
 
 .navLink {
-  display: flex;
+  display: inline-block;
   color: #6d2978;
   background-color: #f6ded7;
   justify-content: space-between;
@@ -32,5 +32,6 @@
 }
 
 .navLink:hover {
-  background-color: #008183;
+  background-color: #a53860;
+  color: #f6ded7;
 }

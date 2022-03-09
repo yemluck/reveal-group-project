@@ -1,6 +1,6 @@
 const activeCompanyReducer = (state = {}, action) => {
     switch (action.type) {
-        case 'SET_ACTIVE_COMPANY':
+        case 'SET_COMPANY_DETAILS':
             return action.payload;
         default:
             return state;

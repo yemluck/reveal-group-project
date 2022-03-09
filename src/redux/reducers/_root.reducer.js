@@ -22,8 +22,8 @@ const rootReducer = combineReducers({
   messages, // will have user's email, name, and message
   survey, // will have preference rating for users
   companies, // contains a list of the actively displayed companies
-  activeCompany, // contains details about the currently selected company
-  companyDetails,
+  activeCompany, // contains details about the currently selected company // unused ??
+  companyDetails, // contains details about the currently displayed company
   membershipRules, // contains organization, points, industry, and value_id
   scoreRules, // contains metric, results, points, industry, and value_id
 

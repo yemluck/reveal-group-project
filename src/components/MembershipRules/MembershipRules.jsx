@@ -14,7 +14,7 @@ const MembershipRules = () => {
 
     // gain access to global variables
     const store = useReduxStore();
-    console.log('membership rules', store.membershipRules);
+    // console.log('membership rules', store.membershipRules);
     // const mRules = store.membershipRules;
 
     // setup membershipRules as a local variable for editing

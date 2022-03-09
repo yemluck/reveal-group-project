@@ -10,11 +10,22 @@ const MembershipRules = () => {
     // on page load, GET membership rules
     useEffect(() => {
         dispatch({ type: 'FETCH_MEMBERSHIP_RULES' });
-}, [dispatch]);
+    }, []);
 
     // gain access to global variables
     const store = useReduxStore();
     console.log('membership rules', store.membershipRules);
+
+    // function called with edit button
+    const editMembershipRule = (id) => {
+        console.log('in editMembershipRule', id);
+
+        // watch for rule saga
+        dispatch({
+            type: 'EDIT_MEMBERSHIP_RULE',
+            payload: id
+        });
+    }
 
     // render to DOM
     return(
@@ -41,6 +52,8 @@ const MembershipRules = () => {
                         <th>
                         Value Id
                         </th>
+
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -61,6 +74,16 @@ const MembershipRules = () => {
 
                         <td>
                             {rule.value_id}
+                        </td>
+
+                        <td>
+                            {/* button to edit membership rules */}
+                            <button 
+                                className="btn"
+                                onClick={(e)=> handleEdit(rule.row.original)}
+                            >
+                                Edit
+                            </button>
                         </td>
                     </tr>
                 ))}

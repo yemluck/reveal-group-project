@@ -41,9 +41,7 @@ function App() {
   return (
     <Router>
       <div>
-        <div>
-          Reveal
-        </div>
+        <Header />
         <Nav />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}

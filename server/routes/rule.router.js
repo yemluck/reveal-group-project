@@ -51,7 +51,7 @@ router.post('/score', rejectUnauthenticated, (req, res) => {
 
 // GET membership rules
 router.get('/membership', rejectUnauthenticated, (req, res) => {
-    console.log('in rule router membership');
+    console.log('in rule router GET membership');
 
     let queryText = '';
 
@@ -77,7 +77,7 @@ router.get('/membership', rejectUnauthenticated, (req, res) => {
 
 // GET membership rules
 router.get('/score', rejectUnauthenticated, (req, res) => {
-    console.log('in rule router score');
+    console.log('in rule router GET score');
 
     let queryText = '';
 
@@ -100,6 +100,22 @@ router.get('/score', rejectUnauthenticated, (req, res) => {
             res.sendStatus(500);
         });
 }); // end GET membership rules
+
+// PUT membership rule
+router.put('/membership/:id', rejectUnauthenticated, (req, res) => {
+    console.log('in rule router PUT membership', id);
+
+    let queryText = '';
+
+    // only admins can GET score rules
+    if (req.user.auth_level === 1) {
+        // setup SQL command
+        queryText = `
+            UPDATE "membership_rule"
+            
+        `;
+    }
+});
 
 module.exports = router;
 

@@ -79,6 +79,7 @@ function Messages() {
                                 </td>
 
                                 <td>
+                                    {/* button to delete messages */}
                                     <button 
                                         className="mess btn"
                                         onClick={() => deleteMessage(words.id)}

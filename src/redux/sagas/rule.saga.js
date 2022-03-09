@@ -65,6 +65,28 @@ function* fetchScoreRules() {
     }
 }
 
+// worker Saga: will be fired on "EDIT_MEMBERSHIP_RULE" action
+function* editMembershipRule(action) {
+    console.log('in editMembershipRule sage', action.payload);
+    const id = action.payload;
+
+    // passport security
+    try {
+        const config = {
+            headers: { 'Content-Type': 'application/json' },
+            withCredentials: true,
+        };
+        // send request to rule router
+        yield axios.put(`/api/rules/membership/${id}`, { config, id });
+
+        // then call fetchMembershipRules function
+        yield put({ type: 'FETCH_MEMBERSHIP_RULE' });
+        
+        } catch (error) {
+            console.log('message saga POST failed', error);
+    }
+}
+
 // watch for functions
 function* ruleSaga() {
     console.log('ruleSaga');
@@ -73,6 +95,8 @@ function* ruleSaga() {
     yield takeEvery( 'FETCH_MEMBERSHIP_RULES', fetchMembershipRules );
 
     yield takeEvery( 'FETCH_SCORE_RULES', fetchScoreRules );
+
+    yield takeEvery( 'EDIT_MEMBERSHIP_RULE', editMembershipRule );
 }
 
 export default ruleSaga;

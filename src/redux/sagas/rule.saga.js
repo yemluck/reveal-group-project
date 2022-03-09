@@ -7,7 +7,7 @@ function* addMembershipRule(action) {
     try {
         yield axios.post('/api/rules/membership', action.payload);
         yield put({
-            type: 'FETCH_RULES'
+            type: 'FETCH_MEMBERSHIP_RULES'
         });
     }
     catch (err) {
@@ -21,7 +21,7 @@ function* addScoreRule(action) {
     try {
         yield axios.post('/api/rules/score', action.payload);
         yield put({
-            type:   'FETCH_RULES'
+            type:   'FETCH_SCORE_RULES'
         });
     }
     catch (err) {

@@ -44,7 +44,7 @@ function Nav() {
               Users
             </Link>
 
-            <Link className="navLink" to="/admin/addrule">
+            <Link className="navLink" to="/admin/addRule">
               Add Rules
             </Link>
 

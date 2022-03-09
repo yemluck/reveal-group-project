@@ -67,7 +67,9 @@ function AddRules() {
 
   // on page load, GET rules
   useEffect(() => {
-    dispatch({ type: 'FETCH_RULES' });
+    dispatch({ type: 'FETCH_MEMBERSHIP_RULES' });
+
+    dispatch({ type: 'FETCH_SCORE_RULES' })
   }, []);
 
   return (

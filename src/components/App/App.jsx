@@ -112,9 +112,9 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows admin AddRules page else shows LoginPage
+            // logged in shows admin AddRule page else shows LoginPage
             exact
-            path="/admin/addnewrule"
+            path="/admin/addRule"
           >
             <AddRules />
           </ProtectedRoute>
@@ -228,6 +228,20 @@ function App() {
               // If the user is already logged in, 
               // redirect them to the /admin/users page
               <Redirect to="/admin/users" />
+              :
+              // Otherwise, show the Landing page
+              <LandingPage />
+            }
+          </Route>
+
+          <Route
+            exact
+            path="/addRule"
+          >
+            {(user.id && user.auth_level === 1) ?
+              // If the user is already logged in, 
+              // redirect them to the /admin/users page
+              <Redirect to="/admin/addRule" />
               :
               // Otherwise, show the Landing page
               <LandingPage />

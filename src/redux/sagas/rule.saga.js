@@ -3,7 +3,7 @@ import { put, takeEvery } from 'redux-saga/effects';
 
 // worker Saga: will be fired on "ADD_MEMBERSHIP_RULE" action
 function* addMembershipRule(action) {
-    console.log('In addNewRule');
+    console.log('In addMembershipRule');
     try {
         yield axios.post('/admin/rules/membership', action.payload);
         yield put({
@@ -12,6 +12,20 @@ function* addMembershipRule(action) {
     }
     catch (err) {
         console.log('Error in addNewRule', err);
+    }
+}
+
+// worker Saga: will be fired on "ADD_SCORE_RULE" action
+function* addScoreRule(action) {
+    console.log('In addScoreRule');
+    try {
+        yield axios.post('/api/rules/score', action.payload);
+        yield put({
+            type:   'FETCH_RULES'
+        });
+    }
+    catch (err) {
+        console.log('Error in addScoreRule', err);
     }
 }
 
@@ -91,6 +105,8 @@ function* editMembershipRule(action) {
 function* ruleSaga() {
     console.log('ruleSaga');
     yield takeEvery('ADD_MEMBERSHIP_RULE', addMembershipRule);
+
+    yield takeEvery( 'ADD_SCORE_RULE', addScoreRule );
 
     yield takeEvery( 'FETCH_MEMBERSHIP_RULES', fetchMembershipRules );
 

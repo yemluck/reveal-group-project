@@ -36,16 +36,8 @@ router.get('/data/:company', rejectUnauthenticated, (req,res) => {
     if (query2[query2.length - 1] === '.'){
         query2.pop()
     }
-    // function aggregateString combines all items in array back into a string
-    const aggregateString = (query2) => {
-        let query = '';
-        for (let char of query2) {
-            query += char
-        }
-        return query
-    } 
-    // call function 
-    const query = aggregateString(query2);
+    // join array to form a string
+    const query = query2.join('');
 
     // get company data
     // insert encoded and fixed query into third party API

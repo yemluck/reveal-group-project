@@ -4,6 +4,10 @@
     text-align: center;
 }
 
+.tableContainer {
+    padding-bottom: 3rem;
+}
+
 table {
     background-color: #008183;
     margin-left: 50%;
@@ -22,8 +26,4 @@ td {
 
 table, th, td {
     border: 2px solid #008183;
-}
-
-.message3 {
-    width: 200px !important;
 }

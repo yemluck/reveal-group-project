@@ -53,6 +53,7 @@ function* fetchMessages() {
     }
 }
 
+// worker Saga: will be fired on "DELETE_MESSAGE" action
 function* deleteMessage(action) {
     console.log('in deleteMessage saga');
     const id = action.payload;

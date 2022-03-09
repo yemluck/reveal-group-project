@@ -13,6 +13,7 @@ import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
+import Header from '../Header/Header';
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import LandingPage from '../LandingPage/LandingPage';
@@ -40,10 +41,12 @@ function App() {
   return (
     <Router>
       <div>
+        <Header />
         <Nav />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/companies" />
+          <Redirect exact from="/home" to="/companies" />
 
           {/* Visiting localhost:3000/about will show the about page. */}
           <Route
@@ -107,9 +110,9 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows admin AddRules page else shows LoginPage
+            // logged in shows admin AddRule page else shows LoginPage
             exact
-            path="/admin/addnewrule"
+            path="/admin/addRule"
           >
             <AddRules />
           </ProtectedRoute>
@@ -231,12 +234,12 @@ function App() {
 
           <Route
             exact
-            path="/addRules"
+            path="/addRule"
           >
             {(user.id && user.auth_level === 1) ?
               // If the user is already logged in, 
-              // redirect them to the /admin/addRules page
-              <Redirect to="/admin/addRules" />
+              // redirect them to the /admin/users page
+              <Redirect to="/admin/addRule" />
               :
               // Otherwise, show the Landing page
               <LandingPage />

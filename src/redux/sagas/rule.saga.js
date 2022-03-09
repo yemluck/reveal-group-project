@@ -15,6 +15,20 @@ function* addMembershipRule(action) {
     }
 }
 
+// worker Saga: will be fired on "ADD_SCORE_RULE" action
+function* addScoreRule(action) {
+    console.log('In addScoreRule');
+    try {
+        yield axios.post('/api/rules/score', action.payload);
+        yield put({
+            type:   'FETCH_RULES'
+        });
+    }
+    catch (err) {
+        console.log('Error in addScoreRule', err);
+    }
+}
+
 // worker Saga: will be fired on "FETCH_MEMBERSHIP_RULES" action
 function* fetchMembershipRules() {
     console.log('in fetchMembershipRules saga');
@@ -91,6 +105,8 @@ function* editMembershipRule(action) {
 function* ruleSaga() {
     console.log('ruleSaga');
     yield takeEvery('ADD_MEMBERSHIP_RULE', addMembershipRule);
+
+    yield takeEvery( 'ADD_SCORE_RULE', addScoreRule );
 
     yield takeEvery( 'FETCH_MEMBERSHIP_RULES', fetchMembershipRules );
 

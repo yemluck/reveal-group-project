@@ -49,5 +49,73 @@ router.post('/score', rejectUnauthenticated, (req, res) => {
     });
 });
 
+// GET membership rules
+router.get('/membership', rejectUnauthenticated, (req, res) => {
+    console.log('in rule router GET membership');
+
+    let queryText = '';
+
+    // only admins can GET membership rules
+    if (req.user.auth_level === 1) {
+        // setup SQL command
+        queryText = `
+            SELECT * FROM "membership_rule";
+        `;
+    }
+
+    // send SQL command to database
+    pool.query(queryText)
+        .then((results) => {
+            console.log('GET membership_rule', results.rows);
+            res.send(results.rows);
+        })
+        .catch((err) => {
+            console.error('rule router membership GET ERROR', err);
+            res.sendStatus(500);
+        });
+}); // end GET membership rules
+
+// GET membership rules
+router.get('/score', rejectUnauthenticated, (req, res) => {
+    console.log('in rule router GET score');
+
+    let queryText = '';
+
+    // only admins can GET score rules
+    if (req.user.auth_level === 1) {
+        // setup SQL command
+        queryText = `
+            SELECT * FROM "score_rule";
+        `;
+    }
+
+    // send SQL command to database
+    pool.query(queryText)
+        .then((results) => {
+            console.log('GET score_rule', results.rows);
+            res.send(results.rows);
+        })
+        .catch((err) => {
+            console.error('rule router score GET ERROR', err);
+            res.sendStatus(500);
+        });
+}); // end GET membership rules
+
+// PUT membership rule
+router.put('/membership/:id', rejectUnauthenticated, (req, res) => {
+    console.log('in rule router PUT membership', id);
+
+    let queryText = '';
+
+    // only admins can GET score rules
+    if (req.user.auth_level === 1) {
+        // setup SQL command
+        queryText = `
+            UPDATE "membership_rule"
+            
+        `;
+    }
+});
+
 module.exports = router;
 

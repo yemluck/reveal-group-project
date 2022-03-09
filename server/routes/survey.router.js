@@ -10,12 +10,12 @@ const userStrategy = require('../strategies/user.strategy');
 const router = express.Router();
 
 // Handles GET request for ser
-router.get('/', rejectUnauthenticated, (req, res) => {
-    // Send back user object from the session (previously queried from the database)
-    res.send(req.user);
-    console.log('reg.user');
+// router.get('/', rejectUnauthenticated, (req, res) => {
+//     // Send back user object from the session (previously queried from the database)
+//     res.send(req.user);
+//     console.log('reg.user');
 
-});
+// });
 
 // POST endpoint
 // LEFT THIS HERE IN CASE WE RETHINK STRATEGY

@@ -1,5 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import useReduxStore from '../../hooks/useReduxStore';
+
+import MembershipRules from '../MembershipRules/MembershipRules';
+import ScoreRules from '../ScoreRules/ScoreRules';
 
 function AddRules() {
   const dispatch = useDispatch();
@@ -202,6 +206,12 @@ function AddRules() {
           <button type="submit" >Submit</button>
         </form>
       </section>
+
+      {/* show membership rules */}
+      <MembershipRules />
+
+      {/* show score rules */}
+      <ScoreRules />
     </div>
   );
 }

@@ -81,6 +81,7 @@ function AddRules() {
           <div className="membership-rule-form" >
             <label htmlFor="value-category">Value Category</label>
             <select
+              required
               id="value-category"
               className="form-control"
               placeholder="Value Category" 
@@ -97,6 +98,7 @@ function AddRules() {
           <div className="membership-rule-form" >
             <label htmlFor="membership-name">Membership Name</label>
             <input 
+              required
               type="text" 
               id="membership-name" 
               className="form-control"
@@ -108,6 +110,7 @@ function AddRules() {
           <div className="membership-rule-form" >
             <label htmlFor="points-earned">Points Earned</label>
             <input 
+              required
               type="text" 
               id="points-earned" 
               className="form-control"
@@ -119,6 +122,7 @@ function AddRules() {
           <div className="membership-rule-form" >
             <label htmlFor="industry-category">Industry Category</label>
             <input 
+              required
               type="text" 
               id="industry-category" 
               className="form-control"
@@ -140,6 +144,7 @@ function AddRules() {
                 Value Category
             </label>
             <select
+              required
               id="value-category-score"
               className="form-control"
               placeholder="Value Category" 
@@ -159,6 +164,7 @@ function AddRules() {
                 Metric Name
             </label>
             <input 
+              required
               type="text" 
               id="metric-name" 
               className="form-control"
@@ -173,6 +179,7 @@ function AddRules() {
                 Minimum Points Needed
             </label>
             <input 
+              required
               type="text" 
               id="minimum-points-needed" 
               className="form-control"
@@ -184,6 +191,7 @@ function AddRules() {
           <div className="score-rule-form" >
             <label htmlFor="points-earned-score">Points Earned</label>
             <input 
+              required
               type="text" 
               id="points-earned-score" 
               className="form-control"

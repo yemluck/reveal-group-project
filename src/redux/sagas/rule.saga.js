@@ -3,15 +3,15 @@ import { put, takeEvery } from 'redux-saga/effects';
 
 // worker Saga: will be fired on "ADD_MEMBERSHIP_RULE" action
 function* addMembershipRule(action) {
-    console.log('In addNewRule');
+    console.log('In addMembershipRule');
     try {
-        yield axios.post('/admin/rules/membership', action.payload);
+        yield axios.post('/api/admin/rules/membership', action.payload);
         yield put({
-            type:   'FETCH_RULES'
+            type: 'FETCH_RULES'
         });
     }
     catch (err) {
-        console.log('Error in addNewRule', err);
+        console.log('Error in addMembershipRule', err);
     }
 }
 
@@ -26,7 +26,7 @@ function* fetchMembershipRules() {
             withCredentials: true,
         };
         // send request to rule router
-        const response = yield axios.get('/api/rules/membership', { config });
+        const response = yield axios.get('/api/admin/rules/membership', { config });
         const membershipRules = response.data;
 
         // then store membership rules in membershipRules reducer
@@ -36,7 +36,7 @@ function* fetchMembershipRules() {
         });
 
         } catch (error) {
-            console.log('message saga POST failed', error);
+            console.log('rule saga POST failed', error);
     }
 }
 
@@ -51,7 +51,7 @@ function* fetchScoreRules() {
             withCredentials: true,
         };
         // send request to rule router
-        const response = yield axios.get('/api/rules/score', { config });
+        const response = yield axios.get('/api/admin/rules/score', { config });
         const scoreRules = response.data;
 
         // then store score rules in scoreRules reducer
@@ -61,7 +61,7 @@ function* fetchScoreRules() {
         });
         
         } catch (error) {
-            console.log('message saga POST failed', error);
+            console.log('rule saga POST failed', error);
     }
 }
 
@@ -77,7 +77,29 @@ function* editMembershipRule(action) {
             withCredentials: true,
         };
         // send request to rule router
-        yield axios.put(`/api/rules/membership/${id}`, { config, id });
+        yield axios.put(`/api/admin/rules/membership/${id}`, { config, id });
+
+        // then call fetchMembershipRules function
+        yield put({ type: 'FETCH_MEMBERSHIP_RULE' });
+        
+        } catch (error) {
+            console.log('rule saga POST failed', error);
+    }
+}
+
+// worker Saga: will be fired on "DELETE_MEMBERSHIP_RULE" action
+function* deleteMembershipRule(action) {
+    console.log('in deleteMembershipRule sage', action.payload);
+    const id = action.payload;
+
+    // passport security
+    try {
+        const config = {
+            headers: { 'Content-Type': 'application/json' },
+            withCredentials: true,
+        };
+        // send request to rule router
+        yield axios.delete(`/api/admin/rules/membership/${id}`, { config, id });
 
         // then call fetchMembershipRules function
         yield put({ type: 'FETCH_MEMBERSHIP_RULE' });
@@ -97,6 +119,8 @@ function* ruleSaga() {
     yield takeEvery( 'FETCH_SCORE_RULES', fetchScoreRules );
 
     yield takeEvery( 'EDIT_MEMBERSHIP_RULE', editMembershipRule );
+
+    yield takeEvery( 'DELETE_MEMBERSHIP_RULE', deleteMembershipRule );
 }
 
 export default ruleSaga;

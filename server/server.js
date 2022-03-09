@@ -33,7 +33,7 @@ app.use('/api/messages', messagesRouter);
 app.use('/api/', surveyRouter);
 app.use('/api/companies', companiesRouter);
 app.use('/api/companyDetails', companyDetailsRouter);
-app.use('/api/rules', ruleRouter);
+app.use('/api/admin/rules', ruleRouter);
 
 
 // Serve static files

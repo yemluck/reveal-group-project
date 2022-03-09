@@ -33,6 +33,17 @@ const MembershipRules = () => {
     //     });
     // }
 
+    // function called with delete button
+    const deleteMembershipRule = (id) => {
+        console.log('in deleteMembershipRule', id);
+
+        // send id to rule saga for deleting
+        dispatch({
+            type: 'DELETE_MEMBERSHIP_RULE',
+            payload: id
+        });
+    }
+
     // render to DOM
     return(
         <div className="tableContainer">
@@ -58,6 +69,8 @@ const MembershipRules = () => {
                         <th>
                         Value Id
                         </th>
+
+                        <th></th>
 
                         <th></th>
                     </tr>
@@ -90,6 +103,15 @@ const MembershipRules = () => {
                             >
                                 Edit
                             </button> */}
+                        </td>
+
+                        <td>
+                            <button
+                                className="btn"
+                                onClick={deleteMembershipRule(rule.id)}
+                            >
+                                Delete
+                            </button>
                         </td>
                     </tr>
                 ))}

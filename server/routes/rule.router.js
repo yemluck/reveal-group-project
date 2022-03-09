@@ -102,20 +102,38 @@ router.get('/score', rejectUnauthenticated, (req, res) => {
 }); // end GET membership rules
 
 // PUT membership rule
-router.put('/membership/:id', rejectUnauthenticated, (req, res) => {
-    console.log('in rule router PUT membership', id);
+// router.put('/membership/:id', rejectUnauthenticated, (req, res) => {
+//     console.log('in rule router PUT membership', id);
 
-    let queryText = '';
+//     let queryText = '';
+
+//     // only admins can GET score rules
+//     if (req.user.auth_level === 1) {
+//         // setup SQL command
+//         queryText = `
+//             UPDATE "membership_rule"
+
+//         `;
+//     }
+// }); // end PUT membership rules
+
+// DELETE membership rules
+router.delete('/membership/:id', rejectUnauthenticated, (req, res) => {
+    console.log('in rule router DELETE membership', id);
+
+    let queryText = '':
 
     // only admins can GET score rules
     if (req.user.auth_level === 1) {
         // setup SQL command
         queryText = `
-            UPDATE "membership_rule"
-            
+            DELETE FROM "membership_rule"
+            WHERE "id" = $1;
         `;
     }
-});
+
+    const queryParams = [ req.params.id ]
+}); // end DELETE membership rules
 
 module.exports = router;
 

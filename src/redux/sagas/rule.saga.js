@@ -5,7 +5,7 @@ import { put, takeEvery } from 'redux-saga/effects';
 function* addMembershipRule(action) {
     console.log('In addNewRule');
     try {
-        yield axios.post('/admin/addnewrule', action.payload);
+        yield axios.post('/admin/rules/membership', action.payload);
         yield put({
             type:   'FETCH_RULES'
         });

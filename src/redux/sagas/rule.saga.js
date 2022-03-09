@@ -3,7 +3,7 @@ import { put, takeEvery } from 'redux-saga/effects';
 
 // worker Saga: will be fired on "ADD_MEMBERSHIP_RULE" action
 function* addMembershipRule(action) {
-    console.log('In addNewRule');
+    console.log('In addMembershipRule');
     try {
         yield axios.post('/admin/rules/membership', action.payload);
         yield put({

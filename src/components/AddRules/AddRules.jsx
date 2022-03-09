@@ -21,7 +21,7 @@ function AddRules() {
 
   const addMembershipRule = (evt) => {
     evt.preventDefault();
-    console.log('In addMembershipRule');
+    // console.log('In addMembershipRule');
     dispatch({
       type: 'ADD_MEMBERSHIP_RULE',
       payload: {
@@ -45,7 +45,7 @@ function AddRules() {
 
   const addScoreRule = (evt) => {
     evt.preventDefault();
-    console.log('In addScoreRule');
+    // console.log('In addScoreRule');
     dispatch({
       type: 'ADD_SCORE_RULE',
       payload:  {
@@ -74,7 +74,7 @@ function AddRules() {
       <div>
         <h2>Add Rules</h2>
       </div>
-      {console.log(metricName)}
+      {/* {console.log(metricName)} */}
       <section className="add-rule-form">
         <form id="membership-rule" action="submit" onSubmit={(evt) => addMembershipRule(evt)} >
           <h3>Add Membership Rule</h3>

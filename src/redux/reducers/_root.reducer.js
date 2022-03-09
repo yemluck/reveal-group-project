@@ -8,6 +8,7 @@ import activeCompany from './activeCompany.reducer';
 import membershipRules from './membershipRules.reducer';
 import companyDetails from './companyDetails.reducer';
 import scoreRules from './scoreRules.reducer';
+import companyData from './companyData.reducer';
 
 
 // rootReducer is the primary reducer for our entire project
@@ -22,10 +23,11 @@ const rootReducer = combineReducers({
   messages, // will have user's email, name, and message
   survey, // will have preference rating for users
   companies, // contains a list of the actively displayed companies
-  activeCompany, // contains details about the currently selected company // unused ??
-  companyDetails, // contains details about the currently displayed company
+  activeCompany, // contains details about the currently selected company
+  companyDetails, // contains company description from wikipedia
   membershipRules, // contains organization, points, industry, and value_id
   scoreRules, // contains metric, results, points, industry, and value_id
+  companyData, // contains data about a company from wikiRate
 
 });
 

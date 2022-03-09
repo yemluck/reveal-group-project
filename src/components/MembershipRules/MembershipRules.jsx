@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import useReduxStore from '../../hooks/useReduxStore';
 
@@ -15,17 +15,23 @@ const MembershipRules = () => {
     // gain access to global variables
     const store = useReduxStore();
     console.log('membership rules', store.membershipRules);
+    const mRules = store.membershipRules;
+
+    // setup membershipRules as a local variable for editing
+    const [ contacts, setContacts ] = useState(mRules);
+    // check data
+    console.log('contacts are:', contacts);
 
     // function called with edit button
-    const editMembershipRule = (id) => {
-        console.log('in editMembershipRule', id);
+    // const editMembershipRule = (id) => {
+    //     console.log('in editMembershipRule', id);
 
-        // watch for rule saga
-        dispatch({
-            type: 'EDIT_MEMBERSHIP_RULE',
-            payload: id
-        });
-    }
+    //     // watch for rule saga
+    //     dispatch({
+    //         type: 'EDIT_MEMBERSHIP_RULE',
+    //         payload: id
+    //     });
+    // }
 
     // render to DOM
     return(
@@ -57,8 +63,8 @@ const MembershipRules = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {/* loop through membership rules reducer */}
-                {store.membershipRules.map((rule, id) => (
+                    {/* loop through membership rules */}
+                {contacts.map((rule, id) => (
                     <tr key={id}>
                         <td>
                             {rule.organization}
@@ -78,12 +84,12 @@ const MembershipRules = () => {
 
                         <td>
                             {/* button to edit membership rules */}
-                            <button 
+                            {/* <button 
                                 className="btn"
                                 onClick={(e)=> handleEdit(rule.row.original)}
                             >
                                 Edit
-                            </button>
+                            </button> */}
                         </td>
                     </tr>
                 ))}

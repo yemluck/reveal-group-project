@@ -9,9 +9,20 @@ function CompanyDetails() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // dispatch to fetch description
     dispatch({ 
       type:'FETCH_COMPANY_DETAILS',
       payload: companyName
+    });
+    // dispatch to fetch data
+    dispatch({
+      type: 'FETCH_COMPANY_DATA',
+      payload: companyName
+    });
+    // add viewed company as current active company
+    dispatch({
+        type: 'SET_ACTIVE_COMPANY',
+        payload: companyName
     })
   },[companyName])
   
@@ -27,7 +38,7 @@ function CompanyDetails() {
       <div>
         <h2>Company Details</h2>
         <h3>{companyName} </h3>
-        <p>{details[abc].extract}</p>
+        <p>{details[abc].extract}</p> 
         <Link to="/companies"><button> Back </button></Link>
       </div>
     </div>

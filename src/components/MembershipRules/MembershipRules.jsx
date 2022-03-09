@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import useReduxStore from '../../hooks/useReduxStore';
 
@@ -15,14 +15,31 @@ const MembershipRules = () => {
     // gain access to global variables
     const store = useReduxStore();
     console.log('membership rules', store.membershipRules);
+    // const mRules = store.membershipRules;
+
+    // setup membershipRules as a local variable for editing
+    // const [ contacts, setContacts ] = useState(mRules);
+    // // check data
+    // console.log('contacts are:', contacts);
 
     // function called with edit button
-    const editMembershipRule = (id) => {
-        console.log('in editMembershipRule', id);
+    // const editMembershipRule = (id) => {
+    //     console.log('in editMembershipRule', id);
 
-        // watch for rule saga
+    //     // watch for rule saga
+    //     dispatch({
+    //         type: 'EDIT_MEMBERSHIP_RULE',
+    //         payload: id
+    //     });
+    // }
+
+    // function called with delete button
+    const deleteMembershipRule = (id) => {
+        console.log('in deleteMembershipRule', id);
+
+        // send id to rule saga for deleting
         dispatch({
-            type: 'EDIT_MEMBERSHIP_RULE',
+            type: 'DELETE_MEMBERSHIP_RULE',
             payload: id
         });
     }
@@ -57,7 +74,7 @@ const MembershipRules = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {/* loop through membership rules reducer */}
+                    {/* loop through membership rules */}
                 {store.membershipRules.map((rule, id) => (
                     <tr key={id}>
                         <td>
@@ -77,12 +94,11 @@ const MembershipRules = () => {
                         </td>
 
                         <td>
-                            {/* button to edit membership rules */}
-                            <button 
+                            <button
                                 className="btn"
-                                onClick={(e)=> handleEdit(rule.row.original)}
+                                onClick={() => deleteMembershipRule(rule.id)}
                             >
-                                Edit
+                                Delete
                             </button>
                         </td>
                     </tr>

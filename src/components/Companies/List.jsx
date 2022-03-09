@@ -22,13 +22,11 @@ function List() {
         <div>
             <h3>Click on a company's name for more details</h3>
             <h4>{errors.resultsMessage}</h4>
-            {
-                companies.map((company, i) => {
+                {companies.map((company, i) => {
                     return (<div key={i}>
-                        <Item company={company.company} />
+                        <Item company={company} />
                     </div>)
-                })
-            }
+                })}
             <Pagination />
         </div>
     )

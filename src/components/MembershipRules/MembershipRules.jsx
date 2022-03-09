@@ -15,12 +15,12 @@ const MembershipRules = () => {
     // gain access to global variables
     const store = useReduxStore();
     console.log('membership rules', store.membershipRules);
-    const mRules = store.membershipRules;
+    // const mRules = store.membershipRules;
 
     // setup membershipRules as a local variable for editing
-    const [ contacts, setContacts ] = useState(mRules);
-    // check data
-    console.log('contacts are:', contacts);
+    // const [ contacts, setContacts ] = useState(mRules);
+    // // check data
+    // console.log('contacts are:', contacts);
 
     // function called with edit button
     // const editMembershipRule = (id) => {
@@ -32,6 +32,17 @@ const MembershipRules = () => {
     //         payload: id
     //     });
     // }
+
+    // function called with delete button
+    const deleteMembershipRule = (id) => {
+        console.log('in deleteMembershipRule', id);
+
+        // send id to rule saga for deleting
+        dispatch({
+            type: 'DELETE_MEMBERSHIP_RULE',
+            payload: id
+        });
+    }
 
     // render to DOM
     return(
@@ -64,7 +75,7 @@ const MembershipRules = () => {
                 </thead>
                 <tbody>
                     {/* loop through membership rules */}
-                {contacts.map((rule, id) => (
+                {store.membershipRules.map((rule, id) => (
                     <tr key={id}>
                         <td>
                             {rule.organization}
@@ -83,13 +94,12 @@ const MembershipRules = () => {
                         </td>
 
                         <td>
-                            {/* button to edit membership rules */}
-                            {/* <button 
+                            <button
                                 className="btn"
-                                onClick={(e)=> handleEdit(rule.row.original)}
+                                onClick={() => deleteMembershipRule(rule.id)}
                             >
-                                Edit
-                            </button> */}
+                                Delete
+                            </button>
                         </td>
                     </tr>
                 ))}

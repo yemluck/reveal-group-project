@@ -102,8 +102,24 @@ router.get('/score', rejectUnauthenticated, (req, res) => {
 }); // end GET membership rules
 
 // PUT membership rule
-router.put('/membership/:id', rejectUnauthenticated, (req, res) => {
-    console.log('in rule router PUT membership', id);
+// router.put('/membership/:id', rejectUnauthenticated, (req, res) => {
+//     console.log('in rule router PUT membership', id);
+
+//     let queryText = '';
+
+//     // only admins can GET score rules
+//     if (req.user.auth_level === 1) {
+//         // setup SQL command
+//         queryText = `
+//             UPDATE "membership_rule"
+
+//         `;
+//     }
+// }); // end PUT membership rules
+
+// DELETE membership rules
+router.delete('/membership/:id', rejectUnauthenticated, (req, res) => {
+    console.log('in rule router DELETE membership', req.params.id);
 
     let queryText = '';
 
@@ -111,11 +127,51 @@ router.put('/membership/:id', rejectUnauthenticated, (req, res) => {
     if (req.user.auth_level === 1) {
         // setup SQL command
         queryText = `
-            UPDATE "membership_rule"
-            
+            DELETE FROM "membership_rule"
+            WHERE "id" = $1;
         `;
     }
-});
+
+    const queryParams = [ req.params.id ];
+
+    // send SQL command
+    pool.query(queryText, queryParams)
+        .then(() => {
+            res.sendStatus(201);
+        })
+        .catch((err) => {
+            console.error('rule router score DELETE ERROR', err);
+            res.sendStatus(500);
+        });
+}); // end DELETE membership rules
+
+// DELETE score rules
+router.delete('/score/:id', rejectUnauthenticated, (req, res) => {
+    console.log('in rule router DELETE score', req.params.id);
+
+    let queryText = '';
+
+    // only admins can GET score rules
+    if (req.user.auth_level === 1) {
+        // setup SQL command
+        queryText = `
+            DELETE FROM "score_rule"
+            WHERE "id" = $1;
+        `;
+    }
+
+    const queryParams = [ req.params.id ];
+
+    // send SQL command
+    pool.query(queryText, queryParams)
+        .then(() => {
+            res.sendStatus(201);
+        })
+        .catch((err) => {
+            console.error('rule router score DELETE ERROR', err);
+            res.sendStatus(500);
+        });
+}); // end DELETE score rules
 
 module.exports = router;
 

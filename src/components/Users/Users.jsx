@@ -17,15 +17,9 @@ const Users = () => {
             <table>
                 <thead>
                     <tr>
-                        <th>
-                            Transparency
-                        </th>
-                        <th>
-                            Environment
-                        </th>
-                        <th>
-                            Human Rights
-                        </th>
+                        <th> Transparency </th>
+                        <th> Environment </th>
+                        <th> Human Rights </th>
                     </tr>
                 </thead>
                 <tbody>

@@ -1,3 +1,4 @@
+const axios = require('axios');
 const express = require('express');
 const {
     rejectUnauthenticated,
@@ -14,15 +15,19 @@ router.get('/:company', rejectUnauthenticated, (req, res) => {
     
 
     // get company details
-    // axios.get(`
-    // https://wikirate.org/${query}
-    // `)
-    // .then(wikiRateResult => {
-
-    // })
+    axios.get(`
+    https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&exchars=1200&titles=${query}&explaintext=true
+    `)
+    .then(wikiDescription => {
+       // console.log('result:', wikiDescription.data.query.pages);
+        res.status(200).send(wikiDescription.data.query.pages)
+    })
+    .catch(err => {
+        console.log('Error fetching company details', err);
+        res.status(500).send(err);
+    })
     
-    
-})
+}) // end GET endpoint
 
 
 

@@ -10,10 +10,11 @@ function* fetchCompanyDetails(action) {
         console.log('encoded company:', company);
 
         const results = yield axios.get(`api/companyDetails/${company}`);
-        console.log('result from API:', results.data);
-        
-        
-        
+        //console.log('result from API:', results.data);
+        yield put ({
+            type: "SET_COMPANY_DETAILS",
+            payload: results.data
+        })
     } catch (error) {
         console.log('Error fetching company details', error);
     }

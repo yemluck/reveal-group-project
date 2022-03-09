@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import {Link , useParams} from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 function CompanyDetails() {
   //const params = useParams;
@@ -15,13 +15,21 @@ function CompanyDetails() {
     })
   },[companyName])
   
-  
+  const details = useSelector(store => store.companyDetails)
+  const keys = Object.keys(details);
+  console.log('details keys:',keys[0]);
+  const abc = keys[0]
+  console.log('type of key', typeof keys[0]); 
+  console.log('details from store', details);
+  console.log('mapping through details', details.extract);
 
   return (
     <div className="container">
       <div>
         <h2>Company Details</h2>
         <h3>{companyName} </h3>
+        {/* Yet to finish mapping through */}
+        {/* <p>{details}</p> */}
         <Link to="/companies"><button> Back </button></Link>
       </div>
     </div>

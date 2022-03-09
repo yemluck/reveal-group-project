@@ -27,7 +27,7 @@ function CompanyDetails() {
       <div>
         <h2>Company Details</h2>
         <h3>{companyName} </h3>
-        <p>{details[abc].extract}</p>
+        <p>{details[abc].extract}</p> 
         <Link to="/companies"><button> Back </button></Link>
       </div>
     </div>

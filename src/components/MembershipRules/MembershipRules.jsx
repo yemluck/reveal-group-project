@@ -4,14 +4,6 @@ import useReduxStore from '../../hooks/useReduxStore';
 
 const MembershipRules = () => {
 
-    // setup dispatch
-    const dispatch = useDispatch();
-
-    // on page load, GET membership rules
-    useEffect(() => {
-        dispatch({ type: 'FETCH_MEMBERSHIP_RULES' });
-    }, []);
-
     // gain access to global variables
     const store = useReduxStore();
     // console.log('membership rules', store.membershipRules);

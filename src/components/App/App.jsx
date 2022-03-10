@@ -36,6 +36,10 @@ function App() {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
+
+    dispatch({ type: 'FETCH_MEMBERSHIP_RULES' });
+
+    dispatch({ type: 'FETCH_SCORE_RULES' });
   }, [dispatch]);
 
   return (

@@ -30,7 +30,7 @@ function* fetchUserCount() {
     };
 }
 
-// worker Saga: will be fired on "FETCH_USER_PREFERENCES" action
+// worker Saga: will be fired on "FETCH_USER_EMAILS" action
 function* fetchUserEmails() {
     console.log('In fetchUserEmails');
     try {
@@ -46,7 +46,7 @@ function* fetchUserEmails() {
 
 function* userDataSaga() {
     console.log('userDataSaga');
-    yield takeEvery('FETCH_USER_PREFERENCES', fetchUserCount);
+    yield takeEvery('FETCH_USER_PREFERENCES', fetchUserPreferences);
 
     yield takeEvery('FETCH_USER_COUNT', fetchUserCount);
 

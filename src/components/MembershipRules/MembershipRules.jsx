@@ -35,7 +35,7 @@ const MembershipRules = () => {
 
     // function called with delete button
     const deleteMembershipRule = (id) => {
-        console.log('in deleteMembershipRule', id);
+        // console.log('in deleteMembershipRule', id);
 
         // send id to rule saga for deleting
         dispatch({

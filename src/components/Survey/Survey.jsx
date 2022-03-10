@@ -10,7 +10,7 @@ function Survey() {
   const history = useHistory();
   const dispatch = useDispatch();
   const preference = useSelector(store => store.survey)
-  console.log('this is the preference from redux store:',preference);
+//   console.log('this is the preference from redux store:',preference);
 
   useEffect(()=> {
     dispatch({ type: 'FETCH_PREFERENCE' })

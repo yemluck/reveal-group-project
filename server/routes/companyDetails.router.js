@@ -42,7 +42,7 @@ router.get('/data/:company', rejectUnauthenticated, (req,res) => {
     // get company data
     // insert encoded and fixed query into third party API
     axios.get(`
-    https://wikirate.org/${query}+Answer.json?filter%5Bmetric_name%5D=
+    https://wikirate.org/${query}+Answer.json?filter%5Bmetric_name%5D=&limit=500
     `)
     .then(wikiData => {
       // console.log('data result:', wikiData.data);

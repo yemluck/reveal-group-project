@@ -8,7 +8,7 @@ const router = express.Router();
 
 // Handles GET request for admin messages
 router.get('/', rejectUnauthenticated, (req, res) => {
-    console.log('in messages router GET');
+    // console.log('in messages router GET');
 
     let queryText = '';
 
@@ -41,10 +41,10 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
 // Handles POST request for user's message
 router.post('/', rejectUnauthenticated, (req, res) => {
-    console.log('in messages router POST');
+    // console.log('in messages router POST');
     // check variables to POST
-    console.log('user id', req.user.id);
-    console.log('message saga payload', req.body.userMessage);
+    // console.log('user id', req.user.id);
+    // console.log('message saga payload', req.body.userMessage);
 
     let queryText = '';
     // only users can POST
@@ -78,9 +78,9 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 
 // handled DELETE/:id for admin message
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
-    console.log('in messages router DELETE');
+    // console.log('in messages router DELETE');
     // check variable to DELETE
-    console.log('DELETE id', req.params.id);
+    // console.log('DELETE id', req.params.id);
 
     let queryText = '';
     // only admin can gain access

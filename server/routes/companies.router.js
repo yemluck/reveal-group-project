@@ -33,7 +33,7 @@ router.get('/:search', rejectUnauthenticated, (req, res) => {
 
     // get list of companies
     axios.get(`
-    https://wikirate.org/*search?query%5Bkeyword=${query}&limit=20&format=json&offset=${offset}
+    https://wikirate.org/*search?query%5Bkeyword=${query}&limit=50&format=json&offset=${offset}
     `)
     // https://wikirate.org/Commons+Standard_Industrial_Classification_Division+Answer.json?filter%5Bcompany_name%5D=${query}&filter%5Bnot_ids%5D=
         .then(wrResult => {
@@ -51,7 +51,7 @@ router.get('/', rejectUnauthenticated, (req,res) => {
     // console.log('in companies router default GET');
     let offset = 0;
     axios.get(`
-    https://wikirate.org/*search?query%5Bkeyword=&limit=20&format=json&offset=${offset}
+    https://wikirate.org/*search?query%5Bkeyword=&limit=50&format=json&offset=${offset}
     `)
     // https://wikirate.org/Commons+Standard_Industrial_Classification_Division+Answer.json?filter%5Bcompany_name%5D=&filter%5Bnot_ids%5D=
     .then(wrResult => {

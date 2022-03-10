@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import {Link , useParams} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
+import MetricBreakdown from '../MetricBreakdown/MetricBreakdown';
+
 function CompanyDetails() {
   //const params = useParams;
   let { name: companyName } = useParams();
@@ -41,6 +43,9 @@ function CompanyDetails() {
         <p>{details[abc].extract}</p> 
         <Link to="/companies"><button> Back </button></Link>
       </div>
+
+      {/* show metric breakdown for selected company */}
+      <MetricBreakdown />
     </div>
   );
 }

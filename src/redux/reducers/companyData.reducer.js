@@ -7,4 +7,4 @@ const companyDataReducer = (state = [], action) => {
     }
 }
 
-export default companyDataReducer
+export default companyDataReducer;

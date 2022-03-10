@@ -28,10 +28,10 @@ function CompanyDetails() {
   
   const details = useSelector(store => store.companyDetails)
   const keys = Object.keys(details);
-  console.log('details keys:',keys[0]);
+//   console.log('details keys:',keys[0]);
   const abc = keys[0]
-  console.log('type of key', typeof keys[0]); 
-  console.log('details from store', details);
+//   console.log('type of key', typeof keys[0]); 
+//   console.log('details from store', details);
 
   return (
     <div className="container">

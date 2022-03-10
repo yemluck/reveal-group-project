@@ -19,7 +19,7 @@ const ScoreRules = () => {
 
     // function called with delete button
     const deleteScoreRule = (id) => {
-        console.log('in deleteScoreRule', id);
+        // console.log('in deleteScoreRule', id);
 
         // send id to rule saga for deleting
         dispatch({

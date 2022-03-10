@@ -23,7 +23,7 @@ const router = express.Router();
 */
 // Handles GET request for admin messages
 router.get('/:search', rejectUnauthenticated, (req, res) => {
-    console.log('in companies router GET');
+    // console.log('in companies router GET');
     // console.log(req.params.search)
     // //TODO
     // need to check validity of input box with. wikirate api...maybe need an encodeURI, maybe don't.
@@ -48,7 +48,7 @@ router.get('/:search', rejectUnauthenticated, (req, res) => {
 }); // end GET
 
 router.get('/', rejectUnauthenticated, (req,res) => {
-    console.log('in companies router default GET');
+    // console.log('in companies router default GET');
     let offset = 0;
     axios.get(`
     https://wikirate.org/*search?query%5Bkeyword=&limit=20&format=json&offset=${offset}

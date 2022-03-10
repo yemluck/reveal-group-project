@@ -24,10 +24,10 @@ router.get('/', rejectUnauthenticated, (req,res) => {
     pool.query(queryText, queryParams)
         .then( result => {
             res.send(result.rows[0])
-            console.log('this is result.rows:', result.rows[0])
+            // console.log('this is result.rows:', result.rows[0])
         })
         .catch( err => {
-            console.log('Error getting preference', err);
+            console.error('Error getting preference', err);
             res.sendStatus(500);
             
         })
@@ -35,7 +35,7 @@ router.get('/', rejectUnauthenticated, (req,res) => {
 
 // PUT endpoint
 router.put('/', rejectUnauthenticated, (req, res) => {
-    console.log('this is req.body in put', req.body);
+    // console.log('this is req.body in put', req.body);
 
     const queryText = `
         UPDATE "preference"
@@ -58,7 +58,7 @@ router.put('/', rejectUnauthenticated, (req, res) => {
             res.sendStatus(200)
         })
         .catch((error) => {
-            console.log('Error making database query', error);
+            console.error('Error making database query', error);
             res.sendStatus(500);
             
         })

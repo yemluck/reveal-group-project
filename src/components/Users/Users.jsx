@@ -1,9 +1,28 @@
+import { useEffect } from 'react';
+
 const Users = () => {
 
     /* 
         tables pulling from: users, value, preference
             user preferences:
     */
+
+    const fetchUserPreferences = () => {
+        console.log('In fetchUserPreferences');
+    }
+
+    const fetchUserCount = () => {
+        console.log('In fetchUserCount');
+    }
+
+    const fetchUserEmails = () => {
+        console.log('In fetchUserEmails');
+    }
+
+    useEffect = (() => {
+        console.log('hi');
+        fetchUserEmails();
+    }, []);
 
     return(
         <>
@@ -13,7 +32,7 @@ const Users = () => {
         <div>
             <h3>Average User Preferences</h3>
         </div>
-        <div>
+        <div id="collected-user-data">
             <table>
                 <thead>
                     <tr>
@@ -29,16 +48,9 @@ const Users = () => {
                         <td>data</td>
                     </tr>
                 </tbody>
-                <thead>
-                    <tr>
-                        <th>Total Users</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td></td>
-                    </tr>
-                </tbody>
+            </table>
+                <h3>Total Users</h3>
+            <table>
                 <thead>
                     <tr>
                         <th>User Emails</th>
@@ -48,8 +60,8 @@ const Users = () => {
                     <tr>
                         <td></td>
                     </tr>
-                    </tbody>
-                </table>
+                </tbody>
+            </table>
             </div>
         </>
     );

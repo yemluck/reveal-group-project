@@ -20,9 +20,11 @@ function* fetchUserPreferences() {
 function* fetchUserEmails() {
     console.log('In fetchUserEmails');
     try {
-        yield axios.get('/api/userData/usernames');
+        const response = yield axios.get('/api/userData/usernames');
+        const emails = response.data;
         yield put({
             type:   'SET_USER_EMAILS',
+            payload: emails
         });
     }
     catch (err) {

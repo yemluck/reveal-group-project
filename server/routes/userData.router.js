@@ -5,7 +5,7 @@ const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
 
 router.get('/usernames', rejectUnauthenticated, (req, res) => {
-    console.log('In user preferences router GET');
+    console.log('In user emails router GET');
 
     let queryText = '';
     if (req.user.auth_level === 1) {

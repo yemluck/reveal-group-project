@@ -1,12 +1,11 @@
 import { combineReducers } from "redux";
 
 const userEmailsReducer = (state = [], action) => {
-    // console.log(action.type);
     switch (action.type) {
         case 'SET_USER_EMAILS':
-            return action.payload.email_address;
+            console.log(action);
+            return action.payload;
         default:
-            console.log(state);
             return state;
     }
 };

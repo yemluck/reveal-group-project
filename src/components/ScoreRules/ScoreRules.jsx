@@ -14,12 +14,12 @@ const ScoreRules = () => {
 
     // gain access to global variables
     const store = useReduxStore();
-    console.log('membership rules', store.scoreRules);
-    console.log('score rules', store.scoreRules);
+    // console.log('membership rules', store.scoreRules);
+    // console.log('score rules', store.scoreRules);
 
     // function called with delete button
     const deleteScoreRule = (id) => {
-        console.log('in deleteScoreRule', id);
+        // console.log('in deleteScoreRule', id);
 
         // send id to rule saga for deleting
         dispatch({

@@ -23,7 +23,7 @@ const router = express.Router();
 */
 // Handles GET request for admin messages
 router.get('/:search', rejectUnauthenticated, (req, res) => {
-    console.log('in companies router GET');
+    // console.log('in companies router GET');
     // console.log(req.params.search)
     // //TODO
     // need to check validity of input box with. wikirate api...maybe need an encodeURI, maybe don't.
@@ -33,7 +33,7 @@ router.get('/:search', rejectUnauthenticated, (req, res) => {
 
     // get list of companies
     axios.get(`
-    https://wikirate.org/*search?query%5Bkeyword=${query}&limit=20&format=json&offset=${offset}
+    https://wikirate.org/*search?query%5Bkeyword=${query}&limit=50&format=json&offset=${offset}
     `)
     // https://wikirate.org/Commons+Standard_Industrial_Classification_Division+Answer.json?filter%5Bcompany_name%5D=${query}&filter%5Bnot_ids%5D=
         .then(wrResult => {
@@ -48,10 +48,10 @@ router.get('/:search', rejectUnauthenticated, (req, res) => {
 }); // end GET
 
 router.get('/', rejectUnauthenticated, (req,res) => {
-    console.log('in companies router default GET');
+    // console.log('in companies router default GET');
     let offset = 0;
     axios.get(`
-    https://wikirate.org/*search?query%5Bkeyword=&limit=20&format=json&offset=${offset}
+    https://wikirate.org/*search?query%5Bkeyword=&limit=50&format=json&offset=${offset}
     `)
     // https://wikirate.org/Commons+Standard_Industrial_Classification_Division+Answer.json?filter%5Bcompany_name%5D=&filter%5Bnot_ids%5D=
     .then(wrResult => {

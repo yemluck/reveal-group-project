@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 const Users = () => {
+    const userPreferences = useSelector((store) => store.userData.userPreferencesReducer)
     const userEmails = useSelector((store) => store.userData.userEmailsReducer);
     const dispatch = useDispatch();
 
@@ -25,12 +26,13 @@ const Users = () => {
     }
 
     useEffect(() => {
+        fetchUserPreferences();
         fetchUserEmails();
     }, []);
 
     return(
         <>
-        {console.log(userEmails)}
+        {console.log(userPreferences)}
         <div>
             Admin can see user details
         </div>
@@ -48,9 +50,9 @@ const Users = () => {
                 </thead>
                 <tbody>
                     <tr>
-                        <td>data</td>
-                        <td>data</td>
-                        <td>data</td>
+                        {/* <td>{Math.floor(userPreferences[0].value_avg)}</td> */}
+                        {/* <td>{userPreferences[1].value_average}</td> */}
+                        {/* <td>{userPreferences[2].value_average}</td> */}
                     </tr>
                 </tbody>
             </table>

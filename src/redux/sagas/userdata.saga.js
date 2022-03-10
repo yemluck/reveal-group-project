@@ -7,8 +7,10 @@ function* fetchUserPreferences() {
     console.log('In fetchUserPreferences');
     try {
         const response = yield axios.get('/api/userData/userPreferences');
+        const preferences = response.data;
         yield put({
-            type:   'SET_USER_PREFERENCES'
+            type:   'SET_USER_PREFERENCES',
+            payload: preferences
         });
     }
     catch (err) {
@@ -35,8 +37,6 @@ function* fetchUserEmails() {
 function* userData() {
     console.log('In userData');
     yield takeEvery('FETCH_USER_PREFERENCES', fetchUserPreferences);
-
-    // yield takeEvery('FETCH_USER_COUNT', fetchUserCount);
 
     yield takeEvery('FETCH_USER_EMAILS', fetchUserEmails);
 

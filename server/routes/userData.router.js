@@ -9,12 +9,22 @@ router.get('/userPreferences', rejectUnauthenticated, (req, res) => {
     let queryText = '';
     if (req.user.auth_level === 1) {
         queryText = `
-            SELECT * FROM "preference"
+            SELECT AVG("priority") AS "value_avg"
+                FROM "preference"
+                WHERE "value_id" = 1
+            UNION
+            SELECT AVG("priority") 
+                FROM "preference"
+                WHERE "value_id" = 2
+            UNION
+            SELECT AVG("priority") 
+                FROM "preference"
+                WHERE "value_id" = 3
             ;`;
     }
     pool.query(queryText)
         .then((result) => {
-            console.log(result.rows[0].id);
+            console.log(result.rows);
             res.send(result.rows);
         })
         .catch((err) => {

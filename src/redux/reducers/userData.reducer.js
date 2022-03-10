@@ -1,5 +1,15 @@
 import { combineReducers } from "redux";
 
+const userPreferencesReducer = (state = [], action) => {
+    switch (action.type) {
+        case 'SET_USER_PREFERENCES':
+            console.log(action);
+            return action.payload;
+        default:
+            return state;
+    }
+};
+
 const userEmailsReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_USER_EMAILS':
@@ -10,10 +20,9 @@ const userEmailsReducer = (state = [], action) => {
     }
 };
 
-
 const userData = combineReducers({
+    userPreferencesReducer,
     userEmailsReducer,
-
 }) 
 
 export default userData;

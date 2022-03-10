@@ -21,7 +21,7 @@ metricsList: [
 
 export default function score(rulesList, metricsList) {
 
-    totalScore = {
+    let totalScore = {
         transparencyTotal: 0,
         transparencyScore: 0,
         humanRightsTotal: 0,

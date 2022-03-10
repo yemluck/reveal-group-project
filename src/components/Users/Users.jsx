@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 const Users = () => {
-    const userEmails = useSelector((store) => store.userData.userEmailReducer);
+    const userEmails = useSelector((store) => store.userData.userEmailsReducer);
     const dispatch = useDispatch();
 
     /* 

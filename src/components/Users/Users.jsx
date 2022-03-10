@@ -21,8 +21,7 @@ const Users = () => {
         });
     }
 
-    useEffect = (() => {
-        console.log('hi');
+    useEffect(() => {
         fetchUserEmails();
     }, []);
 

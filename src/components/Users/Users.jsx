@@ -59,9 +59,9 @@ const Users = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>{JSON.stringify(userEmails)}</td>
-                    </tr>
+                    {userEmails.map((email) => (
+                        <tr>{email.email_address}</tr>
+                    ))}
                 </tbody>
             </table>
             </div>

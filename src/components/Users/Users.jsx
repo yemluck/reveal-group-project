@@ -52,6 +52,7 @@ const Users = () => {
                 </tbody>
             </table>
                 <h3>Total Users</h3>
+                <p>{Number(userEmails.length+1)}</p>
             <table>
                 <thead>
                     <tr>

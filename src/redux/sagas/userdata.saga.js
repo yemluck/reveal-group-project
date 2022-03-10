@@ -6,7 +6,7 @@ import { put, takeEvery } from 'redux-saga/effects';
 function* fetchUserPreferences() {
     console.log('In fetchUserPreferences');
     try {
-        yield axios.post('/userdata');
+        yield axios.get('/userData');
         yield put({
             type:   'SET_USER_PREFERENCES'
         });
@@ -16,27 +16,13 @@ function* fetchUserPreferences() {
     };
 }
 
-// worker Saga: will be fired on "FETCH_USER_COUNT" action
-function* fetchUserCount() {
-    console.log('In fetchUserCount');
-    try {
-        yield axios.post('/userdata');
-        yield put({
-            type:   'SET_USER_COUNT'
-        });
-    }
-    catch (err) {
-        console.log('Error in fetchUserCount', err);
-    };
-}
-
 // worker Saga: will be fired on "FETCH_USER_EMAILS" action
 function* fetchUserEmails() {
     console.log('In fetchUserEmails');
     try {
-        yield axios.post('/userdata');
+        yield axios.get('/api/userData/usernames');
         yield put({
-            type:   'SET_USER_EMAILS'
+            type:   'SET_USER_EMAILS',
         });
     }
     catch (err) {
@@ -44,14 +30,14 @@ function* fetchUserEmails() {
     };
 }
 
-function* userDataSaga() {
-    console.log('userDataSaga');
+function* userData() {
+    console.log('In userData');
     yield takeEvery('FETCH_USER_PREFERENCES', fetchUserPreferences);
 
-    yield takeEvery('FETCH_USER_COUNT', fetchUserCount);
+    // yield takeEvery('FETCH_USER_COUNT', fetchUserCount);
 
     yield takeEvery('FETCH_USER_EMAILS', fetchUserEmails);
 
 }
 
-export default userDataSaga;
+export default userData;

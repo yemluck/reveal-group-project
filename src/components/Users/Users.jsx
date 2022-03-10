@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 const Users = () => {
+    const userEmails = useSelector((store) => store.userData.userEmailReducer);
+    const dispatch = useDispatch();
 
     /* 
         tables pulling from: users, value, preference
@@ -11,12 +14,11 @@ const Users = () => {
         console.log('In fetchUserPreferences');
     }
 
-    const fetchUserCount = () => {
-        console.log('In fetchUserCount');
-    }
-
     const fetchUserEmails = () => {
         console.log('In fetchUserEmails');
+        dispatch({
+            type: 'FETCH_USER_EMAILS'
+        });
     }
 
     useEffect = (() => {
@@ -26,6 +28,7 @@ const Users = () => {
 
     return(
         <>
+        {console.log(userEmails)}
         <div>
             Admin can see user details
         </div>
@@ -58,7 +61,7 @@ const Users = () => {
                 </thead>
                 <tbody>
                     <tr>
-                        <td></td>
+                        <td>{JSON.stringify(userEmails)}</td>
                     </tr>
                 </tbody>
             </table>

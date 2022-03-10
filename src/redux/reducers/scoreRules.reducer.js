@@ -7,6 +7,6 @@ const scoreRulesReducer = (state = [], action) => {
     }
 };
 
-  // messages will be on the redux state at:
-  // state.messages
+  // scoreRules will be on the redux state at:
+  // state.scoreRules
 export default scoreRulesReducer;

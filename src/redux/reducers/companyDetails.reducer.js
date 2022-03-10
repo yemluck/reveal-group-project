@@ -7,4 +7,4 @@ const companyDetailsReducer = (state = {"0":{extract:""}}, action) => {
     }
 }
 
-export default companyDetailsReducer
+export default companyDetailsReducer;

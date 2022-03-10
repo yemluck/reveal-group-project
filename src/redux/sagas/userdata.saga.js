@@ -6,7 +6,7 @@ import { put, takeEvery } from 'redux-saga/effects';
 function* fetchUserPreferences() {
     console.log('In fetchUserPreferences');
     try {
-        yield axios.get('/userData');
+        const response = yield axios.get('/api/userData/userPreferences');
         yield put({
             type:   'SET_USER_PREFERENCES'
         });

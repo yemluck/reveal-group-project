@@ -12,6 +12,9 @@ const Users = () => {
 
     const fetchUserPreferences = () => {
         console.log('In fetchUserPreferences');
+        dispatch({
+            type: 'FETCH_USER_PREFERENCES'
+        });
     }
 
     const fetchUserEmails = () => {
@@ -61,7 +64,7 @@ const Users = () => {
                 </thead>
                 <tbody>
                     {userEmails.map((email) => (
-                        <tr>{email.email_address}</tr>
+                        <tr key={email.id}><td>{email.email_address}</td></tr>
                     ))}
                 </tbody>
             </table>

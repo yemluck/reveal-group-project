@@ -58,4 +58,4 @@ function* surveySaga() {
 
 }
 
-export default surveySaga
+export default surveySaga;

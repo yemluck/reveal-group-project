@@ -30,27 +30,18 @@ function Survey() {
 
   return (
     <div className="container">
+      <center>
       <div>
-        <p>Survey</p>
+        <h2>Survey</h2>
       </div>
+      <br></br>
       <form onSubmit={savePreference}>
         <div>
-          <label 
-            htmlFor='transparency' 
-            style={{
-              marginRight: 30,
-              display: "inline-block",
-              width: "150px",
-              fontSize: "17px"
-            }}
-          >
-            Transparency🔍 :
+          <label htmlFor='transparency' style={{marginRight: 30}}>
+            Transparency 
           </label>
-            <Slider sx={{
-              width: 300, 
-              marginLeft: "5px", 
-              color: "#6d2978"
-              }}
+          <br></br>
+            <Slider sx={{width: 300, marginLeft: "5px", color: "#6d2978" }}
               min={1}
               max={10}
               step={1}
@@ -63,21 +54,11 @@ function Survey() {
             
         </div>        
         <div>
-          <label 
-            htmlFor='environmental' 
-            style={{
-              marginRight: 30,
-              display: "inline-block",
-              width: "150px"
-            }}
-          >
-            Environmental🔍 :
+          <label htmlFor='environmental' style={{marginRight: 30}}>
+            Environmental 
           </label>
-          <Slider sx={{
-              width: 300, 
-              marginLeft: "5px", 
-              color: "#6d2978"
-              }}
+          <br></br>
+          <Slider sx={{ width: 300, marginLeft: "5px", color: "#6d2978" }}
               value={preference.environmental}
               min={1}
               max={10}
@@ -90,21 +71,10 @@ function Survey() {
            
         </div>        
         <div>
-          <label 
-            htmlFor='humanRights' 
-            style={{
-              marginRight: 30,
-              display: "inline-block",
-              width: "150px"
-            }}
-            >
-            Human Rights 🔍 :
-          </label>
-          <Slider sx={{
-              width: 300, 
-              marginLeft: "5px", 
-              color: "#6d2978"
-              }}
+          <label htmlFor='humanRights' style={{marginRight: 30}}>
+            Human Rights 
+          </label><br></br>
+          <Slider sx={{ width: 300, marginLeft: "5px", color: "#6d2978" }}
               value={preference.humanRights}
               min={1}
               max={10}
@@ -120,6 +90,7 @@ function Survey() {
           <input className="btn" type="submit" name="save" value="save" />
         </div>
       </form>
+      </center>
     </div>
   );
 }

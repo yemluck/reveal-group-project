@@ -4,31 +4,73 @@ import { useDispatch, useSelector } from 'react-redux';
 import score from './score';
 
 function CompanyDetails() {
-    //const params = useParams;
-    let { name: companyName } = useParams();
-    //console.log(params);
-    const dispatch = useDispatch();
-    const details = useSelector(store => store.companyDetails)
-    const errors = useSelector(store => store.errors)
+  // from useParams
+  let { 
+    name: companyName,
+    wikiName: wikiDetail 
+  } = useParams();
 
-    const companyData = useSelector(store => store.companyData)
-    const membershipRules = useSelector(store => store.membershipRules)
-    const scoreRules = useSelector(store => store.scoreRules)
+  const dispatch = useDispatch();
+  const details = useSelector(store => store.companyDetails)
+  const errors = useSelector(store => store.errors)
+  const companyData = useSelector(store => store.companyData)
+  const membershipRules = useSelector(store => store.membershipRules)
+  const scoreRules = useSelector(store => store.scoreRules)
 
-    const keys = Object.keys(details);
-    //   console.log('details keys:',keys[0]);
-    const abc = keys[0]
-    //   console.log('type of key', typeof keys[0]); 
-    //   console.log('details from store', details);
-    const [totalScore, setTotalScore] = useState({
-        transparencyTotal: null,
-        transparencyScore: null,
-        humanRightsTotal: null,
-        humanRightsScore: null,
-        environmentTotal: null,
-        environmentScore: null,
-        calculated: false
+  const keys = Object.keys(details);
+  //   console.log('details keys:',keys[0]);
+  const abc = keys[0]
+  //   console.log('type of key', typeof keys[0]); 
+  //   console.log('details from store', details);
+  const [totalScore, setTotalScore] = useState({
+      transparencyTotal: null,
+      transparencyScore: null,
+      humanRightsTotal: null,
+      humanRightsScore: null,
+      environmentTotal: null,
+      environmentScore: null,
+      calculated: false
+  });
+  
+  // for cases with no wikipedia description
+  // null returns wikipedia description of null
+  if (wikiDetail === "null"){
+    wikiDetail = companyName
+  }
+
+  useEffect(() => {
+    // dispatch to fetch description
+    dispatch({ 
+      type:'FETCH_COMPANY_DETAILS',
+      payload: wikiDetail
     });
+    // dispatch to fetch data
+    dispatch({
+      type: 'FETCH_COMPANY_DATA',
+      payload: companyName
+    });
+  },[companyName])
+  
+  const details = useSelector(store => store.companyDetails)
+  const keys = Object.keys(details);
+//   console.log('details keys:',keys[0]);
+  const abc = keys[0]
+//   console.log('details from store', details);
+
+  return (
+    <div className="container">
+      <div>
+        <h2>Company Details</h2>
+        <h3>{companyName} </h3>
+        <p>{details[abc].extract}</p> 
+        <Link to="/companies"><button> Back </button></Link>
+      </div>
+
+      {/* show metric breakdown for selected company */}
+      <MetricBreakdown />
+    </div>
+  );
+}
 
     useEffect(() => {
         // dispatch to fetch description

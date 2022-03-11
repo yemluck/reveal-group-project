@@ -8,19 +8,25 @@ router.get('/userPreferences', rejectUnauthenticated, (req, res) => {
 
     let queryText = '';
     if (req.user.auth_level === 1) {
+        // queryText = `
+        //     SELECT AVG("priority") AS "value_avg"
+        //         FROM "preference"
+        //         WHERE "value_id" = 1
+        //     UNION
+        //     SELECT AVG("priority") 
+        //         FROM "preference"
+        //         WHERE "value_id" = 2
+        //     UNION
+        //     SELECT AVG("priority") 
+        //         FROM "preference"
+        //         WHERE "value_id" = 3
+        //     ;`;
+
         queryText = `
-            SELECT AVG("priority") AS "value_avg"
+            SELECT AVG("priority") as "value_avg", value_id
                 FROM "preference"
-                WHERE "value_id" = 1
-            UNION
-            SELECT AVG("priority") 
-                FROM "preference"
-                WHERE "value_id" = 2
-            UNION
-            SELECT AVG("priority") 
-                FROM "preference"
-                WHERE "value_id" = 3
-            ;`;
+                GROUP BY value_id;
+        `
     }
     pool.query(queryText)
         .then((result) => {

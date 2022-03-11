@@ -39,6 +39,8 @@ const Users = () => {
 
 
     // }
+    console.log("userPreferences")
+    console.log(userPreferences)
     
     useEffect(() => {
         fetchUserPreferences();

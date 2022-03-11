@@ -88,7 +88,7 @@ function App() {
           <ProtectedRoute
             // logged in shows companyDetails page else shows LoginPage
             exact
-            path="/companies/details/:name"
+            path="/companies/details/:name/:wikiName"
           >
             <CompanyDetails />
           </ProtectedRoute>

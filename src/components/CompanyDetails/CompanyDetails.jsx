@@ -38,45 +38,12 @@ function CompanyDetails() {
     wikiDetail = companyName
   }
 
-  useEffect(() => {
-    // dispatch to fetch description
-    dispatch({ 
-      type:'FETCH_COMPANY_DETAILS',
-      payload: wikiDetail
-    });
-    // dispatch to fetch data
-    dispatch({
-      type: 'FETCH_COMPANY_DATA',
-      payload: companyName
-    });
-  },[companyName])
   
-  const details = useSelector(store => store.companyDetails)
-  const keys = Object.keys(details);
-//   console.log('details keys:',keys[0]);
-  const abc = keys[0]
-//   console.log('details from store', details);
-
-  return (
-    <div className="container">
-      <div>
-        <h2>Company Details</h2>
-        <h3>{companyName} </h3>
-        <p>{details[abc].extract}</p> 
-        <Link to="/companies"><button> Back </button></Link>
-      </div>
-
-      {/* show metric breakdown for selected company */}
-      <MetricBreakdown />
-    </div>
-  );
-}
-
     useEffect(() => {
         // dispatch to fetch description
         dispatch({
             type: 'FETCH_COMPANY_DETAILS',
-            payload: companyName
+            payload: wikiDetail
         });
         // dispatch to fetch data
         dispatch({
@@ -84,11 +51,6 @@ function CompanyDetails() {
             payload: companyName
         });
 
-        // add viewed company as current active company
-        dispatch({
-            type: 'SET_ACTIVE_COMPANY',
-            payload: companyName
-        });
 
         // dispatch to fetch rules
         dispatch({
@@ -106,7 +68,7 @@ function CompanyDetails() {
             dispatch({ type: 'CLEAR_DATA_ERROR' });
         }
 
-    }, [scoreRules, membershipRules, companyData]);
+    }, [companyData]);
 
     return (
         <div className="container">

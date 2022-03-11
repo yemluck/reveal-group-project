@@ -37,6 +37,9 @@ function CompanyDetails() {
   if (wikiDetail === "null"){
     wikiDetail = companyName
   }
+  else if (wikiDetail === "Royal Dutch Shell") {
+    wikiDetail = "Shell plc";
+  }
 
   
     useEffect(() => {

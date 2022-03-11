@@ -3,8 +3,6 @@ import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import score from './score';
 
-import MetricBreakdown from '../MetricBreakdown/MetricBreakdown';
-
 function CompanyDetails() {
     //const params = useParams;
     let { name: companyName } = useParams();
@@ -31,8 +29,6 @@ function CompanyDetails() {
         environmentScore: null,
         calculated: false
     });
-
-
 
     useEffect(() => {
         // dispatch to fetch description
@@ -91,4 +87,3 @@ function CompanyDetails() {
 }
 
 export default CompanyDetails;
-

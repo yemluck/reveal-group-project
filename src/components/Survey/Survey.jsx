@@ -35,10 +35,22 @@ function Survey() {
       </div>
       <form onSubmit={savePreference}>
         <div>
-          <label htmlFor='transparency' style={{marginRight: 30}}>
+          <label 
+            htmlFor='transparency' 
+            style={{
+              marginRight: 30,
+              display: "inline-block",
+              width: "150px",
+              fontSize: "17px"
+            }}
+          >
             Transparency🔍 :
           </label>
-            <Slider sx={{width: 300, marginLeft: "5px" }}
+            <Slider sx={{
+              width: 300, 
+              marginLeft: "5px", 
+              color: "#6d2978"
+              }}
               min={1}
               max={10}
               step={1}
@@ -51,10 +63,21 @@ function Survey() {
             
         </div>        
         <div>
-          <label htmlFor='environmental' style={{marginRight: 30}}>
+          <label 
+            htmlFor='environmental' 
+            style={{
+              marginRight: 30,
+              display: "inline-block",
+              width: "150px"
+            }}
+          >
             Environmental🔍 :
           </label>
-          <Slider sx={{ width: 300, marginLeft: "5px" }}
+          <Slider sx={{
+              width: 300, 
+              marginLeft: "5px", 
+              color: "#6d2978"
+              }}
               value={preference.environmental}
               min={1}
               max={10}
@@ -67,10 +90,21 @@ function Survey() {
            
         </div>        
         <div>
-          <label htmlFor='humanRights' style={{marginRight: 30}}>
+          <label 
+            htmlFor='humanRights' 
+            style={{
+              marginRight: 30,
+              display: "inline-block",
+              width: "150px"
+            }}
+            >
             Human Rights 🔍 :
           </label>
-          <Slider sx={{ width: 300, marginLeft: "5px" }}
+          <Slider sx={{
+              width: 300, 
+              marginLeft: "5px", 
+              color: "#6d2978"
+              }}
               value={preference.humanRights}
               min={1}
               max={10}

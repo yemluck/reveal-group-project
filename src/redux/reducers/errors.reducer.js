@@ -43,6 +43,19 @@ const resultsMessage = (state = '', action) => {
     }
 }
 
+const dataMessage = (state = 'Company scores are loading... please wait.', action) => {
+    switch (action.type) {
+        case 'CLEAR_DATA_ERROR':
+            return '';
+        case 'NO_DATA_ERROR':
+            return "No results found, try a different company.";
+        case 'DEFAULT_DATA_ERROR':
+            return 'Company scores are loading... please wait.';
+        default:
+            return state;
+    }
+}
+
 // make one object that has keys loginMessage, registrationMessage
 // these will be on the redux state at:
 // state.errors.loginMessage and state.errors.registrationMessage
@@ -50,4 +63,5 @@ export default combineReducers({
   loginMessage,
   registrationMessage,
   resultsMessage,
+  dataMessage,
 });

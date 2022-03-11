@@ -28,10 +28,17 @@ const Users = () => {
 
     // this is my attempt to generate an iterable key, 
     // but it's not working atm
-    const valueKey = userPreferences.map((value, i) => {
-        const key = Object.keys(value)[i];
-        return value[key]
-    });
+
+    // const makeValueList = (values) => {
+    //     const valueArray = [];
+    //     const valueObject = {id: , value_avg: };
+    //     const valueKey = userPreferences.map((value) => {
+    //         const key = Object.keys(value);
+    //         return value[key]
+    //     });
+
+
+    // }
     
     useEffect(() => {
         fetchUserPreferences();
@@ -59,10 +66,10 @@ const Users = () => {
                 <tbody>
                     <tr>
                         {/* this key is not iterating */}
-                        {userPreferences.map((value) =>
+                        {/* {userPreferences.map((value) =>
                             <td key={valueKey}>
-                                {Math.floor(value.value_avg)}</td>
-                        )}
+                                {Math.floor(value.value_avg * 10)}</td>
+                        )} */}
                         {/* <td>{userPreferences[1].value_average}</td> */}
                         {/* <td>{userPreferences[2].value_average}</td> */}
                     </tr>

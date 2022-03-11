@@ -56,7 +56,7 @@ router.get('/membership', rejectUnauthenticated, (req, res) => {
     let queryText = '';
 
     // only admins can GET membership rules
-    if (req.user.auth_level === 1) {
+    if (req.user.id) {
         // setup SQL command
         queryText = `
             SELECT * FROM "membership_rule";
@@ -82,7 +82,7 @@ router.get('/score', rejectUnauthenticated, (req, res) => {
     let queryText = '';
 
     // only admins can GET score rules
-    if (req.user.auth_level === 1) {
+    if (req.user.id) {
         // setup SQL command
         queryText = `
             SELECT * FROM "score_rule";

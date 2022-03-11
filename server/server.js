@@ -14,6 +14,7 @@ const surveyRouter = require('./routes/survey.router');
 const companiesRouter = require('./routes/companies.router');
 const ruleRouter = require('./routes/rule.router');
 const companyDetailsRouter = require('./routes/companyDetails.router');
+const userDataRouter = require('./routes/userData.router');
 
 
 // Body parser middleware
@@ -34,6 +35,7 @@ app.use('/api/survey', surveyRouter);
 app.use('/api/companies', companiesRouter);
 app.use('/api/companyDetails', companyDetailsRouter);
 app.use('/api/rules', ruleRouter);
+app.use('/api/userData', userDataRouter);
 
 
 // Serve static files

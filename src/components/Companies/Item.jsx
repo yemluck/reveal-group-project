@@ -13,7 +13,7 @@ function Item({ company }) {
 
     return (
         <div>
-            <h4 className="company-link" ><Link to={`/companies/details/${company.name}`}><span>{company.name}</span></Link></h4>
+            <h4 className="company-link" ><Link to={`/companies/details/${company.name}/${company.wikipedia}`}><span>{company.name}</span></Link></h4>
         </div>
     )
 }

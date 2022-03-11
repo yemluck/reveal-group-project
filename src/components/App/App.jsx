@@ -36,6 +36,10 @@ function App() {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
+
+    dispatch({ type: 'FETCH_MEMBERSHIP_RULES' });
+
+    dispatch({ type: 'FETCH_SCORE_RULES' });
   }, [dispatch]);
 
   return (
@@ -88,7 +92,7 @@ function App() {
           <ProtectedRoute
             // logged in shows companyDetails page else shows LoginPage
             exact
-            path="/companies/details/:name"
+            path="/companies/details/:name/:wikiName"
           >
             <CompanyDetails />
           </ProtectedRoute>

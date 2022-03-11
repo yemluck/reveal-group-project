@@ -10,8 +10,6 @@ import companyDetails from './companyDetails.reducer';
 import scoreRules from './scoreRules.reducer';
 import companyData from './companyData.reducer';
 import userData from './userData.reducer';
-import selectedMembershipRules from './selectedMembershipRules.reducer';
-import selectedScoreRules from './selectedScoreRules.reducer';
 
 
 // rootReducer is the primary reducer for our entire project
@@ -32,9 +30,6 @@ const rootReducer = combineReducers({
   scoreRules, // contains metric, results, points, industry, and value_id
   companyData, // contains data about a company from wikiRate
   userData, // contains user count, user emails list, and averages of all preferences
-
-  selectedMembershipRules, // contains orgaization, points, industry, value_id for selected industry
-  selectedScoreRules, // contains organization, result, points, industry, value_id for selected industry
 });
 
 export default rootReducer;

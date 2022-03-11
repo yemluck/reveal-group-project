@@ -38,7 +38,7 @@ function List() {
 
     const pageCount = Math.ceil(companies.length / PER_PAGE);
 
-    //console.log('this is the companies from the store:', companies);
+    // console.log('this is the companies from the store:', companies);
    
     return (
         <>

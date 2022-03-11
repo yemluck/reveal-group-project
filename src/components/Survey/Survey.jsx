@@ -30,9 +30,11 @@ function Survey() {
 
   return (
     <div className="container">
+      <center>
       <div>
-        <p>Survey</p>
+        <h2>Survey</h2>
       </div>
+      <br></br>
       <form onSubmit={savePreference}>
         <div>
           <label htmlFor='transparency' style={{marginRight: 30}}>
@@ -88,6 +90,7 @@ function Survey() {
           <input className="btn" type="submit" name="save" value="save" />
         </div>
       </form>
+      </center>
     </div>
   );
 }

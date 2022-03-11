@@ -4,14 +4,6 @@ import useReduxStore from '../../hooks/useReduxStore';
 
 const ScoreRules = () => {
 
-    // setup dispatch
-    const dispatch = useDispatch();
-
-    // on page load, GET score rules
-    useEffect(() => {
-        dispatch({ type: 'FETCH_SCORE_RULES' });
-}, [dispatch]);
-
     // gain access to global variables
     const store = useReduxStore();
     // console.log('membership rules', store.scoreRules);

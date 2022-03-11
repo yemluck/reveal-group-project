@@ -51,27 +51,6 @@ function CompanyDetails() {
     });
   },[companyName])
   
-  const details = useSelector(store => store.companyDetails)
-  const keys = Object.keys(details);
-//   console.log('details keys:',keys[0]);
-  const abc = keys[0]
-//   console.log('details from store', details);
-
-  return (
-    <div className="container">
-      <div>
-        <h2>Company Details</h2>
-        <h3>{companyName} </h3>
-        <p>{details[abc].extract}</p> 
-        <Link to="/companies"><button> Back </button></Link>
-      </div>
-
-      {/* show metric breakdown for selected company */}
-      <MetricBreakdown />
-    </div>
-  );
-}
-
     useEffect(() => {
         // dispatch to fetch description
         dispatch({

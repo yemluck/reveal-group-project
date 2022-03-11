@@ -38,24 +38,12 @@ function CompanyDetails() {
     wikiDetail = companyName
   }
 
-  useEffect(() => {
-    // dispatch to fetch description
-    dispatch({ 
-      type:'FETCH_COMPANY_DETAILS',
-      payload: wikiDetail
-    });
-    // dispatch to fetch data
-    dispatch({
-      type: 'FETCH_COMPANY_DATA',
-      payload: companyName
-    });
-  },[companyName])
   
     useEffect(() => {
         // dispatch to fetch description
         dispatch({
             type: 'FETCH_COMPANY_DETAILS',
-            payload: companyName
+            payload: wikiDetail
         });
         // dispatch to fetch data
         dispatch({
@@ -63,11 +51,6 @@ function CompanyDetails() {
             payload: companyName
         });
 
-        // add viewed company as current active company
-        dispatch({
-            type: 'SET_ACTIVE_COMPANY',
-            payload: companyName
-        });
 
         // dispatch to fetch rules
         dispatch({
@@ -85,7 +68,7 @@ function CompanyDetails() {
             dispatch({ type: 'CLEAR_DATA_ERROR' });
         }
 
-    }, [scoreRules, membershipRules, companyData]);
+    }, [companyData]);
 
     return (
         <div className="container">

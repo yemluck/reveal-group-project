@@ -35,6 +35,7 @@ const rootReducer = combineReducers({
 
   selectedMembershipRules, // contains orgaization, points, industry, value_id for selected industry
   selectedScoreRules, // contains organization, result, points, industry, value_id for selected industry
+
 });
 
 export default rootReducer;

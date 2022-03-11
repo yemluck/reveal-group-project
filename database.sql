@@ -6,7 +6,7 @@
 
 CREATE TABLE "user" (
 	"id" serial NOT NULL,
-	"email_address" varchar(255) NOT NULL,
+	"email_address" varchar(255) UNIQUE NOT NULL,
 	"password" varchar(255) NOT NULL,
 	"auth_level" integer NOT NULL DEFAULT 0,
 	CONSTRAINT "user_pk" PRIMARY KEY ("id")

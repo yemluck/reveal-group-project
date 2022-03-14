@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import score from './score';
+// MUI components
 import Rating from '@mui/material/Rating';
-
+import Stack from '@mui/material/Stack';
+import LinearProgress from '@mui/material/LinearProgress';
 
 function CompanyDetails() {
   // from useParams
@@ -12,6 +14,7 @@ function CompanyDetails() {
     wikiName: wikiDetail
   } = useParams();
 
+  const history = useHistory();
   const dispatch = useDispatch();
   const details = useSelector(store => store.companyDetails)
   const errors = useSelector(store => store.errors)
@@ -75,70 +78,87 @@ function CompanyDetails() {
 
   }, [companyData]);
 
+  const backToCompany = () => {
+    // clear data on page exit
+    dispatch({
+      type: 'CLEAR_INFO'
+    });
+    // totalScore.environmentTotal == 0
+    // push back to companies page
+    history.push('/companies')
+  }
   return (
     <div className="company-details">
       <div>
         <h2>{companyName} </h2>
 
-        <h3>Company Details</h3>
+        <h3 className="company-details-subheader">Company Details</h3>
         <p>{details[abc].extract}</p>
         <p>{errors.dataMessage}</p>
-        {totalScore.environmentTotal !== 0 &&
-          <div id="metrics-container">
-            <h3>Metric Breakdown</h3>
-            <div id="transparency-breakdown" className="rating-item">
-              <p>
-                Transparency:
-              </p>
-              <p>
-                {/* {totalScore.transparencyScore} / {totalScore.transparencyTotal}:  */}
-                <Rating
-                  name="transparency-rating"
-                  readOnly
-                  precision={0.5}
-                  defaultValue={totalScore.transparencyScore / totalScore.transparencyTotal * 5}
-                  max={5}
-                />
-                {Math.ceil(totalScore.transparencyScore / totalScore.transparencyTotal * 100)}%
-              </p>
-            </div>
-            <div id="environment-breakdown" className="rating-item">
-              <p>
-                Environment:
-              </p>
-              <p>
-                {/* {totalScore.environmentScore} / {totalScore.environmentTotal}:  */}
-                <Rating
-                  name="environment-rating"
-                  readOnly
-                  precision={0.5}
-                  defaultValue={totalScore.environmentScore / totalScore.environmentTotal * 5}
-                  max={5}
-                />
-                {Math.ceil(totalScore.environmentScore / totalScore.environmentTotal * 100)}%
-              </p>
-            </div>
-            <div id="human-rights-breakdown" className="rating-item">
-              <p>
-                Human Rights:
-              </p>
-              <p>
-                {/* {totalScore.humanRightsScore} / {totalScore.humanRightsTotal}:  */}
-                <Rating
-                  name="human-rights-rating"
-                  readOnly
-                  precision={0.5}
-                  defaultValue={totalScore.humanRightsScore / totalScore.humanRightsTotal * 5}
-                  max={5}
-                />
-                {Math.ceil(totalScore.humanRightsScore / totalScore.humanRightsTotal * 100)}%
-              </p>
-            </div>
+        {totalScore.transparencyTotal === 0 ?
+          <Stack sx={{ width: '100%', color: 'grey.500' }} spacing={2}>
+            <LinearProgress color="secondary" />
+          </Stack>
+              :
+        <div id="metrics-container">
+          <h3 className="company-details-subheader">Metric Breakdown</h3>
+
+          <div id="transparency-breakdown" className="rating-item">
+            <p>
+              Transparency:
+            </p>
+            <p>
+              {/* {totalScore.transparencyScore} / {totalScore.transparencyTotal}:  */}
+              <Rating
+                name="transparency-rating"
+                readOnly
+                precision={0.5}
+                value={totalScore.transparencyScore / totalScore.transparencyTotal * 5}
+                max={5}
+              />
+              {Math.ceil(totalScore.transparencyScore / totalScore.transparencyTotal * 100)}%
+            </p>
           </div>
-        }
-        <Link to="/companies"><button> Back </button></Link>
+
+          <div id="environment-breakdown" className="rating-item">
+            <p>
+              Environment:
+            </p>
+            <p>
+              {/* {totalScore.environmentScore} / {totalScore.environmentTotal}:  */}
+              <Rating
+                name="environment-rating"
+                readOnly
+                precision={0.5}
+                value={totalScore.environmentScore / totalScore.environmentTotal * 5}
+                max={5}
+              />
+              {Math.ceil(totalScore.environmentScore / totalScore.environmentTotal * 100)}%
+            </p>
+          </div>
+
+          <div id="human-rights-breakdown" className="rating-item">
+            <p>
+              Human Rights:
+            </p>
+            <p>
+              {/* {totalScore.humanRightsScore} / {totalScore.humanRightsTotal}:  */}
+              <Rating
+                name="human-rights-rating"
+                readOnly
+                precision={0.5}
+                value={totalScore.humanRightsScore / totalScore.humanRightsTotal * 5}
+                max={5}
+              />
+              {Math.ceil(totalScore.humanRightsScore / totalScore.humanRightsTotal * 100)}%
+            </p>
+          </div>
+
+        </div>
+          }
+        < button onClick={backToCompany}> Back </button>
       </div>
-    </div>
+    </div >
   );
 }
 

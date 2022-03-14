@@ -12,7 +12,7 @@ router.get('/userPreferences', rejectUnauthenticated, (req, res) => {
             SELECT AVG("priority") as "value_avg", "value_id"
                 FROM "preference"
                 GROUP BY value_id;
-        `
+        `;
     }
     pool.query(queryText)
         .then((result) => {
@@ -22,7 +22,7 @@ router.get('/userPreferences', rejectUnauthenticated, (req, res) => {
         .catch((err) => {
             console.log('Cannot retrieve user preferences from db.', err);
             res.sendStatus(500);
-        })
+        });
 });
 
 router.get('/usernames', rejectUnauthenticated, (req, res) => {
@@ -32,7 +32,8 @@ router.get('/usernames', rejectUnauthenticated, (req, res) => {
     if (req.user.auth_level === 1) {
 
         queryText = `
-            SELECT "id", "email_address" FROM "user";
+            SELECT "id", "email_address" 
+                FROM "user";
             ;`;
     }
     pool.query(queryText)
@@ -43,7 +44,7 @@ router.get('/usernames', rejectUnauthenticated, (req, res) => {
         .catch((err) => {
             console.log('Cannot retrieve email addresses from db.', err);
             res.sendStatus(500);
-        })
+        });
 });
 
 module.exports = router;

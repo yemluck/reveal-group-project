@@ -24,7 +24,7 @@ function Survey() {
       payload: preference
     })
     // will push to user page after dispatch
-    history.push('/user')
+    history.push('/companies')
   } // end function savePreference
 
   const marks = [{ value: 1, label: 1},

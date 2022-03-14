@@ -18,7 +18,7 @@ table {
 }
 
 #total-users {
-    background-color: white;
+    background-color: #f6ded7;
     color: black;
     font-size: larger;
     font-weight: bold;
@@ -26,5 +26,5 @@ table {
 
 .users-table-header {
     align-items: center;
-    color: white;
+    color: #f7f7e0;
 }

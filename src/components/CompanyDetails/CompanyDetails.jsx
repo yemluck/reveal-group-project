@@ -8,7 +8,6 @@ import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 import LinearProgress from '@mui/material/LinearProgress';
 
-import './CompanyDetails.css';
 
 function CompanyDetails() {
   // from useParams

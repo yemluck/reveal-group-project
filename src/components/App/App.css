@@ -5,11 +5,11 @@ body,
 }
 
 html {
-    background-image: url("../../photos/background3.jpg");
-    background-color: lightgray;
+    background: linear-gradient(#f7f7e0, #f6ded7);
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-blend-mode: screen;
+    height: 100%;
 }
 
 body {

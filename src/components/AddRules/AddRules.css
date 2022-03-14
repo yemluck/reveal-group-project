@@ -1,3 +1,8 @@
+.rules-form-container {
+    background: linear-gradient(#f7f7e0, #f6ded7);
+    height: 500% !important;
+}
+
 .membership-rule-form {
     display: list-item;
 }

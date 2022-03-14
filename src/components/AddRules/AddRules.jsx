@@ -5,6 +5,8 @@ import useReduxStore from '../../hooks/useReduxStore';
 import MembershipRules from '../MembershipRules/MembershipRules';
 import ScoreRules from '../ScoreRules/ScoreRules';
 
+import './AddRules.css';
+
 function AddRules() {
   const dispatch = useDispatch();
   const [valueCategory, setValueCategory] = useState(''); 

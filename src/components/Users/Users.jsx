@@ -59,7 +59,7 @@ const Users = () => {
                 <p id="total-users">{Number(userEmails.length+1)}</p>
                 <thead>
                     <tr>
-                        <th>User Emails</th>
+                            <th><h3>User Emails</h3></th>
                     </tr>
                 </thead>
                 <tbody id="email-list">

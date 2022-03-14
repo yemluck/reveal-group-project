@@ -94,7 +94,6 @@ function CompanyDetails() {
                 <h3>{companyName} </h3>
                 <p>{details[abc].extract}</p>
                 <p>{errors.dataMessage}</p>
-                {/* {totalScore.environmentTotal !== 0 && */}
                 {totalScore.environmentTotal == 0 ? 
             <Stack sx={{ width: '100%', color: 'grey.500' }} spacing={2}>
               <LinearProgress color="secondary" />
@@ -107,7 +106,6 @@ function CompanyDetails() {
                         <p>Human Rights: {totalScore.humanRightsScore} / {totalScore.humanRightsTotal}: {totalScore.humanRightsScore / totalScore.humanRightsTotal}</p>
                     </div>
                 }
-                {/* <Link to="/companies"><button> Back </button></Link> */}
                 <button onClick={backToCompany}> Back </button>
             </div>
         </div>

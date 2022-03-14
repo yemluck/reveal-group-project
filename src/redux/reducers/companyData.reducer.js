@@ -3,7 +3,7 @@ const companyDataReducer = (state = [], action) => {
         case 'SET_COMPANY_DATA':
             return action.payload;
         case 'CLEAR_INFO':
-            return state;
+            return [];
         default:
             return state;
     }

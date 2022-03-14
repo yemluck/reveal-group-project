@@ -2,15 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import score from './score';
+import './details.css'
 // MUI components
+import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 import LinearProgress from '@mui/material/LinearProgress';
 
 function CompanyDetails() {
   // from useParams
-  let { 
+  let {
     name: companyName,
-    wikiName: wikiDetail 
+    wikiName: wikiDetail
   } = useParams();
 
   const history = useHistory();
@@ -27,89 +29,139 @@ function CompanyDetails() {
   //   console.log('type of key', typeof keys[0]); 
   //   console.log('details from store', details);
   const [totalScore, setTotalScore] = useState({
-      transparencyTotal: null,
-      transparencyScore: null,
-      humanRightsTotal: null,
-      humanRightsScore: null,
-      environmentTotal: null,
-      environmentScore: null,
-      calculated: false
+    transparencyTotal: null,
+    transparencyScore: null,
+    humanRightsTotal: null,
+    humanRightsScore: null,
+    environmentTotal: null,
+    environmentScore: null,
+    calculated: false
   });
-  
+
   // for cases with no wikipedia description
   // null returns wikipedia description of null
-  if (wikiDetail === "null"){
+  if (wikiDetail === "null") {
     wikiDetail = companyName
   }
   else if (wikiDetail === "Royal Dutch Shell") {
     wikiDetail = "Shell plc";
   }
 
-  
-    useEffect(() => {
-        // dispatch to fetch description
-        dispatch({
-            type: 'FETCH_COMPANY_DETAILS',
-            payload: wikiDetail
-        });
-        // dispatch to fetch data
-        dispatch({
-            type: 'FETCH_COMPANY_DATA',
-            payload: companyName
-        });
+
+  useEffect(() => {
+    // dispatch to fetch description
+    dispatch({
+      type: 'FETCH_COMPANY_DETAILS',
+      payload: wikiDetail
+    });
+    // dispatch to fetch data
+    dispatch({
+      type: 'FETCH_COMPANY_DATA',
+      payload: companyName
+    });
 
 
-        // dispatch to fetch rules
-        dispatch({
-            type: 'FETCH_MEMBERSHIP_RULES'
-        });
-        dispatch({
-            type: 'FETCH_SCORE_RULES'
-        });
-    }, [companyName]);
+    // dispatch to fetch rules
+    dispatch({
+      type: 'FETCH_MEMBERSHIP_RULES'
+    });
+    dispatch({
+      type: 'FETCH_SCORE_RULES'
+    });
+  }, [companyName]);
 
-    useEffect(() => {
-        setTotalScore(score({ membershipRules, scoreRules }, companyData));
+  useEffect(() => {
+    setTotalScore(score({ membershipRules, scoreRules }, companyData));
 
-        if (totalScore.transparencyTotal !== 0) {
-            dispatch({ type: 'CLEAR_DATA_ERROR' });
-        }
-
-    }, [companyData]);
-
-    const backToCompany = () => {
-      // clear data on page exit
-      dispatch({
-        type: 'CLEAR_INFO'
-      });
-      totalScore.environmentTotal == 0
-      // push back to companies page
-      history.push('/companies')
+    if (totalScore.transparencyTotal !== 0) {
+      dispatch({ type: 'CLEAR_DATA_ERROR' });
     }
 
-    return (
-        <div className="container">
-            <div>
-                <h2>Company Details</h2>
-                <h3>{companyName} </h3>
-                <p>{details[abc].extract}</p>
-                <p>{errors.dataMessage}</p>
-                {totalScore.environmentTotal == 0 ? 
-            <Stack sx={{ width: '100%', color: 'grey.500' }} spacing={2}>
-              <LinearProgress color="secondary" />
-              <LinearProgress color="secondary" />
-            </Stack>
-                :
-                    <div>
-                        <p>Transparency: {totalScore.transparencyScore} / {totalScore.transparencyTotal}: {totalScore.transparencyScore / totalScore.transparencyTotal}</p>
-                        <p>Environment: {totalScore.environmentScore} / {totalScore.environmentTotal}: {totalScore.environmentScore / totalScore.environmentTotal}</p>
-                        <p>Human Rights: {totalScore.humanRightsScore} / {totalScore.humanRightsTotal}: {totalScore.humanRightsScore / totalScore.humanRightsTotal}</p>
-                    </div>
-                }
-                <button onClick={backToCompany}> Back </button>
+  }, [companyData]);
+
+  const backToCompany = () => {
+    // clear data on page exit
+    dispatch({
+      type: 'CLEAR_INFO'
+    });
+    // totalScore.environmentTotal == 0
+    // push back to companies page
+    history.push('/companies')
+  }
+  return (
+    <div className="company-details">
+      <button id="back-btn" className="btn" onClick={backToCompany}> Back </button>
+      <div>
+        <h2 id="company-name">{companyName} </h2>
+
+        <h3 className="company-details-subheader">Company Details</h3>
+        <p id="wiki-excerpt">{details[abc].extract}</p>
+        <h3 className="company-details-subheader">Metric Breakdown</h3>
+
+        {totalScore.transparencyTotal === 0 ?
+          <Stack sx={{ width: '100%', color: 'grey.500' }} spacing={2}>
+            <LinearProgress color="secondary" />
+          </Stack>
+          :
+          <>
+            <div id="metrics-container">
+              <div id="transparency-breakdown" className="rating-item">
+                <p>
+                  Transparency:
+                </p>
+                <p>
+                  {/* {totalScore.transparencyScore} / {totalScore.transparencyTotal}:  */}
+                  <Rating
+                    name="transparency-rating"
+                    readOnly
+                    precision={0.5}
+                    value={totalScore.transparencyScore / totalScore.transparencyTotal * 5}
+                    max={5}
+                  />
+                  {Math.ceil(totalScore.transparencyScore / totalScore.transparencyTotal * 100)}%
+                </p>
+              </div>
+
+              <div id="environment-breakdown" className="rating-item">
+                <p>
+                  Environment:
+                </p>
+                <p>
+                  {/* {totalScore.environmentScore} / {totalScore.environmentTotal}:  */}
+                  <Rating
+                    name="environment-rating"
+                    readOnly
+                    precision={0.5}
+                    value={totalScore.environmentScore / totalScore.environmentTotal * 5}
+                    max={5}
+                  />
+                  {Math.ceil(totalScore.environmentScore / totalScore.environmentTotal * 100)}%
+                </p>
+              </div>
+
+              <div id="human-rights-breakdown" className="rating-item">
+                <p>
+                  Human Rights:
+                </p>
+                <p>
+                  {/* {totalScore.humanRightsScore} / {totalScore.humanRightsTotal}:  */}
+                  <Rating
+                    name="human-rights-rating"
+                    readOnly
+                    precision={0.5}
+                    value={totalScore.humanRightsScore / totalScore.humanRightsTotal * 5}
+                    max={5}
+                  />
+                  {Math.ceil(totalScore.humanRightsScore / totalScore.humanRightsTotal * 100)}%
+                </p>
+              </div>
+
             </div>
-        </div>
-    );
+          </>
+        }
+      </div>
+    </div >
+  );
 }
 
 export default CompanyDetails;

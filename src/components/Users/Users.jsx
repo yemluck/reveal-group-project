@@ -40,7 +40,7 @@ const Users = () => {
         <div id="collected-user-data">
             <table>
                 <thead>
-                    <tr><th id="header-one"><h3>Average User Preferences</h3></th></tr>
+                    <tr><th ><h3 className="users-table-header"  >Average User Preferences</h3></th></tr>
                     <tr>
                         <th> Human Rights </th>
                         <th> Environment </th>
@@ -55,11 +55,11 @@ const Users = () => {
                             </td>)}
                     </tr>
                 </tbody>
-                <h3>Total Users</h3>
+                <h3 className="users-table-header"  >Total Users</h3>
                 <p id="total-users">{Number(userEmails.length+1)}</p>
                 <thead>
                     <tr>
-                        <th>User Emails</th>
+                        <th><h3 className="users-table-header" >User Emails</h3></th>
                     </tr>
                 </thead>
                 <tbody id="email-list">

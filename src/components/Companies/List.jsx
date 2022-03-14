@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Item from './Item';
-//import Pagination from './Pagination';
 import ReactPaginate from 'react-paginate';
 import './Companies.css';
 

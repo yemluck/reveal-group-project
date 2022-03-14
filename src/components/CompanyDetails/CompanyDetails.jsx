@@ -17,11 +17,13 @@ function CompanyDetails() {
 
   const history = useHistory();
   const dispatch = useDispatch();
-  const details = useSelector(store => store.companyDetails)
-  const errors = useSelector(store => store.errors)
-  const companyData = useSelector(store => store.companyData)
-  const membershipRules = useSelector(store => store.membershipRules)
-  const scoreRules = useSelector(store => store.scoreRules)
+  const details = useSelector(store => store.companyDetails);
+  const errors = useSelector(store => store.errors);
+  const preference = useSelector(store => store.survey);
+  const companyData = useSelector(store => store.companyData);
+  const membershipRules = useSelector(store => store.membershipRules);
+  const scoreRules = useSelector(store => store.scoreRules);
+
 
   const keys = Object.keys(details);
   //   console.log('details keys:',keys[0]);
@@ -88,6 +90,20 @@ function CompanyDetails() {
     // push back to companies page
     history.push('/companies')
   }
+
+  // calculation for weighted average based on preference
+const weightedAverage = 
+  ((totalScore.transparencyScore / totalScore.transparencyTotal * preference.transparency)+
+  (totalScore.environmentScore / totalScore.environmentTotal * preference.environmental)+
+  (totalScore.humanRightsScore / totalScore.humanRightsTotal * preference.humanRights))
+  /
+  (preference.transparency + preference.environmental + preference.humanRights)
+
+
+const weightedAveragePercentage = Math.ceil(weightedAverage*100);
+
+
+
   return (
     <div className="company-details">
       <button id="back-btn" className="btn" onClick={backToCompany}> Back </button>
@@ -96,6 +112,27 @@ function CompanyDetails() {
 
         <h3 className="company-details-subheader">Company Details</h3>
         <p id="wiki-excerpt">{details[abc].extract}</p>
+        <h3 className="company-details-subheader">Weighted Score</h3>
+        {weightedAveragePercentage ?
+        <center>
+        <Rating
+          name="weightedAverage"
+          readOnly
+          precision={0.5}
+          value={weightedAverage * 5}
+          max={5} 
+        />
+        <p>{weightedAveragePercentage}%</p>
+        </center>
+        :
+          <Stack sx={{ width: '100%', color: 'grey.500' }} spacing={2}>
+            <LinearProgress color="secondary" />
+          </Stack>
+    
+          
+      }
+      <br></br>
+        
         <h3 className="company-details-subheader">Metric Breakdown</h3>
 
         {totalScore.transparencyTotal === 0 ?

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import useReduxStore from '../../hooks/useReduxStore';
 
+import './MembershipRules.css';
+
 const MembershipRules = () => {
 
     // gain access to global variables

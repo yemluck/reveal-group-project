@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import score from './score';
+import Rating from '@mui/material/Rating';
+
 
 function CompanyDetails() {
   // from useParams
-  let { 
+  let {
     name: companyName,
-    wikiName: wikiDetail 
+    wikiName: wikiDetail
   } = useParams();
 
   const dispatch = useDispatch();
@@ -23,74 +25,121 @@ function CompanyDetails() {
   //   console.log('type of key', typeof keys[0]); 
   //   console.log('details from store', details);
   const [totalScore, setTotalScore] = useState({
-      transparencyTotal: null,
-      transparencyScore: null,
-      humanRightsTotal: null,
-      humanRightsScore: null,
-      environmentTotal: null,
-      environmentScore: null,
-      calculated: false
+    transparencyTotal: null,
+    transparencyScore: null,
+    humanRightsTotal: null,
+    humanRightsScore: null,
+    environmentTotal: null,
+    environmentScore: null,
+    calculated: false
   });
-  
+
   // for cases with no wikipedia description
   // null returns wikipedia description of null
-  if (wikiDetail === "null"){
+  if (wikiDetail === "null") {
     wikiDetail = companyName
   }
   else if (wikiDetail === "Royal Dutch Shell") {
     wikiDetail = "Shell plc";
   }
 
-  
-    useEffect(() => {
-        // dispatch to fetch description
-        dispatch({
-            type: 'FETCH_COMPANY_DETAILS',
-            payload: wikiDetail
-        });
-        // dispatch to fetch data
-        dispatch({
-            type: 'FETCH_COMPANY_DATA',
-            payload: companyName
-        });
+
+  useEffect(() => {
+    // dispatch to fetch description
+    dispatch({
+      type: 'FETCH_COMPANY_DETAILS',
+      payload: wikiDetail
+    });
+    // dispatch to fetch data
+    dispatch({
+      type: 'FETCH_COMPANY_DATA',
+      payload: companyName
+    });
 
 
-        // dispatch to fetch rules
-        dispatch({
-            type: 'FETCH_MEMBERSHIP_RULES'
-        });
-        dispatch({
-            type: 'FETCH_SCORE_RULES'
-        });
-    }, [companyName]);
+    // dispatch to fetch rules
+    dispatch({
+      type: 'FETCH_MEMBERSHIP_RULES'
+    });
+    dispatch({
+      type: 'FETCH_SCORE_RULES'
+    });
+  }, [companyName]);
 
-    useEffect(() => {
-        setTotalScore(score({ membershipRules, scoreRules }, companyData));
+  useEffect(() => {
+    setTotalScore(score({ membershipRules, scoreRules }, companyData));
 
-        if (totalScore.transparencyTotal !== 0) {
-            dispatch({ type: 'CLEAR_DATA_ERROR' });
-        }
+    if (totalScore.transparencyTotal !== 0) {
+      dispatch({ type: 'CLEAR_DATA_ERROR' });
+    }
 
-    }, [companyData]);
+  }, [companyData]);
 
-    return (
-        <div className="container">
-            <div>
-                <h2>Company Details</h2>
-                <h3>{companyName} </h3>
-                <p>{details[abc].extract}</p>
-                <p>{errors.dataMessage}</p>
-                {totalScore.environmentTotal !== 0 &&
-                    <div>
-                        <p>Transparency: {totalScore.transparencyScore} / {totalScore.transparencyTotal}: {totalScore.transparencyScore / totalScore.transparencyTotal}</p>
-                        <p>Environment: {totalScore.environmentScore} / {totalScore.environmentTotal}: {totalScore.environmentScore / totalScore.environmentTotal}</p>
-                        <p>Human Rights: {totalScore.humanRightsScore} / {totalScore.humanRightsTotal}: {totalScore.humanRightsScore / totalScore.humanRightsTotal}</p>
-                    </div>
-                }
-                <Link to="/companies"><button> Back </button></Link>
+  return (
+    <div className="company-details">
+      <div>
+        <h2>{companyName} </h2>
+
+        <h3>Company Details</h3>
+        <p>{details[abc].extract}</p>
+        <p>{errors.dataMessage}</p>
+        {totalScore.environmentTotal !== 0 &&
+          <div id="metrics-container">
+            <h3>Metric Breakdown</h3>
+            <div id="transparency-breakdown" className="rating-item">
+              <p>
+                Transparency:
+              </p>
+              <p>
+                {/* {totalScore.transparencyScore} / {totalScore.transparencyTotal}:  */}
+                <Rating
+                  name="transparency-rating"
+                  readOnly
+                  precision={0.5}
+                  defaultValue={totalScore.transparencyScore / totalScore.transparencyTotal * 5}
+                  max={5}
+                />
+                {Math.ceil(totalScore.transparencyScore / totalScore.transparencyTotal * 100)}%
+              </p>
             </div>
-        </div>
-    );
+            <div id="environment-breakdown" className="rating-item">
+              <p>
+                Environment:
+              </p>
+              <p>
+                {/* {totalScore.environmentScore} / {totalScore.environmentTotal}:  */}
+                <Rating
+                  name="environment-rating"
+                  readOnly
+                  precision={0.5}
+                  defaultValue={totalScore.environmentScore / totalScore.environmentTotal * 5}
+                  max={5}
+                />
+                {Math.ceil(totalScore.environmentScore / totalScore.environmentTotal * 100)}%
+              </p>
+            </div>
+            <div id="human-rights-breakdown" className="rating-item">
+              <p>
+                Human Rights:
+              </p>
+              <p>
+                {/* {totalScore.humanRightsScore} / {totalScore.humanRightsTotal}:  */}
+                <Rating
+                  name="human-rights-rating"
+                  readOnly
+                  precision={0.5}
+                  defaultValue={totalScore.humanRightsScore / totalScore.humanRightsTotal * 5}
+                  max={5}
+                />
+                {Math.ceil(totalScore.humanRightsScore / totalScore.humanRightsTotal * 100)}%
+              </p>
+            </div>
+          </div>
+        }
+        <Link to="/companies"><button> Back </button></Link>
+      </div>
+    </div>
+  );
 }
 
 export default CompanyDetails;

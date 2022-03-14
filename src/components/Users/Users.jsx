@@ -1,16 +1,14 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import './Users.css';
 
 const Users = () => {
     const userPreferences = useSelector((store) => store.userData.userPreferencesReducer)
     const userEmails = useSelector((store) => store.userData.userEmailsReducer);
     const dispatch = useDispatch();
 
-    /* 
-        tables pulling from: users, value, preference
-            user preferences:
-    */
-
+    // userPreferences will provide the averages of each 
+    // of the total value-priorities across all users
     const fetchUserPreferences = () => {
         console.log('In fetchUserPreferences');
         dispatch({
@@ -18,6 +16,8 @@ const Users = () => {
         });
     }
 
+    // userEmails will provide both the list of email 
+    // addresses and the total user count
     const fetchUserEmails = () => {
         console.log('In fetchUserEmails');
         dispatch({
@@ -30,18 +30,17 @@ const Users = () => {
         fetchUserEmails();
     }, []);
 
+    // render to DOM
     return(
         <>
-        {console.log(userPreferences)}
+        {/* {console.log(userPreferences)} */}
         <div>
-            Admin can see user details
-        </div>
-        <div>
-            <h3>Average User Preferences</h3>
+            <h2>User Details, Admin View</h2>
         </div>
         <div id="collected-user-data">
             <table>
                 <thead>
+                    <tr><th id="header-one"><h3>Average User Preferences</h3></th></tr>
                     <tr>
                         <th> Human Rights </th>
                         <th> Environment </th>
@@ -56,16 +55,14 @@ const Users = () => {
                             </td>)}
                     </tr>
                 </tbody>
-            </table>
                 <h3>Total Users</h3>
-                <p>{Number(userEmails.length+1)}</p>
-            <table>
+                <p id="total-users">{Number(userEmails.length+1)}</p>
                 <thead>
                     <tr>
                         <th>User Emails</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="email-list">
                     {userEmails.map((email) => (
                         <tr key={email.id}><td>{email.email_address}</td></tr>
                     ))}

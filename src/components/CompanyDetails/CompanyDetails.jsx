@@ -7,6 +7,7 @@ import './details.css'
 import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 import LinearProgress from '@mui/material/LinearProgress';
+import Popover from '@mui/material/Popover';
 
 
 function CompanyDetails() {
@@ -25,6 +26,45 @@ function CompanyDetails() {
   const membershipRules = useSelector(store => store.membershipRules);
   const scoreRules = useSelector(store => store.scoreRules);
 
+  // transparency rule
+  let transparencyRule = [];
+  let environmentRule = [];
+  let humanRightsRule = [];
+  //console.log('score rules:', scoreRules);
+  for (let rule of scoreRules){
+    if (rule.value_id === 1){
+      transparencyRule.push(rule);
+    }
+    if (rule.value_id === 2){
+      environmentRule.push(rule);
+    }
+    if (rule.value_id === 3){
+      humanRightsRule.push(rule);
+    }
+  }
+  console.log('this is the transparencyRule', transparencyRule);
+  console.log('this is the environmentRule', environmentRule);
+  //console.log('this is the humanRightsRule', humanRightsRule);
+
+  // Popover
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClick2 = (event) => {
+    setAnchorEl(event.currentTarget);
+  }
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
+  const id2 = open ? 'simple-popover' : undefined;
+  // end popover
 
   const keys = Object.keys(details);
   //   console.log('details keys:',keys[0]);
@@ -144,8 +184,8 @@ const weightedAveragePercentage = Math.ceil(weightedAverage*100);
           <>
             <div id="metrics-container">
               <div id="transparency-breakdown" className="rating-item">
-                <p>
-                  Transparency:
+                <p aria-describedby={id} onClick={handleClick}>
+                  Transparency⬇️
                 </p>
                 <p>
                   {/* {totalScore.transparencyScore} / {totalScore.transparencyTotal}:  */}
@@ -158,10 +198,24 @@ const weightedAveragePercentage = Math.ceil(weightedAverage*100);
                   />
                   {Math.ceil(totalScore.transparencyScore / totalScore.transparencyTotal * 100)}%
                 </p>
+                <Popover
+                  id={id}
+                  open={open}
+                  anchorEl={anchorEl}
+                  onClose={handleClose}
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'left',
+                  }}
+                >
+                  {
+                    transparencyRule.map(tRule => <p>{tRule.metric}</p>)
+                  }
+                </Popover>
               </div>
 
               <div id="environment-breakdown" className="rating-item">
-                <p>
+                <p aria-describedby={id2} onClick={handleClick}>
                   Environment:
                 </p>
                 <p>
@@ -175,6 +229,21 @@ const weightedAveragePercentage = Math.ceil(weightedAverage*100);
                   />
                   {Math.ceil(totalScore.environmentScore / totalScore.environmentTotal * 100)}%
                 </p>
+                <Popover
+                  id={id2}
+                  open={open}
+                  anchorEl={anchorEl}
+                  onClose={handleClose}
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'left',
+                  }}
+                >
+                  {
+                    // environmentRule.map(eRule => <p>{eRule.metric}</p>)
+                    <p>kdkdkdkdkd</p>
+                  }
+                </Popover>
               </div>
 
               <div id="human-rights-breakdown" className="rating-item">

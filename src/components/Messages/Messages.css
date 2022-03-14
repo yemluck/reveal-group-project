@@ -9,13 +9,13 @@
 }
 
 table {
-    background-color: #2e1321;
+    background-color: #6d2978;
     margin-left: 50%;
     transform: translateX(-50%);
 }
 
 th {
-    background-color: #2e1321;
+    background-color: #6d2978;
     color: #f6ded7;
 }
 
@@ -25,5 +25,5 @@ td {
 }
 
 table, th, td {
-    border: 2px solid #2e1321;
+    border: 2px solid #6d2978;
 }

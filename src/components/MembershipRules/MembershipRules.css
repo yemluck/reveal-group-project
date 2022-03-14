@@ -1,3 +1,9 @@
 .rulesTableTitle {
     color: #f7f7e0;
 }
+
+.rulesTable {
+    height: 150px;
+    overflow: scroll;
+    width: 300px;
+}

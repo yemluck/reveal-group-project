@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import score from './score';
+import './details.css'
 // MUI components
 import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
@@ -89,74 +90,75 @@ function CompanyDetails() {
   }
   return (
     <div className="company-details">
+      <button id="back-btn" className="btn" onClick={backToCompany}> Back </button>
       <div>
-        <h2>{companyName} </h2>
+        <h2 id="company-name">{companyName} </h2>
 
         <h3 className="company-details-subheader">Company Details</h3>
-        <p>{details[abc].extract}</p>
-        <p>{errors.dataMessage}</p>
+        <p id="wiki-excerpt">{details[abc].extract}</p>
+        <h3 className="company-details-subheader">Metric Breakdown</h3>
+
         {totalScore.transparencyTotal === 0 ?
           <Stack sx={{ width: '100%', color: 'grey.500' }} spacing={2}>
             <LinearProgress color="secondary" />
           </Stack>
-              :
-        <div id="metrics-container">
-          <h3 className="company-details-subheader">Metric Breakdown</h3>
+          :
+          <>
+            <div id="metrics-container">
+              <div id="transparency-breakdown" className="rating-item">
+                <p>
+                  Transparency:
+                </p>
+                <p>
+                  {/* {totalScore.transparencyScore} / {totalScore.transparencyTotal}:  */}
+                  <Rating
+                    name="transparency-rating"
+                    readOnly
+                    precision={0.5}
+                    value={totalScore.transparencyScore / totalScore.transparencyTotal * 5}
+                    max={5}
+                  />
+                  {Math.ceil(totalScore.transparencyScore / totalScore.transparencyTotal * 100)}%
+                </p>
+              </div>
 
-          <div id="transparency-breakdown" className="rating-item">
-            <p>
-              Transparency:
-            </p>
-            <p>
-              {/* {totalScore.transparencyScore} / {totalScore.transparencyTotal}:  */}
-              <Rating
-                name="transparency-rating"
-                readOnly
-                precision={0.5}
-                value={totalScore.transparencyScore / totalScore.transparencyTotal * 5}
-                max={5}
-              />
-              {Math.ceil(totalScore.transparencyScore / totalScore.transparencyTotal * 100)}%
-            </p>
-          </div>
+              <div id="environment-breakdown" className="rating-item">
+                <p>
+                  Environment:
+                </p>
+                <p>
+                  {/* {totalScore.environmentScore} / {totalScore.environmentTotal}:  */}
+                  <Rating
+                    name="environment-rating"
+                    readOnly
+                    precision={0.5}
+                    value={totalScore.environmentScore / totalScore.environmentTotal * 5}
+                    max={5}
+                  />
+                  {Math.ceil(totalScore.environmentScore / totalScore.environmentTotal * 100)}%
+                </p>
+              </div>
 
-          <div id="environment-breakdown" className="rating-item">
-            <p>
-              Environment:
-            </p>
-            <p>
-              {/* {totalScore.environmentScore} / {totalScore.environmentTotal}:  */}
-              <Rating
-                name="environment-rating"
-                readOnly
-                precision={0.5}
-                value={totalScore.environmentScore / totalScore.environmentTotal * 5}
-                max={5}
-              />
-              {Math.ceil(totalScore.environmentScore / totalScore.environmentTotal * 100)}%
-            </p>
-          </div>
+              <div id="human-rights-breakdown" className="rating-item">
+                <p>
+                  Human Rights:
+                </p>
+                <p>
+                  {/* {totalScore.humanRightsScore} / {totalScore.humanRightsTotal}:  */}
+                  <Rating
+                    name="human-rights-rating"
+                    readOnly
+                    precision={0.5}
+                    value={totalScore.humanRightsScore / totalScore.humanRightsTotal * 5}
+                    max={5}
+                  />
+                  {Math.ceil(totalScore.humanRightsScore / totalScore.humanRightsTotal * 100)}%
+                </p>
+              </div>
 
-          <div id="human-rights-breakdown" className="rating-item">
-            <p>
-              Human Rights:
-            </p>
-            <p>
-              {/* {totalScore.humanRightsScore} / {totalScore.humanRightsTotal}:  */}
-              <Rating
-                name="human-rights-rating"
-                readOnly
-                precision={0.5}
-                value={totalScore.humanRightsScore / totalScore.humanRightsTotal * 5}
-                max={5}
-              />
-              {Math.ceil(totalScore.humanRightsScore / totalScore.humanRightsTotal * 100)}%
-            </p>
-          </div>
-
-        </div>
-          }
-        < button onClick={backToCompany}> Back </button>
+            </div>
+          </>
+        }
       </div>
     </div >
   );

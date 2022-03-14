@@ -93,15 +93,15 @@ function CompanyDetails() {
   }
 
   // calculation for weighted average based on preference
-const weightedAverage = 
-  ((totalScore.transparencyScore / totalScore.transparencyTotal * preference.transparency)+
-  (totalScore.environmentScore / totalScore.environmentTotal * preference.environmental)+
-  (totalScore.humanRightsScore / totalScore.humanRightsTotal * preference.humanRights))
-  /
-  (preference.transparency + preference.environmental + preference.humanRights)
+  const weightedAverage =
+    ((totalScore.transparencyScore / totalScore.transparencyTotal * preference.transparency) +
+      (totalScore.environmentScore / totalScore.environmentTotal * preference.environmental) +
+      (totalScore.humanRightsScore / totalScore.humanRightsTotal * preference.humanRights))
+    /
+    (preference.transparency + preference.environmental + preference.humanRights)
 
 
-const weightedAveragePercentage = Math.ceil(weightedAverage*100);
+  const weightedAveragePercentage = Math.ceil(weightedAverage * 100);
 
 
 
@@ -115,25 +115,25 @@ const weightedAveragePercentage = Math.ceil(weightedAverage*100);
         <p id="wiki-excerpt">{details[abc].extract}</p>
         <h3 className="company-details-subheader">Weighted Score</h3>
         {weightedAveragePercentage ?
-        <center>
-        <Rating
-          name="weightedAverage"
-          readOnly
-          precision={0.5}
-          value={weightedAverage * 5}
-          max={5} 
-        />
-        <p>{weightedAveragePercentage}%</p>
-        </center>
-        :
+          <center>
+            <Rating
+              name="weightedAverage"
+              readOnly
+              precision={0.5}
+              value={weightedAverage * 5}
+              max={5}
+            />
+            <p>{weightedAveragePercentage}%</p>
+          </center>
+          :
           <Stack sx={{ width: '100%', color: 'grey.500' }} spacing={2}>
             <LinearProgress color="secondary" />
           </Stack>
-    
-          
-      }
-      <br></br>
-        
+
+
+        }
+        <br></br>
+
         <h3 className="company-details-subheader">Metric Breakdown</h3>
 
         {totalScore.transparencyTotal === 0 ?

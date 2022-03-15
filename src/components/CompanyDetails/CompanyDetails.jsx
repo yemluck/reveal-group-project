@@ -31,14 +31,14 @@ function CompanyDetails() {
   let environmentRule = [];
   let humanRightsRule = [];
   //rules logic
-  for (let rule of scoreRules){
-    if (rule.value_id === 1){
+  for (let rule of scoreRules) {
+    if (rule.value_id === 1) {
       transparencyRule.push(rule);
     }
-    if (rule.value_id === 2){
+    if (rule.value_id === 2) {
       environmentRule.push(rule);
     }
-    if (rule.value_id === 3){
+    if (rule.value_id === 3) {
       humanRightsRule.push(rule);
     }
   }
@@ -65,7 +65,7 @@ function CompanyDetails() {
     setAnchorEl(null);
     setAnchorEl2(null);
     setAnchorEl3(null);
-  }; 
+  };
 
 
   const open = Boolean(anchorEl);
@@ -112,8 +112,6 @@ function CompanyDetails() {
       type: 'FETCH_COMPANY_DATA',
       payload: companyName
     });
-
-
     // dispatch to fetch rules
     dispatch({
       type: 'FETCH_MEMBERSHIP_RULES'
@@ -137,7 +135,6 @@ function CompanyDetails() {
     dispatch({
       type: 'CLEAR_INFO'
     });
-    // totalScore.environmentTotal == 0
     // push back to companies page
     history.push('/companies')
   }
@@ -198,7 +195,6 @@ function CompanyDetails() {
                   Transparency⬇
                 </p>
                 <p>
-                  {/* {totalScore.transparencyScore} / {totalScore.transparencyTotal}:  */}
                   <Rating
                     name="transparency-rating"
                     readOnly
@@ -213,6 +209,7 @@ function CompanyDetails() {
                   open={open}
                   anchorEl={anchorEl}
                   onClose={handleClose}
+                  className="popover"
                   anchorOrigin={{
                     vertical: 'bottom',
                     horizontal: 'left',
@@ -229,7 +226,6 @@ function CompanyDetails() {
                   Environment⬇
                 </p>
                 <p>
-                  {/* {totalScore.environmentScore} / {totalScore.environmentTotal}:  */}
                   <Rating
                     name="environment-rating"
                     readOnly
@@ -243,6 +239,7 @@ function CompanyDetails() {
                   id={id2}
                   open={open2}
                   anchorEl={anchorEl2}
+                  className="popover"
                   onClose={handleClose}
                   anchorOrigin={{
                     vertical: 'bottom',
@@ -260,7 +257,6 @@ function CompanyDetails() {
                   Human Rights⬇
                 </p>
                 <p>
-                  {/* {totalScore.humanRightsScore} / {totalScore.humanRightsTotal}:  */}
                   <Rating
                     name="human-rights-rating"
                     readOnly
@@ -274,6 +270,7 @@ function CompanyDetails() {
                   id={id3}
                   open={open3}
                   anchorEl={anchorEl3}
+                  className="popover"
                   onClose={handleClose}
                   anchorOrigin={{
                     vertical: 'bottom',

@@ -32,12 +32,17 @@ router.get('/data/:company', rejectUnauthenticated, (req,res) => {
     // Sometimes query ends with "." which breaks url
     // steps: split query into individual character
     let query2 = query1.split('');
-    // check if last character is a ".". if so, remove it
-    if (query2[query2.length - 1] === '.'){
-        query2.pop()
-    }
+    // check if there are "." characters. If so, remove them
+    // if (query2[query2.length - 1] === '.'){
+    //     query2.pop()
+    // }
+    // // join array to form a string
+    // const query = query2.join('');
+
+    // // check if there are "." characters. If so, remove them
+    let query3 = query2.filter(char => char !== '.')
     // join array to form a string
-    const query = query2.join('');
+    const query = query3.join('');
 
     // get company data
     // insert encoded and fixed query into third party API

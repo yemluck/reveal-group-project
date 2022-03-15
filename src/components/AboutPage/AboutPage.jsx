@@ -7,9 +7,10 @@ import React from 'react';
 
 function AboutPage() {
   return (
-    <div className="container">
+    <div className="about-container">
       <div>
-        <p>This about page is for anyone to read!</p>
+        <p>Reveal is a nonprofit starting, aiming to put the power of investigation, reporting and honesty into the hands 
+        of the people. Reveal aims to uncover the good, the bad, and the ugly about corporations and organizations in the areas of Human Rights, Transparency, and the Environment.</p>
       </div>
     </div>
   );

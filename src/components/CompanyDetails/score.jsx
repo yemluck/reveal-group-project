@@ -117,6 +117,6 @@ export default function score(rulesList, companyData) {
         }
     }
     totalScore.calculated = true;
-    console.table(totalScore)
+    // console.table(totalScore)
     return totalScore;
 }

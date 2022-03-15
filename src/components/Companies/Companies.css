@@ -25,3 +25,13 @@
   color: rgb(198, 197, 202);
   border: 1px solid rgb(198, 197, 202);
 }
+
+.companies-box {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.item-result {
+  margin-left: 50px;
+  /* align-items: center; */
+}

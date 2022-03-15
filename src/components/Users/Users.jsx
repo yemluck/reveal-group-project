@@ -35,9 +35,9 @@ const Users = () => {
     // render to DOM
     return(
         <>
-        <div>
-            <h2>User Details, Admin View</h2>
-        </div>
+        <center>
+            <h1>User Details, Admin View</h1>
+        </center>
         {/*single table to display all user data*/}
         <div id="collected-user-data">
             <table>

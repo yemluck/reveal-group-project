@@ -30,7 +30,7 @@ function List() {
     const currentPageData = companies
         .slice(offset, offset + PER_PAGE)
         .map((company, i) => {
-            return (<div key={i}>
+            return (<div className="item-result" key={i}>
                     <Item company={company} />
                 </div>)
         });
@@ -40,7 +40,7 @@ function List() {
     // console.log('this is the companies from the store:', companies);
    
     return (
-        <>
+        <div className="companies-list">
         <h3> Click on a company's name for more details</h3>
             {currentPageData}
             <ReactPaginate
@@ -55,7 +55,7 @@ function List() {
                 activeClassName={"pagination__link--active"}
             />
             
-        </>
+        </div>
     )
 }
 

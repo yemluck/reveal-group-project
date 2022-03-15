@@ -1,9 +1,22 @@
+#value-category-membership {
+    box-sizing: border-box;
+    padding-bottom: 10px;
+    margin-right: 6px;
+}
+
+#value-category-score {
+    box-sizing: border-box;
+    margin-bottom: 6px;
+    margin-right: 6px;
+}
+
 .rules-form-container {
     background: linear-gradient(#f7f7e0, #f6ded7);
     display: grid;
     height: 500% !important;
     margin-bottom: 3rem;
     padding-bottom: 3rem;
+    margin-right: 1rem;
 }
 
 .aR1 {
@@ -28,7 +41,7 @@
     grid-row-start: 2;
     grid-row-end: 4;
     margin-bottom: 2rem;
-    margin-left: 50%;
+    margin-left: 37%;
     padding: 2rem;
     transform: translateX(-50%);
 }
@@ -41,12 +54,32 @@
     grid-column-end: 5;
     grid-row-start: 2;
     grid-row-end: 4;
-    margin-bottom: 2rem;
-    margin-left: 50%;
+    margin-bottom: 2em;
+    margin-left: 30%;
     padding: 2rem;
     transform: translateX(-50%);
+    max-width: 500em;
 }
 
+.form-control {
+    display: flex;
+    align-items: flex-end;
+}
+
+
+.membership-label {
+    display: flex;
+    align-content: flex-start;
+    margin-bottom: 10px;
+    width: 34em;
+}
+
+.score-label {
+    display: flex;
+    align-content: flex-start;
+    margin-bottom: 10px;
+    width: 34em;
+}
 .membership-rule-form {
     display: flex;
     align-items: flex-end;
@@ -54,5 +87,5 @@
 
 .score-rule-form {
     display: flex;
-    align-items: flex-end;
+    align-content: flex-end;
 }

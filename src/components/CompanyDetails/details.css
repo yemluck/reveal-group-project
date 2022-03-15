@@ -17,3 +17,8 @@
     top: 150px;
     left: 50px;
 }
+
+.company-details {
+    background: linear-gradient(#f7f7e0, #f6ded7);
+    height: 200% !important;
+}

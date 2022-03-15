@@ -122,3 +122,8 @@ input {
 .company-details-subheader {
     color:black;
 }
+
+.about-container{
+    max-width: 700px;
+    margin: 0 auto;
+}

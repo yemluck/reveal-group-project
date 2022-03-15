@@ -33,12 +33,15 @@ function Survey() {
                   {value: 6}, {value: 7}, {value: 8}, {value: 9},
                 { value: 10, label: 10}]
   return (
-    <div className="container">
+    <div className="container survey-box">
       <center>
       <div>
-        {/* <h2>Survey</h2> */}
+        <h1 className="heading">Survey</h1>
+        <p>The values entered in below allow you to fine-tune which metrics are most important to you. 
+        The relative weights of your survey numbers directly affect the "weighted score" value that is found on the detailed page for each company.</p>
       </div>
-      <br></br>
+
+      <br />
       <form onSubmit={savePreference}>
         <div>
           <label htmlFor='transparency' style={{marginRight: 30}}>

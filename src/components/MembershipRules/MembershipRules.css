@@ -5,7 +5,9 @@
     grid-row-start: 4;
     grid-row-end: 7;
     height: 600px;
-    overflow: scroll;
+    padding-bottom: 2rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
     width: 600px;
 }
 
@@ -14,6 +16,7 @@
 }
 
 .rulesTableTitle {
+    align-self: center;
     color: #f7f7e0;
 }
 

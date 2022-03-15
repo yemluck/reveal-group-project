@@ -43,6 +43,8 @@ const MembershipRules = () => {
     return(
         <div className="tableContainer mR1">
             {/* Membership Rules table */}
+            <div id="membership-rules-header">
+            </div>
             <table className="rulesTable">
                 <thead>
                     <h2 className="rulesTableTitle">
@@ -50,7 +52,7 @@ const MembershipRules = () => {
                     </h2>
                     <tr>
                         <th>
-                        Orgaization
+                        Organization
                         </th>
 
                         <th>

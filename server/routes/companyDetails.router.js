@@ -9,7 +9,8 @@ const router = express.Router();
 router.get('/:company', rejectUnauthenticated, (req, res) => {
     //console.log('in company details router GET');
     
-    console.log('this is req.params.company', req.params.company);
+    // edge case for oil companies
+
     if (req.params.company === 'Total S.A.') {
         req.params.company = 'TotalEnergies'
     }
@@ -23,7 +24,6 @@ router.get('/:company', rejectUnauthenticated, (req, res) => {
     https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&exchars=1200&titles=${query}&explaintext=true
     `)
     .then(wikiDescription => {
-       // console.log('result:', wikiDescription.data.query.pages);
         res.status(200).send(wikiDescription.data.query.pages)
     })
     .catch(err => {
@@ -34,16 +34,16 @@ router.get('/:company', rejectUnauthenticated, (req, res) => {
 }) // end GET endpoint
 
 router.get('/data/:company', rejectUnauthenticated, (req,res) => {
+    
+    // edge case
+    if (req.params.company === 'Total S.A.') {
+        req.params.company = 'Total_S_A'
+    }
+
     let query1 = encodeURI(req.params.company);
     // Sometimes query ends with "." which breaks url
     // steps: split query into individual character
     let query2 = query1.split('');
-    // check if there are "." characters. If so, remove them
-    // if (query2[query2.length - 1] === '.'){
-    //     query2.pop()
-    // }
-    // // join array to form a string
-    // const query = query2.join('');
 
     // // check if there are "." characters. If so, remove them
     let query3 = query2.filter(char => char !== '.')

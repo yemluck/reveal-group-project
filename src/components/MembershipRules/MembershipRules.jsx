@@ -41,7 +41,7 @@ const MembershipRules = () => {
 
     // render to DOM
     return(
-        <div className="tableContainer">
+        <div className="tableContainer mR1">
             {/* Membership Rules table */}
             <table className="rulesTable">
                 <thead>

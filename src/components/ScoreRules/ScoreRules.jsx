@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import useReduxStore from '../../hooks/useReduxStore';
 
+import './ScoreRules.css';
+
 const ScoreRules = () => {
     const dispatch = useDispatch();
 
@@ -23,7 +25,7 @@ const ScoreRules = () => {
 
     // render to DOM
     return(
-        <div className="tableContainer">
+        <div className="tableContainer sR1">
             {/* Score Rules table */}
             <table className="rulesTable">
                 <thead>

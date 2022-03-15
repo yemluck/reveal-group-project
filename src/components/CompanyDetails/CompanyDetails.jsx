@@ -195,7 +195,7 @@ function CompanyDetails() {
             <div id="metrics-container">
               <div id="transparency-breakdown" className="rating-item">
                 <p aria-describedby={id} onClick={handleClick}>
-                  Transparency⬇️
+                  Transparency⬇
                 </p>
                 <p>
                   {/* {totalScore.transparencyScore} / {totalScore.transparencyTotal}:  */}
@@ -219,14 +219,14 @@ function CompanyDetails() {
                   }}
                 >
                   {
-                    transparencyRule.map(tRule => <p>{tRule.metric}</p>)
+                    transparencyRule.map((tRule, i) => <p key={i}>{tRule.metric}</p>)
                   }
                 </Popover>
               </div>
 
               <div id="environment-breakdown" className="rating-item">
                 <p aria-describedby={id2} onClick={handleClick2}>
-                  Environment:
+                  Environment⬇
                 </p>
                 <p>
                   {/* {totalScore.environmentScore} / {totalScore.environmentTotal}:  */}
@@ -250,14 +250,14 @@ function CompanyDetails() {
                   }}
                 >
                   {
-                    environmentRule.map(eRule => <p>{eRule.metric}</p>)
+                    environmentRule.map((eRule, i) => <p key={i}>{eRule.metric}</p>)
                   }
                 </Popover>
               </div>
 
               <div id="human-rights-breakdown" className="rating-item">
                 <p aria-describedby={id3} onClick={handleClick3}>
-                  Human Rights:
+                  Human Rights⬇
                 </p>
                 <p>
                   {/* {totalScore.humanRightsScore} / {totalScore.humanRightsTotal}:  */}
@@ -281,7 +281,7 @@ function CompanyDetails() {
                   }}
                 >
                   {
-                    humanRightsRule.map(hRule => <p>{hRule.metric}</p>)
+                    humanRightsRule.map((hRule, i) => <p key={i}>{hRule.metric}</p>)
                   }
                 </Popover>
               </div>

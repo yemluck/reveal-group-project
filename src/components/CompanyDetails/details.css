@@ -1,0 +1,24 @@
+#metrics-container {
+    display: flex;
+    justify-content:space-around;
+    padding-bottom: 400px;
+}
+.company-details-subheader,
+#company-name{
+    align-items: center;
+    text-align: center;
+    display: block;
+}
+#wiki-excerpt{
+    padding:50px;
+}
+#back-btn{
+    position: relative;
+    top: 150px;
+    left: 50px;
+}
+
+.company-details {
+    background: linear-gradient(#f7f7e0, #f6ded7);
+    height: 200% !important;
+}

@@ -7,7 +7,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 });
 
 router.post('/membership', rejectUnauthenticated, (req, res) => {
-    console.log('In rule router POST', req.body);
+    // console.log('In membership rule router POST', req.body);
     let queryText = '';
     if(req.user.auth_level === 1) {
     queryText = `
@@ -23,13 +23,13 @@ router.post('/membership', rejectUnauthenticated, (req, res) => {
         res.sendStatus(201);
     })
     .catch((err) => {
-        console.log('Rule POST error', err);
+        console.error('Rule POST error', err);
         res.sendStatus(500);
     });
 });
 
 router.post('/score', rejectUnauthenticated, (req, res) => {
-    console.log('In rule router POST', req.body);
+    // console.log('In score rule router POST', req.body);
     let queryText = '';
     if(req.user.auth_level === 1) {
     queryText = `
@@ -44,19 +44,19 @@ router.post('/score', rejectUnauthenticated, (req, res) => {
         res.sendStatus(201);
     })
     .catch((err) => {
-        console.log('Rule POST error', err);
+        console.error('Rule POST error', err);
         res.sendStatus(500);
     });
 });
 
 // GET membership rules
 router.get('/membership', rejectUnauthenticated, (req, res) => {
-    console.log('in rule router GET membership');
+    // console.log('in rule router GET membership');
 
     let queryText = '';
 
     // only admins can GET membership rules
-    if (req.user.auth_level === 1) {
+    if (req.user.id) {
         // setup SQL command
         queryText = `
             SELECT * FROM "membership_rule";
@@ -66,7 +66,7 @@ router.get('/membership', rejectUnauthenticated, (req, res) => {
     // send SQL command to database
     pool.query(queryText)
         .then((results) => {
-            console.log('GET membership_rule', results.rows);
+            // console.log('GET membership_rule', results.rows);
             res.send(results.rows);
         })
         .catch((err) => {
@@ -77,12 +77,12 @@ router.get('/membership', rejectUnauthenticated, (req, res) => {
 
 // GET membership rules
 router.get('/score', rejectUnauthenticated, (req, res) => {
-    console.log('in rule router GET score');
+    // console.log('in rule router GET score');
 
     let queryText = '';
 
     // only admins can GET score rules
-    if (req.user.auth_level === 1) {
+    if (req.user.id) {
         // setup SQL command
         queryText = `
             SELECT * FROM "score_rule";
@@ -92,7 +92,7 @@ router.get('/score', rejectUnauthenticated, (req, res) => {
     // send SQL command to database
     pool.query(queryText)
         .then((results) => {
-            console.log('GET score_rule', results.rows);
+            // console.log('GET score_rule', results.rows);
             res.send(results.rows);
         })
         .catch((err) => {
@@ -101,25 +101,9 @@ router.get('/score', rejectUnauthenticated, (req, res) => {
         });
 }); // end GET membership rules
 
-// PUT membership rule
-// router.put('/membership/:id', rejectUnauthenticated, (req, res) => {
-//     console.log('in rule router PUT membership', id);
-
-//     let queryText = '';
-
-//     // only admins can GET score rules
-//     if (req.user.auth_level === 1) {
-//         // setup SQL command
-//         queryText = `
-//             UPDATE "membership_rule"
-
-//         `;
-//     }
-// }); // end PUT membership rules
-
 // DELETE membership rules
 router.delete('/membership/:id', rejectUnauthenticated, (req, res) => {
-    console.log('in rule router DELETE membership', req.params.id);
+    // console.log('in rule router DELETE membership', req.params.id);
 
     let queryText = '';
 
@@ -147,7 +131,7 @@ router.delete('/membership/:id', rejectUnauthenticated, (req, res) => {
 
 // DELETE score rules
 router.delete('/score/:id', rejectUnauthenticated, (req, res) => {
-    console.log('in rule router DELETE score', req.params.id);
+    // console.log('in rule router DELETE score', req.params.id);
 
     let queryText = '';
 

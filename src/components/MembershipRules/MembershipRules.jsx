@@ -2,19 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import useReduxStore from '../../hooks/useReduxStore';
 
+import './MembershipRules.css';
+
 const MembershipRules = () => {
-
-    // setup dispatch
-    const dispatch = useDispatch();
-
-    // on page load, GET membership rules
-    useEffect(() => {
-        dispatch({ type: 'FETCH_MEMBERSHIP_RULES' });
-    }, []);
 
     // gain access to global variables
     const store = useReduxStore();
-    console.log('membership rules', store.membershipRules);
+    // console.log('membership rules', store.membershipRules);
     // const mRules = store.membershipRules;
 
     // setup membershipRules as a local variable for editing
@@ -35,7 +29,7 @@ const MembershipRules = () => {
 
     // function called with delete button
     const deleteMembershipRule = (id) => {
-        console.log('in deleteMembershipRule', id);
+        // console.log('in deleteMembershipRule', id);
 
         // send id to rule saga for deleting
         dispatch({

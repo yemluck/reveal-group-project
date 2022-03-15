@@ -12,13 +12,6 @@ function Nav() {
   return (
     <div className="nav">
       <div>
-        {/* If no user is logged in, show these links */}
-        {!user.id && (
-          // If there's no user, show login/registration links
-          <Link className="navLink" to="/login">
-            Login / Register
-          </Link>
-        )}
 
         {/* If a user is logged in, show these links */}
         {user.id && (
@@ -40,7 +33,7 @@ function Nav() {
         {/* If an admin is logged in, show these links */}
         {user.auth_level == 1 && (
           <>
-            <Link className="navLink" to="/users">
+            <Link className="navLink" to="/admin/users">
               Users
             </Link>
 
@@ -48,7 +41,7 @@ function Nav() {
               Add Rules
             </Link>
 
-            <Link className="navLink" to="/messages">
+            <Link className="navLink" to="/admin/messages">
               Messages
             </Link>
           </>
@@ -63,6 +56,15 @@ function Nav() {
           <LogOutButton className="navLink" />
           </>
         )}
+
+        {/* If no user is logged in, show these links */}
+        {!user.id && (
+          // If there's no user, show login/registration links
+          <Link className="navLink" to="/login">
+            Login / Register
+          </Link>
+        )}
+
       </div>
     </div>
   );

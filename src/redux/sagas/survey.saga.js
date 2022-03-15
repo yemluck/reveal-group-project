@@ -3,9 +3,9 @@ import axios from 'axios';
 
 // worker saga: will be fired on "CREATE_PREFERENCE"
 function* createPreference(action) {
-    console.log('in createPreference saga');
+    // console.log('in createPreference saga');
     // check payload
-    console.log('preference saga payload', action.payload);
+    // console.log('preference saga payload', action.payload);
 
     try{
         yield axios.post('/api/survey', action.payload);
@@ -17,7 +17,7 @@ function* createPreference(action) {
         // to avoid using useState to set default value
 
     } catch (error) {
-        console.log('Error creating preferences', error);
+        console.error('Error creating preferences', error);
     }
 } // end function createPreference
 
@@ -30,12 +30,12 @@ function* fetchPreference(action) {
             environmental: preference.data.array_agg[1],
             humanRights: preference.data.array_agg[2]
         }
-        console.log('this is payload for put', preferenceObj);
+        // console.log('this is payload for put', preferenceObj);
         
         yield put({type: 'SET_PREFERENCE', payload: preferenceObj})
         
     } catch (error){
-        console.log('Error fetching preference', error);
+        console.error('Error fetching preference', error);
     }
 } // end function fetch preference
 
@@ -43,7 +43,7 @@ function* savePreference(action) {
     try {
         yield axios.put('api/survey', action.payload);
     } catch (err) {
-        console.log('Error editing preference', err);
+        console.error('Error editing preference', err);
         
     }
 
@@ -58,4 +58,4 @@ function* surveySaga() {
 
 }
 
-export default surveySaga
+export default surveySaga;

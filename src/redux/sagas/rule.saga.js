@@ -3,35 +3,35 @@ import { put, takeEvery } from 'redux-saga/effects';
 
 // worker Saga: will be fired on "ADD_MEMBERSHIP_RULE" action
 function* addMembershipRule(action) {
-    console.log('In addMembershipRule');
+    // console.log('In addMembershipRule');
     try {
         yield axios.post('/api/rules/membership', action.payload);
         yield put({
-            type: 'FETCH_RULES'
+            type: 'FETCH_MEMBERSHIP_RULES'
         });
     }
     catch (err) {
-        console.log('Error in addMembershipRule', err);
+        console.error('Error in addMembershipRule', err);
     }
 }
 
 // worker Saga: will be fired on "ADD_SCORE_RULE" action
 function* addScoreRule(action) {
-    console.log('In addScoreRule');
+    // console.log('In addScoreRule');
     try {
         yield axios.post('/api/rules/score', action.payload);
         yield put({
-            type:   'FETCH_RULES'
+            type:   'FETCH_SCORE_RULES'
         });
     }
     catch (err) {
-        console.log('Error in addScoreRule', err);
+        console.error('Error in addScoreRule', err);
     };
 }
 
 // worker Saga: will be fired on "FETCH_MEMBERSHIP_RULES" action
 function* fetchMembershipRules() {
-    console.log('in fetchMembershipRules saga');
+    // console.log('in fetchMembershipRules saga');
 
     // passport security
     try {
@@ -50,13 +50,13 @@ function* fetchMembershipRules() {
         });
 
         } catch (error) {
-            console.log('rule saga POST failed', error);
+            console.error('rule saga POST failed', error);
     };
 }
 
 // worker Saga: will be fired on "FETCH_SCORE_RULES" action
 function* fetchScoreRules() {
-    console.log('in fetchScoreRules saga');
+    // console.log('in fetchScoreRules saga');
 
     // passport security
     try {
@@ -75,13 +75,13 @@ function* fetchScoreRules() {
         });
         
         } catch (error) {
-            console.log('rule saga POST failed', error);
+            console.error('rule saga POST failed', error);
     };
 }
 
 // worker Saga: will be fired on "DELETE_MEMBERSHIP_RULE" action
 function* deleteMembershipRule(action) {
-    console.log('in deleteMembershipRule sage', action.payload);
+    // console.log('in deleteMembershipRule sage', action.payload);
     const id = action.payload;
 
     // passport security
@@ -97,13 +97,13 @@ function* deleteMembershipRule(action) {
         yield put({ type: 'FETCH_MEMBERSHIP_RULES' });
         
         } catch (error) {
-            console.log('message saga POST failed', error);
+            console.error('message saga POST failed', error);
     };
 }
 
 // worker Saga: will be fired on "DELETE_SCORE_RULE" action
 function* deleteScoreRule(action) {
-    console.log('in deleteScoreRule sage', action.payload);
+    // console.log('in deleteScoreRule sage', action.payload);
     const id = action.payload;
 
     // passport security
@@ -119,13 +119,13 @@ function* deleteScoreRule(action) {
         yield put({ type: 'FETCH_SCORE_RULES' });
         
         } catch (error) {
-            console.log('message saga POST failed', error);
+            console.error('message saga POST failed', error);
     };
 }
 
 // watch for functions
 function* ruleSaga() {
-    console.log('ruleSaga');
+    // console.log('ruleSaga');
     yield takeEvery('ADD_MEMBERSHIP_RULE', addMembershipRule);
 
     yield takeEvery( 'ADD_SCORE_RULE', addScoreRule );

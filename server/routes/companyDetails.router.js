@@ -21,7 +21,7 @@ router.get('/:company', rejectUnauthenticated, (req, res) => {
         res.status(200).send(wikiDescription.data.query.pages)
     })
     .catch(err => {
-        console.log('Error fetching company details', err);
+        console.error('Error fetching company details', err);
         res.status(500).send(err);
     })
     
@@ -42,7 +42,7 @@ router.get('/data/:company', rejectUnauthenticated, (req,res) => {
     // get company data
     // insert encoded and fixed query into third party API
     axios.get(`
-    https://wikirate.org/${query}+Answer.json?filter%5Bmetric_name%5D=
+    https://wikirate.org/${query}+Answer.json?filter%5Bmetric_name%5D=&limit=500
     `)
     .then(wikiData => {
       // console.log('data result:', wikiData.data);
@@ -50,7 +50,7 @@ router.get('/data/:company', rejectUnauthenticated, (req,res) => {
       res.status(200).send(wikiData.data);
     })
     .catch( err => {
-        console.log('Error fetching data from wikiRate', err);
+        console.error('Error fetching data from wikiRate', err);
         res.status(500).send(err)
     })
 }) // end GET company data

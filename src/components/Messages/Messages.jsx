@@ -20,11 +20,11 @@ function Messages() {
     // gain access to global variables
     const store = useReduxStore();// useSelector (store =>)
     const message = store.messages;
-    console.log('user messages', message);
+    // console.log('user messages', message);
 
     // function called with delete button
     const deleteMessage = (id) => {
-        console.log('in deleteMessage', id);
+        // console.log('in deleteMessage', id);
     
         // watch for message saga
         dispatch({

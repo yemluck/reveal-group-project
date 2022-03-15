@@ -4,6 +4,7 @@ import {
   Redirect,
   Route,
   Switch,
+  Link,
 } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,7 +17,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import Header from '../Header/Header';
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
-import LandingPage from '../LandingPage/LandingPage';
+// import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import Survey from '../Survey/Survey';
@@ -36,6 +37,10 @@ function App() {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
+
+    dispatch({ type: 'FETCH_MEMBERSHIP_RULES' });
+
+    dispatch({ type: 'FETCH_SCORE_RULES' });
   }, [dispatch]);
 
   return (
@@ -44,11 +49,11 @@ function App() {
         <Header />
         <Nav />
         <Switch>
-          {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
+          {/* Visiting / or /home will redirect to /companies */}
           <Redirect exact from="/" to="/companies" />
           <Redirect exact from="/home" to="/companies" />
 
-          {/* Visiting localhost:3000/about will show the about page. */}
+          {/* Visiting /about will show the about page. */}
           <Route
             // shows AboutPage at all times (logged in or not)
             exact
@@ -58,9 +63,9 @@ function App() {
           </Route>
 
           {/* For protected routes, the view could show one of several things on the same route.
-            Visiting localhost:3000/user will show the UserPage if the user is logged in.
+            Visiting /user will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
-            Even though it seems like they are different pages, the user is always on localhost:3000/user */}
+            Even though it seems like they are different pages, the user is always on /user */}
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
@@ -88,41 +93,57 @@ function App() {
           <ProtectedRoute
             // logged in shows companyDetails page else shows LoginPage
             exact
-            path="/companies/details/:name"
+            path="/companies/details/:name/:wikiName"
           >
             <CompanyDetails />
           </ProtectedRoute>
 
-          <Route
-            // logged in shows ContactUs page else shows LoginPage
+          <ProtectedRoute
+            // logged in shows ContactUs page
             exact
             path="/contactUs"
           >
             <ContactUs />
-          </Route>
+          </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows admin Users page else shows LoginPage
             exact
             path="/admin/users"
           >
-            <Users />
+            {(user.auth_level >= 1) ?
+              // admin shows User Info page
+              <Users />
+              :
+              // Otherwise, redirect to the Companies page
+              <Redirect to="/companies" />
+            }
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows admin AddRule page else shows LoginPage
             exact
             path="/admin/addRule"
           >
-            <AddRules />
+            {(user.auth_level >= 1) ?
+              // admin shows AddRules page
+              <AddRules />
+              :
+              // Otherwise, redirect to the Companies page
+              <Redirect to="/companies" />
+            }
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows admin messages else shows LoginPage
             exact
             path="/admin/messages"
           >
-            <Messages />
+            {(user.auth_level >= 1) ?
+              // admin shows Messages page
+              <Messages />
+              :
+              // Otherwise, redirect to the Companies page
+              <Redirect to="/companies" />
+            }
+
           </ProtectedRoute>
 
           <Route
@@ -131,21 +152,12 @@ function App() {
           >
             {user.id ?
               // If the user is already logged in, 
-              // redirect to the /user page
-              <Redirect to="/user" />
+              // redirect to /companies page
+              <Redirect to="/companies" />
               :
               // Otherwise, show the login page
               <LoginPage />
             }
-
-            {/* {(user.id && user.auth_level === 1) ?
-              // If the user is already logged in, 
-              // redirect to the /user page
-              <Redirect to="/users" />
-              :
-              // Otherwise, show the login page
-              <LoginPage />
-            } */}
           </Route>
 
           <Route
@@ -155,115 +167,19 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect them to the /about page
-              <Redirect to="/about" />
+              <Redirect to="/companies" />
               :
               // Otherwise, show the registration page
               <RegisterPage />
             }
           </Route>
 
-          <Route
-            exact
-            path="/survey"
-          >
-            {user.id ?
-              // If the user is already logged in, 
-              // show the /survey page
-              <Redirect to="/survey" />
-              :
-              // Otherwise, show the login page
-              <LoginPage />
-            }
-          </Route>
-
-          <Route
-            exact
-            path="/companies"
-          >
-            {user.id ?
-              // If the user is already logged in, 
-              // redirect them to the /companies page
-              <Redirect to="/companies" />
-              :
-              // Otherwise, show the Landing page
-              <LandingPage />
-            }
-          </Route>
-
-          <Route
-            exact
-            path="/companies"
-          >
-            {user.id ?
-              // If the user is already logged in, 
-              // redirect them to the /companies/:id page
-              <Redirect to="/companies/:id" />
-              :
-              // Otherwise, show the Landing page
-              <LandingPage />
-            }
-          </Route>
-
-          <Route
-            exact
-            path="/contact"
-          >
-            {user.id ?
-              // If the user is already logged in, 
-              // redirect them to the /contactUs page
-              <Redirect to="/contactUs" />
-              :
-              // Otherwise, show the Landing page
-              <LandingPage />
-            }
-          </Route>
-
-          <Route
-            exact
-            path="/users"
-          >
-            {(user.id && user.auth_level === 1) ?
-              // If the user is already logged in, 
-              // redirect them to the /admin/users page
-              <Redirect to="/admin/users" />
-              :
-              // Otherwise, show the Landing page
-              <LandingPage />
-            }
-          </Route>
-
-          <Route
-            exact
-            path="/addRule"
-          >
-            {(user.id && user.auth_level === 1) ?
-              // If the user is already logged in, 
-              // redirect them to the /admin/users page
-              <Redirect to="/admin/addRule" />
-              :
-              // Otherwise, show the Landing page
-              <LandingPage />
-            }
-          </Route>
-
-          <Route
-            exact
-            path="/messages"
-          >
-            {(user.id && user.auth_level == 1) ? 
-              // If the admin is already logged in, 
-              // redirect them to the /admin/messages page
-              <Redirect to="/admin/messages" />
-              :
-              // Otherwise, show the Landing page
-              <LandingPage />
-            }
-          </Route>
-
           {/* If none of the other routes matched, we will show a 404. */}
 
           <Route>
-            <h1>404</h1>
+            <h1>404 Error</h1>
+            <h4> Page not found</h4>
+            <Link to='/'><p>Click here to go back to the main page</p></Link>
           </Route>
         </Switch>
         <Footer />

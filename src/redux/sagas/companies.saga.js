@@ -2,14 +2,14 @@ import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
 function* fetchCompanies(action) {
-    console.log('in fetchCompanies')
+    // console.log('in fetchCompanies')
 
     try {
         // console.log(action.payload + ":")
         const search = encodeURI(action.payload)
         const results = yield axios.get(`/api/companies/${search}`);
         // console.log(results.data);
-        console.log(results.data)
+        // console.log(results.data)
         if (results.data.length === 0) {
             yield put({
                 type: 'NO_RESULTS_RETURNED'

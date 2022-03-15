@@ -9,7 +9,13 @@ const router = express.Router();
 router.get('/:company', rejectUnauthenticated, (req, res) => {
     //console.log('in company details router GET');
     
+    console.log('this is req.params.company', req.params.company);
+    if (req.params.company === 'Total S.A.') {
+        req.params.company = 'TotalEnergies'
+    }
+    
     const query = encodeURI(req.params.company)
+
     
 
     // get company details

@@ -25,6 +25,7 @@ const Users = () => {
         });
     }
 
+    // automatically fetch data on page load
     useEffect(() => {
         fetchUserPreferences();
         fetchUserEmails();
@@ -33,7 +34,6 @@ const Users = () => {
     // render to DOM
     return(
         <>
-        {/* {console.log(userPreferences)} */}
         <div>
             <h2>User Details, Admin View</h2>
         </div>

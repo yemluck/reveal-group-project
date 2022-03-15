@@ -34,6 +34,7 @@ function* fetchUserEmails() {
     };
 }
 
+// direct all dispatch calls to their respective functions
 function* userData() {
     console.log('In userData');
     yield takeEvery('FETCH_USER_PREFERENCES', fetchUserPreferences);

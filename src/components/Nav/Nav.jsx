@@ -33,7 +33,7 @@ function Nav() {
         {/* If an admin is logged in, show these links */}
         {user.auth_level == 1 && (
           <>
-            <Link className="navLink" to="/users">
+            <Link className="navLink" to="/admin/users">
               Users
             </Link>
 
@@ -41,7 +41,7 @@ function Nav() {
               Add Rules
             </Link>
 
-            <Link className="navLink" to="/messages">
+            <Link className="navLink" to="/admin/messages">
               Messages
             </Link>
           </>

@@ -5,7 +5,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* createMessage(action) {
     // console.log('in createMessage saga');
     // check payload
-    // console.log('massages saga payload', action.payload);
+    console.log('massages saga payload', action.payload);
 
     // setup action payload to be sent
     const userMessage = action.payload;

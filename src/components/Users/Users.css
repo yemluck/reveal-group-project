@@ -14,11 +14,11 @@ table {
     align-content: center;
     justify-content: space-between;
     text-align: center;
-    padding: 50vh;
+    padding: 10px;
 }
 
 #total-users {
-    background-color: white;
+    background-color: #f6ded7;
     color: black;
     font-size: larger;
     font-weight: bold;
@@ -26,5 +26,5 @@ table {
 
 .users-table-header {
     align-items: center;
-    color: white;
+    color: #f7f7e0;
 }

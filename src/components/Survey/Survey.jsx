@@ -24,15 +24,19 @@ function Survey() {
       payload: preference
     })
     // will push to user page after dispatch
-    history.push('/user')
+    history.push('/companies')
   } // end function savePreference
 
-
+  const marks = [{ value: 1, label: 1},
+                  {value: 2}, {value: 3}, {value: 4},
+                  { value: 5, label: 5},
+                  {value: 6}, {value: 7}, {value: 8}, {value: 9},
+                { value: 10, label: 10}]
   return (
     <div className="container">
       <center>
       <div>
-        <h2>Survey</h2>
+        {/* <h2>Survey</h2> */}
       </div>
       <br></br>
       <form onSubmit={savePreference}>
@@ -45,6 +49,8 @@ function Survey() {
               min={1}
               max={10}
               step={1}
+              marks={marks}
+              valueLabelDisplay="auto"
               value={preference.transparency}
               onChange={(event) => dispatch({
                 type: 'UPDATE_ACTIVE_SURVEY',
@@ -52,24 +58,29 @@ function Survey() {
               })}
             />
             
-        </div>        
+        </div>  
+        <br></br>      
         <div>
           <label htmlFor='environmental' style={{marginRight: 30}}>
             Environmental 
           </label>
           <br></br>
-          <Slider sx={{ width: 300, marginLeft: "5px", color: "#6d2978" }}
+          <Slider sx={{ width: 300, marginLeft: "5px", color: "#6d2978"}}
               value={preference.environmental}
               min={1}
               max={10}
               step={1}
+              marks={marks}
+              aria-label="Always visible"
+              valueLabelDisplay="auto"
               onChange={(event) => dispatch({
               type: 'UPDATE_ACTIVE_SURVEY',
               payload: { environmental: event.target.value }
             })}
             />
            
-        </div>        
+        </div>   
+        <br></br>     
         <div>
           <label htmlFor='humanRights' style={{marginRight: 30}}>
             Human Rights 
@@ -79,6 +90,8 @@ function Survey() {
               min={1}
               max={10}
               step={1}
+              marks={marks}
+              valueLabelDisplay="auto"
             onChange={(event) => dispatch({
               type: 'UPDATE_ACTIVE_SURVEY',
               payload: { humanRights: event.target.value }
@@ -86,6 +99,7 @@ function Survey() {
             />
            
         </div>
+        <br></br>
         <div>
           <input className="btn" type="submit" name="save" value="save" />
         </div>

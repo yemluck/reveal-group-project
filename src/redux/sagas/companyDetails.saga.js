@@ -52,4 +52,4 @@ function* companyDetailsSaga() {
 
 }
 
-export default companyDetailsSaga
+export default companyDetailsSaga;

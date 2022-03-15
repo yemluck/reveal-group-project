@@ -21,7 +21,7 @@ router.get('/:company', rejectUnauthenticated, (req, res) => {
         res.status(200).send(wikiDescription.data.query.pages)
     })
     .catch(err => {
-        console.log('Error fetching company details', err);
+        console.error('Error fetching company details', err);
         res.status(500).send(err);
     })
     
@@ -50,7 +50,7 @@ router.get('/data/:company', rejectUnauthenticated, (req,res) => {
       res.status(200).send(wikiData.data);
     })
     .catch( err => {
-        console.log('Error fetching data from wikiRate', err);
+        console.error('Error fetching data from wikiRate', err);
         res.status(500).send(err)
     })
 }) // end GET company data

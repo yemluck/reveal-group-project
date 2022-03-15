@@ -7,6 +7,7 @@ import './details.css'
 import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 import LinearProgress from '@mui/material/LinearProgress';
+import Popover from '@mui/material/Popover';
 
 
 function CompanyDetails() {
@@ -25,6 +26,55 @@ function CompanyDetails() {
   const membershipRules = useSelector(store => store.membershipRules);
   const scoreRules = useSelector(store => store.scoreRules);
 
+  // rules breakdown
+  let transparencyRule = [];
+  let environmentRule = [];
+  let humanRightsRule = [];
+  //rules logic
+  for (let rule of scoreRules){
+    if (rule.value_id === 1){
+      transparencyRule.push(rule);
+    }
+    if (rule.value_id === 2){
+      environmentRule.push(rule);
+    }
+    if (rule.value_id === 3){
+      humanRightsRule.push(rule);
+    }
+  }
+
+  // Popover
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorEl2, setAnchorEl2] = useState(null);
+  const [anchorEl3, setAnchorEl3] = useState(null);
+
+  // handle click functions for popover
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClick2 = (event2) => {
+    setAnchorEl2(event2.currentTarget);
+  }
+
+  const handleClick3 = (event3) => {
+    setAnchorEl3(event3.currentTarget);
+  }
+
+  const handleClose = () => {
+    setAnchorEl(null);
+    setAnchorEl2(null);
+    setAnchorEl3(null);
+  }; 
+
+
+  const open = Boolean(anchorEl);
+  const open2 = Boolean(anchorEl2);
+  const open3 = Boolean(anchorEl3);
+  const id = open ? 'simple-popover' : undefined;
+  const id2 = open2 ? 'simple-popover' : undefined;
+  const id3 = open3 ? 'simple-popover' : undefined;
+  // end popover
 
   const keys = Object.keys(details);
   //   console.log('details keys:',keys[0]);
@@ -144,8 +194,8 @@ function CompanyDetails() {
           <>
             <div id="metrics-container">
               <div id="transparency-breakdown" className="rating-item">
-                <p>
-                  Transparency:
+                <p aria-describedby={id} onClick={handleClick}>
+                  Transparency⬇️
                 </p>
                 <p>
                   {/* {totalScore.transparencyScore} / {totalScore.transparencyTotal}:  */}
@@ -158,10 +208,24 @@ function CompanyDetails() {
                   />
                   {Math.ceil(totalScore.transparencyScore / totalScore.transparencyTotal * 100)}%
                 </p>
+                <Popover
+                  id={id}
+                  open={open}
+                  anchorEl={anchorEl}
+                  onClose={handleClose}
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'left',
+                  }}
+                >
+                  {
+                    transparencyRule.map(tRule => <p>{tRule.metric}</p>)
+                  }
+                </Popover>
               </div>
 
               <div id="environment-breakdown" className="rating-item">
-                <p>
+                <p aria-describedby={id2} onClick={handleClick2}>
                   Environment:
                 </p>
                 <p>
@@ -175,10 +239,24 @@ function CompanyDetails() {
                   />
                   {Math.ceil(totalScore.environmentScore / totalScore.environmentTotal * 100)}%
                 </p>
+                <Popover
+                  id={id2}
+                  open={open2}
+                  anchorEl={anchorEl2}
+                  onClose={handleClose}
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'left',
+                  }}
+                >
+                  {
+                    environmentRule.map(eRule => <p>{eRule.metric}</p>)
+                  }
+                </Popover>
               </div>
 
               <div id="human-rights-breakdown" className="rating-item">
-                <p>
+                <p aria-describedby={id3} onClick={handleClick3}>
                   Human Rights:
                 </p>
                 <p>
@@ -192,6 +270,20 @@ function CompanyDetails() {
                   />
                   {Math.ceil(totalScore.humanRightsScore / totalScore.humanRightsTotal * 100)}%
                 </p>
+                <Popover
+                  id={id3}
+                  open={open3}
+                  anchorEl={anchorEl3}
+                  onClose={handleClose}
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'left',
+                  }}
+                >
+                  {
+                    humanRightsRule.map(hRule => <p>{hRule.metric}</p>)
+                  }
+                </Popover>
               </div>
 
             </div>

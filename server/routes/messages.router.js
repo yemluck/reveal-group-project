@@ -43,12 +43,12 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 router.post('/', rejectUnauthenticated, (req, res) => {
     // console.log('in messages router POST');
     // check variables to POST
-    // console.log('user id', req.user.id);
-    // console.log('message saga payload', req.body.userMessage);
+    console.log('user id', req.user.id);
+    console.log('message saga payload', req.body.userMessage);
 
     let queryText = '';
     // only users can POST
-    if (req.user.auth_level === 0) {
+    if (req.user.id) {
         // setup SQL command
         queryText = `
             INSERT INTO "comments"

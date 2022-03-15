@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import './ContactUs.css';
 
@@ -13,8 +13,9 @@ function ContactUs() {
   const [ name, setName ] = useState('');
   const [ message, setMessage ] = useState('');
 
-  // setup dispatch
+  // setup dispatch and history
   const dispatch = useDispatch();
+  const history = useHistory();
 
   // function called with submit button
   const handleMessage = (e) => {
@@ -33,6 +34,8 @@ function ContactUs() {
       type: 'CREATE_MESSAGE',
       payload: userMessage
     });
+
+    history.push('/companies');
   }
 
   // form for user's name and message
@@ -84,7 +87,6 @@ function ContactUs() {
           />
 
           {/* submit button for form */}
-          <Link to="/companies">
           <div className="cu7">
             <button
               type="submit"
@@ -94,7 +96,6 @@ function ContactUs() {
               Send
             </button>
           </div>
-          </Link>
 
         </form>
 

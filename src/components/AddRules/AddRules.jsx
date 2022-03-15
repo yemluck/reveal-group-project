@@ -73,11 +73,11 @@ function AddRules() {
 
   return (
     <div className="rules-form-container">
-      <div>
+      <div className="aR1">
         <h2>Add Rules</h2>
       </div>
       {/* {console.log(metricName)} */}
-      <section className="add-rule-form">
+      <section className="add-rule-form aR2">
         <form id="membership-rule" action="submit" onSubmit={(evt) => addMembershipRule(evt)} >
           <h3>Add Membership Rule</h3>
           <div className="membership-rule-form" >
@@ -133,10 +133,15 @@ function AddRules() {
               onChange={(evt) => setIndustryCategory(evt.target.value)}
             />
           </div>
-          <button type="submit" >Submit</button>
+          <button 
+            type="submit"
+            className="btn aR"
+          >
+            Submit
+          </button>
         </form>
       </section>
-      <section className="add-rule-form">
+      <section className="add-rule-form aR3">
         <form id="score-rule" action="submit" onSubmit={(evt) => addScoreRule(evt)} >
           <h3>Add Score Rule</h3>
           <div className="score-rule-form" >
@@ -213,7 +218,12 @@ function AddRules() {
               onChange={(evt) => setIndustryCategoryScore(evt.target.value)}
             />
           </div>
-          <button type="submit" >Submit</button>
+          <button 
+            type="submit"
+            className="btn aR"
+          >
+            Submit
+          </button>
         </form>
       </section>
 

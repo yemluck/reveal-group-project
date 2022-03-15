@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import useReduxStore from '../../hooks/useReduxStore';
 
 const ScoreRules = () => {
+    const dispatch = useDispatch();
 
     // gain access to global variables
     const store = useReduxStore();

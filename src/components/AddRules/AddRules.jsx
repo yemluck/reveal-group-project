@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import useReduxStore from '../../hooks/useReduxStore';
 
 import MembershipRules from '../MembershipRules/MembershipRules';
 import ScoreRules from '../ScoreRules/ScoreRules';

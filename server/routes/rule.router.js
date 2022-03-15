@@ -3,21 +3,22 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
-router.get('/', rejectUnauthenticated, (req, res) => {
-});
-
+// POST membership rule
 router.post('/membership', rejectUnauthenticated, (req, res) => {
     // console.log('In membership rule router POST', req.body);
     let queryText = '';
+    // only admins can POST membership rules
     if(req.user.auth_level === 1) {
-    queryText = `
-        INSERT INTO "membership_rule"
-            ("organization", "points", "industry", "value_id")
-        VALUES
-            ($1, $2, $3, $4)
-        ;`;
+        // setup SQL command
+        queryText = `
+            INSERT INTO "membership_rule"
+                ("organization", "points", "industry", "value_id")
+            VALUES
+                ($1, $2, $3, $4)
+            ;`;
     }
     const queryParams = [req.body.organization, req.body.points, req.body.industry, req.body.value];
+    // send SQL command to database
     pool.query(queryText, queryParams)
     .then(() => {
         res.sendStatus(201);
@@ -26,19 +27,24 @@ router.post('/membership', rejectUnauthenticated, (req, res) => {
         console.error('Rule POST error', err);
         res.sendStatus(500);
     });
-});
+});// end POST membership rule
 
+// POST score rule
 router.post('/score', rejectUnauthenticated, (req, res) => {
     // console.log('In score rule router POST', req.body);
     let queryText = '';
+    // only admins can POST membership rules
     if(req.user.auth_level === 1) {
-    queryText = `
-        INSERT INTO "score_rule"
-            ("metric", "result", "points", "industry", "value_id")
-        VALUES
-            ($1, $2, $3, $4, $5)
-        ;`;}
+        // setup SQL command
+        queryText = `
+            INSERT INTO "score_rule"
+                ("metric", "result", "points", "industry", "value_id")
+            VALUES
+                ($1, $2, $3, $4, $5)
+            ;`;
+    }
     const queryParams = [req.body.metric, req.body.result, req.body.points, req.body.industry, req.body.value_id];
+    // send SQL command to database
     pool.query(queryText, queryParams)
     .then(() => {
         res.sendStatus(201);
@@ -47,7 +53,7 @@ router.post('/score', rejectUnauthenticated, (req, res) => {
         console.error('Rule POST error', err);
         res.sendStatus(500);
     });
-});
+});// end POST score rule
 
 // GET membership rules
 router.get('/membership', rejectUnauthenticated, (req, res) => {

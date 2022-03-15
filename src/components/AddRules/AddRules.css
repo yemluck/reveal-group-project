@@ -48,7 +48,8 @@
 }
 
 .membership-rule-form {
-    display: list-item;
+    display: flex;
+    align-items: flex-end;
 }
 
 .score-rule-form {

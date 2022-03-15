@@ -15,7 +15,7 @@ function AddRules() {
   const [industryCategory, setIndustryCategory] = useState('');
   const [metricName, setMetricName] = useState('');
   const [minimumPointsNeeded, setMinimumPointsNeeded] = useState('');
-  // adding 'Score' to the end of the next two const names below to avoid 
+  // adding 'Score' to the end of the next three const names below to avoid 
   // collision with above names
   const [pointsEarnedScore, setPointsEarnedScore] = useState('');
   const [industryCategoryScore, setIndustryCategoryScore] = useState('');

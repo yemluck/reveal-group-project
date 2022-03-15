@@ -10,7 +10,7 @@ const Users = () => {
     // userPreferences will provide the averages of each 
     // of the total value-priorities across all users
     const fetchUserPreferences = () => {
-        console.log('In fetchUserPreferences');
+        // console.log('In fetchUserPreferences');
         dispatch({
             type: 'FETCH_USER_PREFERENCES'
         });
@@ -19,7 +19,7 @@ const Users = () => {
     // userEmails will provide both the list of email 
     // addresses and the total user count
     const fetchUserEmails = () => {
-        console.log('In fetchUserEmails');
+        // console.log('In fetchUserEmails');
         dispatch({
             type: 'FETCH_USER_EMAILS'
         });

@@ -27,10 +27,9 @@ function Companies() {
   })
 
   return (
-    <div className="container">
+    <div className="container companies-box">
       <div>
         <CompanySearch />
-        <p>Companies</p>
         <List />
       </div>
     </div>

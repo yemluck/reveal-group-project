@@ -19,6 +19,7 @@ metricsList: [
 */
 
 export default function score(rulesList, companyData) {
+    // console.log('scoring now...')
     let totalScore = {
         transparencyTotal: 0,
         transparencyScore: 0,
@@ -39,6 +40,10 @@ export default function score(rulesList, companyData) {
             if (rule.organization == metric.metric) {
                 if(rule.value_id === 1){
                     // Transparency
+                    // console.log('rule.organization');
+                    // console.log(rule.organization);
+                    // console.log('metric.metric');
+                    // console.log(metric.metric);
                     totalScore.transparencyScore += rule.points;
                     if (totalScore.transparencyScore < 0) {totalScore.transparencyScore = 0}
                 } else if (rule.value_id === 2) {
@@ -117,6 +122,6 @@ export default function score(rulesList, companyData) {
         }
     }
     totalScore.calculated = true;
-    // console.table(totalScore)
+    console.table(totalScore)
     return totalScore;
 }

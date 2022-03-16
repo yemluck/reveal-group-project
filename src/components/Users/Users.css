@@ -11,23 +11,75 @@ table {
 
 #collected-user-data {
     display: flex;
+    align-self: center;
     align-content: center;
     justify-content: space-between;
     text-align: center;
-    padding: 10px;
+    margin-bottom: 0%;
+    padding: 50px;
+    width: 460px;
+    overflow-y: scroll;
+}
+
+#email-list {
+    column-span: all;
+    width: inherit;
+    column-width: 100%;
 }
 
 #total-users {
-    background-color: #f6ded7;
-    color: black;
     font-size: larger;
     font-weight: bold;
 }
 
-.users-table-header {
-    align-items: center;
+.admin-table-view {
+    background-color: #6d2978;
+}
+
+.category-header {
+    display: table-cell;
+    text-align: center;
     color: #f7f7e0;
-    column-span: all;
+    font-size: large;
+    font-weight: bold;
+    height: 30px;
+    min-width: fit-content;
+    column-width: 200px;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.table-row {
+    display: table-row;
+    height: 50px;
+    vertical-align: middle;
+    width: 50px;
+    white-space: nowrap;
+}
+
+.table-cell {
+    display: inline-table;
+    column-width: 100%;
+    vertical-align: middle;
+}
+
+.table-data {
+    display: inline-table;
+    vertical-align: middle;
+    border: 2px solid #6d2978;
+    background-color: #f6ded7;
+    height: 30px;;
+    width: 100%;
+}
+
+.users-table-header {
+    display: table-row-group;
+    align-self: stretch;
+    color: #f7f7e0;
+    text-align: center;
     font-size: larger;
+    font-weight: bolder;
+    padding: 30px;
+    margin: 20px;
     white-space: nowrap;
 }

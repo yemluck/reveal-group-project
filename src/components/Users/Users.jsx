@@ -42,7 +42,7 @@ const Users = () => {
         <div id="collected-user-data">
             <table>
                 <thead>
-                    <tr><th ><h3 className="users-table-header"  >Average User Preferences</h3></th></tr>
+                    <tr><th className="users-table-header"  >Average User Preferences</th></tr>
                     <tr>
                         <th> Human Rights </th>
                         <th> Environment </th>
@@ -58,18 +58,24 @@ const Users = () => {
                             </td>)}
                     </tr>
                 </tbody>
-                <h3 className="users-table-header"  >Total Users</h3>
-                {/*read length of userEmails array to provide total user count*/}
-                <p id="total-users">{Number(userEmails.length)}</p>
+                <thead>
+                    <tr><th className="users-table-header"  >Total Users</th></tr>
+                </thead>
+                <tbody>
+                    {/*read length of userEmails array to provide total user count*/}
+                    <tr><td id="total-users">{Number(userEmails.length)}</td></tr>
+                </tbody>
                 <thead>
                     <tr>
-                        <th><h3 className="users-table-header" >User Emails</h3></th>
+                        <th className="users-table-header" >User Emails</th>
                     </tr>
                 </thead>
                 <tbody id="email-list">
                     {/*list all usernames (email addresses)*/}
                     {userEmails.map((email) => (
-                        <tr key={email.id}><td>{email.email_address}</td></tr>
+                        <tr key={email.id}>
+                            <td>{email.email_address}</td>
+                        </tr>
                     ))}
                 </tbody>
             </table>

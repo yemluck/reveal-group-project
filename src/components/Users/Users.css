@@ -27,4 +27,7 @@ table {
 .users-table-header {
     align-items: center;
     color: #f7f7e0;
+    column-span: all;
+    font-size: larger;
+    white-space: nowrap;
 }

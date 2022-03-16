@@ -19,6 +19,7 @@ metricsList: [
 */
 
 export default function score(rulesList, companyData) {
+    let count = 0;
     // console.log('scoring now...')
     let totalScore = {
         transparencyTotal: 0,
@@ -36,6 +37,7 @@ export default function score(rulesList, companyData) {
     for (const rule of rulesList.membershipRules) {
         // cycle through all metrics
         for (const metric of companyData) {
+            count++
             // check if rule name is the same as the metric name
             if (rule.organization == metric.metric) {
                 if(rule.value_id === 1){
@@ -84,6 +86,7 @@ export default function score(rulesList, companyData) {
     for (const rule of rulesList.scoreRules) {
         // cycle through all metrics
         for (const metric of companyData) {
+            count++
             // check if rule name is the same as the metric name
             if (rule.metric == metric.metric) {
                 if( Number(metric.value) > Number(rule.result) ){ 
@@ -122,6 +125,7 @@ export default function score(rulesList, companyData) {
         }
     }
     totalScore.calculated = true;
+    totalScore.count = count;
     console.table(totalScore)
     return totalScore;
 }

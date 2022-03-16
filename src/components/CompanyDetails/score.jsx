@@ -19,6 +19,7 @@ metricsList: [
 */
 
 export default function score(rulesList, companyData) {
+
     let count = 0;
     let skipRule = false;
     // console.log('scoring now...')
@@ -29,6 +30,10 @@ export default function score(rulesList, companyData) {
         humanRightsScore: 0,
         environmentTotal: 0,
         environmentScore: 0,
+    }
+
+    if (companyData.length < 2) {
+        return totalScore;
     }
     // console.log('in score')
     // cycle through __membership__ rules list

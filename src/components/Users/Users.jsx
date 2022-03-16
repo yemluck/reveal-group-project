@@ -43,9 +43,9 @@ const Users = () => {
             <section className="admin-table-view" >
                 <header>
                     <div className="users-table-header"  >
-                        <div className="category-header" ><h3>Average</h3></div>
-                        <div className="category-header" ><h3>User</h3></div>
-                        <div className="category-header" ><h3>Preferences</h3></div>
+                        <div className="category-header" ><h3>Average User Preferences</h3></div>
+                        {/* <div className="category-header" ><h3>User</h3></div> */}
+                        {/* <div className="category-header" ><h3>Preferences</h3></div> */}
                     </div>
                     <div className="table-row">
                         <div className="category-header" > Human Rights </div>

@@ -11,17 +11,17 @@ table {
 
 #collected-user-data {
     display: flex;
-    align-self: center;
     align-content: center;
-    justify-content: space-between;
     text-align: center;
     margin-bottom: 0%;
-    padding: 50px;
-    width: 460px;
+    padding-left: 160px;
+    padding-bottom: 50px;
+    width: 540px;
     overflow-y: scroll;
 }
 
 #email-list {
+    align-items: center;
     column-span: all;
     width: inherit;
     column-width: 100%;
@@ -39,19 +39,20 @@ table {
 .category-header {
     display: table-cell;
     text-align: center;
+    align-content: center;
     color: #f7f7e0;
     font-size: large;
     font-weight: bold;
     height: 30px;
-    min-width: fit-content;
     column-width: 200px;
     white-space: nowrap;
-    vertical-align: middle;
 }
 
 .table-row {
     display: table-row;
+    align-items: center;
     height: 50px;
+    padding-left: 20px;
     vertical-align: middle;
     width: 50px;
     white-space: nowrap;
@@ -59,27 +60,35 @@ table {
 
 .table-cell {
     display: inline-table;
+    align-content: center;
     column-width: 100%;
-    vertical-align: middle;
+    margin-left: 20px;
+    padding-left: 4px;
+    align-items: center;
 }
 
 .table-data {
     display: inline-table;
+    align-content: center;
+    text-align: center;
     vertical-align: middle;
     border: 2px solid #6d2978;
     background-color: #f6ded7;
+    margin-left: 10px;
+    padding-left: 4px;
     height: 30px;;
     width: 100%;
 }
 
 .users-table-header {
-    display: table-row-group;
-    align-self: stretch;
+    display: table-row;
     color: #f7f7e0;
     text-align: center;
+    align-content: center;
     font-size: larger;
     font-weight: bolder;
     padding: 30px;
+    padding-left: 10px;
     margin: 20px;
     white-space: nowrap;
 }

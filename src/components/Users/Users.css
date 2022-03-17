@@ -37,10 +37,11 @@ table {
 
 .category-header {
     color: #f6ded7;
-    display: table-cell;
+    display: inline-table;
     column-width: 100%;
     font-size: large;
     font-weight: bold;
+    margin: 26px;
     height: 20px;
     white-space: nowrap;
 }
@@ -75,9 +76,8 @@ table {
 }
 
 .users-table-header {
-    display: table-row-group;
+    display: table-row;
     color: #f7f7e0;
-    column-span: 3;
     text-align: center;
     font-size: larger;
     font-weight: bolder;

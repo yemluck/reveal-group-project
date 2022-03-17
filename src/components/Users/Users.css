@@ -11,12 +11,11 @@ table {
 
 #collected-user-data {
     display: flex;
-    align-content: center;
     text-align: center;
     margin-bottom: 0%;
     padding-left: 160px;
     padding-bottom: 50px;
-    width: 540px;
+    width: 600px;
     overflow-y: scroll;
 }
 
@@ -37,14 +36,12 @@ table {
 }
 
 .category-header {
+    color: #f6ded7;
     display: table-cell;
-    text-align: center;
-    align-content: center;
-    color: #f7f7e0;
+    column-width: 100%;
     font-size: large;
     font-weight: bold;
-    height: 30px;
-    column-width: 200px;
+    height: 20px;
     white-space: nowrap;
 }
 
@@ -52,9 +49,7 @@ table {
     display: table-row;
     align-items: center;
     height: 50px;
-    padding-left: 20px;
-    vertical-align: middle;
-    width: 50px;
+    padding-left: 4px;
     white-space: nowrap;
 }
 
@@ -63,7 +58,6 @@ table {
     align-content: center;
     column-width: 100%;
     margin-left: 20px;
-    padding-left: 4px;
     align-items: center;
 }
 
@@ -81,14 +75,12 @@ table {
 }
 
 .users-table-header {
-    display: table-row;
+    display: table-row-group;
     color: #f7f7e0;
+    column-span: 3;
     text-align: center;
-    align-content: center;
     font-size: larger;
     font-weight: bolder;
-    padding: 30px;
     padding-left: 10px;
     margin: 20px;
-    white-space: nowrap;
 }

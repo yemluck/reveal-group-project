@@ -5,7 +5,6 @@ import useReduxStore from '../../hooks/useReduxStore';
 import './MembershipRules.css';
 
 const MembershipRules = () => {
-
     // gain access to global variables
     const store = useReduxStore();
    
@@ -27,6 +26,8 @@ const MembershipRules = () => {
     return(
         <div className="tableContainer mR1">
             {/* Membership Rules table */}
+            <div id="membership-rules-header">
+            </div>
             <table className="rulesTable">
                 <thead>
                     <h2 className="rulesTableTitle">
@@ -34,7 +35,7 @@ const MembershipRules = () => {
                     </h2>
                     <tr>
                         <th>
-                        Orgaization
+                        Organization
                         </th>
 
                         <th>

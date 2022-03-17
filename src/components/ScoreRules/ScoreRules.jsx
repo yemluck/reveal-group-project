@@ -5,7 +5,6 @@ import useReduxStore from '../../hooks/useReduxStore';
 import './ScoreRules.css';
 
 const ScoreRules = () => {
-
     // gain access to global variables
     const store = useReduxStore();
     // console.log('membership rules', store.scoreRules);

@@ -5,6 +5,7 @@
     grid-row-end: 7;
     height: 600px;
     padding-bottom: 2rem;
-    overflow: scroll;
-    width: 700px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 600px;
 }

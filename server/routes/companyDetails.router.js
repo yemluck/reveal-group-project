@@ -52,8 +52,20 @@ router.get('/data/:company', rejectUnauthenticated, (req,res) => {
 
     // get company data
     // insert encoded and fixed query into third party API
+    
+    // if wikirate_api_key is not defined, then set limits back to 500
+    let limit = 500;
+    let apiKey = '';
+    let keylog = ''
+    if (process.env.WIKIRATE_API_KEY) {
+        limit = 5000;
+        apiKey = process.env.WIKIRATE_API_KEY
+        keylog= '&api_key=';
+
+    }
+
     axios.get(`
-    https://wikirate.org/${query}+Answer.json?filter%5Bmetric_name%5D=&limit=500
+    https://wikirate.org/${query}+Answer?filter%5Bmetric_name%5D=&limit=${limit}${keylog}${apiKey}&format=json
     `)
     .then(wikiData => {
       // console.log('data result:', wikiData.data);

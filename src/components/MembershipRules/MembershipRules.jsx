@@ -2,36 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import useReduxStore from '../../hooks/useReduxStore';
 
+import './MembershipRules.css';
+
 const MembershipRules = () => {
-
-    // setup dispatch
     const dispatch = useDispatch();
-
-    // on page load, GET membership rules
-    useEffect(() => {
-        dispatch({ type: 'FETCH_MEMBERSHIP_RULES' });
-    }, []);
 
     // gain access to global variables
     const store = useReduxStore();
-    // console.log('membership rules', store.membershipRules);
-    // const mRules = store.membershipRules;
-
-    // setup membershipRules as a local variable for editing
-    // const [ contacts, setContacts ] = useState(mRules);
-    // // check data
-    // console.log('contacts are:', contacts);
-
-    // function called with edit button
-    // const editMembershipRule = (id) => {
-    //     console.log('in editMembershipRule', id);
-
-    //     // watch for rule saga
-    //     dispatch({
-    //         type: 'EDIT_MEMBERSHIP_RULE',
-    //         payload: id
-    //     });
-    // }
+   
+    // setup dispatch
+    const dispatch = useDispatch();
 
     // function called with delete button
     const deleteMembershipRule = (id) => {
@@ -46,8 +26,10 @@ const MembershipRules = () => {
 
     // render to DOM
     return(
-        <div className="tableContainer">
+        <div className="tableContainer mR1">
             {/* Membership Rules table */}
+            <div id="membership-rules-header">
+            </div>
             <table className="rulesTable">
                 <thead>
                     <h2 className="rulesTableTitle">
@@ -55,7 +37,7 @@ const MembershipRules = () => {
                     </h2>
                     <tr>
                         <th>
-                        Orgaization
+                        Organization
                         </th>
 
                         <th>
@@ -77,19 +59,19 @@ const MembershipRules = () => {
                     {/* loop through membership rules */}
                 {store.membershipRules.map((rule, id) => (
                     <tr key={id}>
-                        <td>
+                        <td className="mR2">
                             {rule.organization}
                         </td>
 
-                        <td>
+                        <td className="mR2">
                             {rule.points}
                         </td>
 
-                        <td>
+                        <td className="mR3">
                             {rule.industry}
                         </td>
 
-                        <td>
+                        <td className="mR2">
                             {rule.value_id}
                         </td>
 

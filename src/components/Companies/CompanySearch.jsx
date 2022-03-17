@@ -15,7 +15,7 @@ function CompanySearch() {
     return (
         <form onSubmit={(evt) => handleSubmit(evt)}>
             <label htmlFor="search-input">Search for a company: </label>
-            <input id="search-input" type="text" value={searchInput} onChange={(evt) => setSearchInput(evt.target.value)} />
+            <input id="search-input" type="text"  size={50} value={searchInput} onChange={(evt) => setSearchInput(evt.target.value)} />
             <input type="submit" />
         </form>
     )

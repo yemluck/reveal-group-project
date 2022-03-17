@@ -1,0 +1,30 @@
+h2 {
+    display: flex;
+    align-self: stretch;
+    align-content: center;
+    color: black;
+}
+
+table {
+    overflow: scroll;
+}
+
+#collected-user-data {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    text-align: center;
+    padding: 10px;
+}
+
+#total-users {
+    background-color: #f6ded7;
+    color: black;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.users-table-header {
+    align-items: center;
+    color: #f7f7e0;
+}

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import useReduxStore from '../../hooks/useReduxStore';
 
 import MembershipRules from '../MembershipRules/MembershipRules';
 import ScoreRules from '../ScoreRules/ScoreRules';
+
+import './AddRules.css';
 
 function AddRules() {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ function AddRules() {
   const [industryCategory, setIndustryCategory] = useState('');
   const [metricName, setMetricName] = useState('');
   const [minimumPointsNeeded, setMinimumPointsNeeded] = useState('');
-  // adding 'Score' to the end of the next two const names below to avoid 
+  // adding 'Score' to the end of the next three const names below to avoid 
   // collision with above names
   const [pointsEarnedScore, setPointsEarnedScore] = useState('');
   const [industryCategoryScore, setIndustryCategoryScore] = useState('');
@@ -71,15 +72,20 @@ function AddRules() {
 
   return (
     <div className="rules-form-container">
-      <div>
+      <div className="aR1">
         <h2>Add Rules</h2>
       </div>
       {/* {console.log(metricName)} */}
-      <section className="add-rule-form">
+      <section className="add-rule-form aR2">
         <form id="membership-rule" action="submit" onSubmit={(evt) => addMembershipRule(evt)} >
           <h3>Add Membership Rule</h3>
           <div className="membership-rule-form" >
-            <label htmlFor="value-category">Value Category</label>
+            <label 
+              htmlFor="value-category"
+              className="score-label" 
+            >
+              Value Category
+            </label>
             <select
               required
               id="value-category"
@@ -96,7 +102,12 @@ function AddRules() {
             </select>
           </div>
           <div className="membership-rule-form" >
-            <label htmlFor="membership-name">Membership Name</label>
+            <label 
+              htmlFor="membership-name"
+              className="membership-label" 
+              >
+              Membership Name
+            </label>
             <input 
               required
               type="text" 
@@ -108,7 +119,12 @@ function AddRules() {
             />
           </div>
           <div className="membership-rule-form" >
-            <label htmlFor="points-earned">Points Earned</label>
+            <label 
+              htmlFor="points-earned"
+              className="membership-label" 
+              >
+              Points Earned
+            </label>
             <input 
               required
               type="text" 
@@ -120,7 +136,12 @@ function AddRules() {
               />
           </div>
           <div className="membership-rule-form" >
-            <label htmlFor="industry-category">Industry Category</label>
+            <label 
+              htmlFor="industry-category"
+              className="membership-label" 
+              >
+              Industry Category
+            </label>
             <input 
               required
               type="text" 
@@ -131,10 +152,15 @@ function AddRules() {
               onChange={(evt) => setIndustryCategory(evt.target.value)}
             />
           </div>
-          <button type="submit" >Submit</button>
+          <button 
+            type="submit"
+            className="btn aR"
+          >
+            Submit
+          </button>
         </form>
       </section>
-      <section className="add-rule-form">
+      <section className="add-rule-form aR3">
         <form id="score-rule" action="submit" onSubmit={(evt) => addScoreRule(evt)} >
           <h3>Add Score Rule</h3>
           <div className="score-rule-form" >
@@ -146,7 +172,7 @@ function AddRules() {
             <select
               required
               id="value-category-score"
-              className="form-control"
+              className="score-form-control"
               placeholder="Value Category" 
               value={valueCategoryScore}
               onChange={(evt) => setValueCategoryScore(evt.target.value)}
@@ -167,7 +193,7 @@ function AddRules() {
               required
               type="text" 
               id="metric-name" 
-              className="form-control"
+              className="score-form-control"
               placeholder="Metric Name" 
               value={metricName}
               onChange={(evt) => setMetricName(evt.target.value)}
@@ -182,36 +208,45 @@ function AddRules() {
               required
               type="text" 
               id="minimum-points-needed" 
-              className="form-control"
+              className="score-form-control"
               placeholder="Minimum Points Needed" 
               value={minimumPointsNeeded}
               onChange={(evt) => setMinimumPointsNeeded(evt.target.value)}
             />
           </div>
           <div className="score-rule-form" >
-            <label htmlFor="points-earned-score">Points Earned</label>
+            <label htmlFor="points-earned-score">
+              Points Earned
+            </label>
             <input 
               required
               type="text" 
               id="points-earned-score" 
-              className="form-control"
+              className="score-form-control"
               placeholder="Points Earned" 
               value={pointsEarnedScore}
               onChange={(evt) => setPointsEarnedScore(evt.target.value)}
             />
           </div>
           <div className="score-rule-form" >
-            <label htmlFor="industry-category-score">Industry Category</label>
+            <label htmlFor="industry-category-score">
+              Industry Category
+            </label>
             <input 
               type="text" 
               id="industry-category-score" 
-              className="form-control"
+              className="score-form-control"
               placeholder="Industry Category" 
               value={industryCategoryScore}
               onChange={(evt) => setIndustryCategoryScore(evt.target.value)}
             />
           </div>
-          <button type="submit" >Submit</button>
+          <button 
+            type="submit"
+            className="btn aR"
+          >
+            Submit
+          </button>
         </form>
       </section>
 

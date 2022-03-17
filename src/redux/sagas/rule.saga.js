@@ -123,57 +123,6 @@ function* deleteScoreRule(action) {
     };
 }
 
-// worker Saga: will be fired on "FETCH_SELECTED_MEMBERSHIP_RULES" action
-function* fetchSelectedMembershipRules(action) {
-    // console.log('in fetchSelectedMembershipRules sage', action.payload);
-    const industry = action.payload;
-
-    // passport security
-    try {
-        const config = {
-            headers: { 'Content-Type': 'application/json' },
-            withCredentials: true,
-        };
-        // send request to rule router
-        const response = yield axios.get(`/api/rules/membership/${industry}`, { config, industry });
-        console.log('selected membership rules from router', response.data)
-        // then store selected rules in redux
-        yield put({ 
-            type: 'SET_SELECTED_MEMBERSHIP_RULES',
-            payload: response.data
-        });
-        
-        } catch (error) {
-            console.error('rule saga selected membership GET failed', error);
-    };
-}
-
-// worker Saga: will be fired on "FETCH_SELECTED_MEMBERSHIP_RULES" action
-function* fetchSelectedScoreRules(action) {
-    console.log('in fetchSelectedScoreRules sage', action.payload);
-    const industry = action.payload;
-
-    // passport security
-    try {
-        const config = {
-            headers: { 'Content-Type': 'application/json' },
-            withCredentials: true,
-        };
-        // send request to rule router
-        const response = yield axios.get(`/api/rules/score/${industry}`, { config, industry });
-        console.log('selected score rules from router', response.data);
-
-        // then store selected rules in redux
-        yield put({ 
-            type: 'SET_SELECTED_SCORE_RULES',
-            payload: response.data
-        });
-        
-        } catch (error) {
-            console.error('rule saga selected score GET failed', error);
-    };
-}
-
 // watch for functions
 function* ruleSaga() {
     // console.log('ruleSaga');
@@ -188,10 +137,6 @@ function* ruleSaga() {
     yield takeEvery( 'DELETE_MEMBERSHIP_RULE', deleteMembershipRule );
 
     yield takeEvery( 'DELETE_SCORE_RULE', deleteScoreRule );
-
-    yield takeEvery( 'FETCH_SELECTED_MEMBERSHIP_RULES', fetchSelectedMembershipRules );
-
-    yield takeEvery( 'FETCH_SELECTED_SCORE_RULES', fetchSelectedScoreRules );
 }
 
 export default ruleSaga;

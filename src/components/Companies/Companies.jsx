@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 //import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 
 // sub components to add to this page:
@@ -16,13 +17,19 @@ import List from './List';
 
 
 function Companies() {
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    // dispatch to clear details store
+    dispatch({
+      type: 'CLEAR_INFO'
+    })
+  })
 
   return (
-    <div className="container">
+    <div className="container companies-box">
       <div>
         <CompanySearch />
-        <p>Companies</p>
         <List />
       </div>
     </div>

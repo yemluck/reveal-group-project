@@ -2,20 +2,18 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import useReduxStore from '../../hooks/useReduxStore';
 
+import './ScoreRules.css';
+
 const ScoreRules = () => {
-
-    // setup dispatch
     const dispatch = useDispatch();
-
-    // on page load, GET score rules
-    useEffect(() => {
-        dispatch({ type: 'FETCH_SCORE_RULES' });
-}, [dispatch]);
 
     // gain access to global variables
     const store = useReduxStore();
     // console.log('membership rules', store.scoreRules);
     // console.log('score rules', store.scoreRules);
+
+    // setup dispatch
+    const dispatch = useDispatch();
 
     // function called with delete button
     const deleteScoreRule = (id) => {
@@ -30,7 +28,7 @@ const ScoreRules = () => {
 
     // render to DOM
     return(
-        <div className="tableContainer">
+        <div className="tableContainer sR1">
             {/* Score Rules table */}
             <table className="rulesTable">
                 <thead>

@@ -1,0 +1,11 @@
+.sR1 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 4;
+    grid-row-end: 7;
+    height: 600px;
+    padding-bottom: 2rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 600px;
+}

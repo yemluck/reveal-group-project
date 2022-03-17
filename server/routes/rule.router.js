@@ -3,21 +3,22 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
-router.get('/', rejectUnauthenticated, (req, res) => {
-});
-
+// POST membership rule
 router.post('/membership', rejectUnauthenticated, (req, res) => {
     // console.log('In membership rule router POST', req.body);
     let queryText = '';
+    // only admins can POST membership rules
     if(req.user.auth_level === 1) {
-    queryText = `
-        INSERT INTO "membership_rule"
-            ("organization", "points", "industry", "value_id")
-        VALUES
-            ($1, $2, $3, $4)
-        ;`;
+        // setup SQL command
+        queryText = `
+            INSERT INTO "membership_rule"
+                ("organization", "points", "industry", "value_id")
+            VALUES
+                ($1, $2, $3, $4)
+            ;`;
     }
     const queryParams = [req.body.organization, req.body.points, req.body.industry, req.body.value];
+    // send SQL command to database
     pool.query(queryText, queryParams)
     .then(() => {
         res.sendStatus(201);
@@ -26,19 +27,24 @@ router.post('/membership', rejectUnauthenticated, (req, res) => {
         console.error('Rule POST error', err);
         res.sendStatus(500);
     });
-});
+});// end POST membership rule
 
+// POST score rule
 router.post('/score', rejectUnauthenticated, (req, res) => {
     // console.log('In score rule router POST', req.body);
     let queryText = '';
+    // only admins can POST membership rules
     if(req.user.auth_level === 1) {
-    queryText = `
-        INSERT INTO "score_rule"
-            ("metric", "result", "points", "industry", "value_id")
-        VALUES
-            ($1, $2, $3, $4, $5)
-        ;`;}
+        // setup SQL command
+        queryText = `
+            INSERT INTO "score_rule"
+                ("metric", "result", "points", "industry", "value_id")
+            VALUES
+                ($1, $2, $3, $4, $5)
+            ;`;
+    }
     const queryParams = [req.body.metric, req.body.result, req.body.points, req.body.industry, req.body.value_id];
+    // send SQL command to database
     pool.query(queryText, queryParams)
     .then(() => {
         res.sendStatus(201);
@@ -47,7 +53,7 @@ router.post('/score', rejectUnauthenticated, (req, res) => {
         console.error('Rule POST error', err);
         res.sendStatus(500);
     });
-});
+});// end POST score rule
 
 // GET membership rules
 router.get('/membership', rejectUnauthenticated, (req, res) => {
@@ -56,7 +62,7 @@ router.get('/membership', rejectUnauthenticated, (req, res) => {
     let queryText = '';
 
     // only admins can GET membership rules
-    if (req.user.auth_level === 1) {
+    if (req.user.id) {
         // setup SQL command
         queryText = `
             SELECT * FROM "membership_rule";
@@ -82,7 +88,7 @@ router.get('/score', rejectUnauthenticated, (req, res) => {
     let queryText = '';
 
     // only admins can GET score rules
-    if (req.user.auth_level === 1) {
+    if (req.user.id) {
         // setup SQL command
         queryText = `
             SELECT * FROM "score_rule";
@@ -156,65 +162,6 @@ router.delete('/score/:id', rejectUnauthenticated, (req, res) => {
             res.sendStatus(500);
         });
 }); // end DELETE score rules
-
-
-// GET selected membership rules
-router.get('/membership/:industry', rejectUnauthenticated, (req, res) => {
-    console.log('in rule router membership selected GET', req.params.industry);
-
-    let queryText = '';
-
-    // only admins can GET score rules
-    if (req.user.auth_level === 1) {
-        // setup SQL command
-        queryText = `
-            SELECT * FROM "membership_rule"
-            WHERE "industry" = $1;
-        `;
-    }
-
-    const queryParams = [ req.params.industry ];
-
-    // send command to database
-    pool.query(queryText, queryParams)
-        .then((results) => {
-            console.log('selected membership rules', results.rows);
-            res.send(results.rows);
-        })
-        .catch((err) => {
-            console.error('rule router membership selected GET ERROR', err);
-            res.sendStatus(500);
-        })
-}); // end GET selected membership rules
-
-// GET selected score rules
-router.get('/score/:industry', rejectUnauthenticated, (req, res) => {
-    console.log('in rule router score selected GET', req.params.industry);
-
-    let queryText = '';
-
-    // only admins can GET score rules
-    if (req.user.auth_level === 1) {
-        // setup SQL command
-        queryText = `
-            SELECT * FROM "score_rule"
-            WHERE "industry" = $1;
-        `;
-    }
-
-    const queryParams = [ req.params.industry ];
-
-    // send command to database
-    pool.query(queryText, queryParams)
-        .then((results) => {
-            console.log('selected score rules', results.rows);
-            res.send(results.rows);
-        })
-        .catch((err) => {
-            console.error('rule router score selected GET ERROR', err);
-            res.sendStatus(500);
-        })
-}); // end GET selected membership rules
 
 module.exports = router;
 

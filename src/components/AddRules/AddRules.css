@@ -1,8 +1,87 @@
+#value-category-membership {
+    box-sizing: border-box;
+    padding-bottom: 10px;
+    margin-right: 6px;
+}
+
+#value-category-score {
+    box-sizing: border-box;
+    margin-bottom: 6px;
+    margin-right: 6px;
+}
+
+.rules-form-container {
+    background: linear-gradient(#f7f7e0, #f6ded7);
+    display: grid;
+    left: 50%;
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    margin-right: 1rem;
+}
+
+.aR1 {
+    display: flex;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    justify-content: center;
+}
+
+.aR {
+    margin: 2rem 0 0 3rem;
+}
+
+.aR2 {
+    background-color: #f6ded7;
+    border: 2px solid #a53860;
+    color: #a53860;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 4;
+    margin-bottom: 2rem;
+    margin-left: 37%;
+    padding: 2rem;
+    transform: translateX(-50%);
+    width: 400px;
+}
+
+.aR3 {
+    background-color: #f6ded7;
+    border: 2px solid #a53860;
+    color: #a53860;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 4;
+    margin-bottom: 2em;
+    margin-left: 30%;
+    padding: 2rem;
+    transform: translateX(-50%);
+    width: 400px;
+}
+
+
+.membership-label {
+    display: flex;
+    align-content: flex-start;
+    margin-bottom: 10px;
+    width: 34em;
+}
+
+.score-label {
+    display: flex;
+    align-content: flex-start;
+    margin-bottom: 10px;
+    width: 34em;
+}
 .membership-rule-form {
-    display: list-item;
+    display: flex;
+    align-items: flex-end;
 }
 
 .score-rule-form {
     display: flex;
-    align-items: flex-end;
+    align-content: flex-end;
 }

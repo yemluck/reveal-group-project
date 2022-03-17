@@ -27,3 +27,8 @@ td {
 table, th, td {
     border: 2px solid #6d2978;
 }
+
+.rulesTableTitle {
+    display: inline-table;
+    white-space: nowrap;
+}

@@ -79,14 +79,14 @@ const Users = () => {
                 </div>
                 <header>
                     <div className="table-row" >
-                        <div className="users-table-header" >User Emails</div>
+                        <div className="users-table-header emails-header" >User Emails</div>
                     </div>
                 </header>
                 <div id="email-list">
                     {/*list all usernames (email addresses)*/}
                     {userEmails.map((email) => (
                         <div className="table-row" key={email.id}>
-                            <div className="table-data" >
+                            <div className="table-data user-email" >
                                 {email.email_address}
                             </div>
                         </div>

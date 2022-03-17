@@ -125,16 +125,16 @@ export default function score(rulesList, companyData) {
     }
     totalScore.calculated = true;
     totalScore.count = count;
-    totalScore.transparencyScore += 2
+    // totalScore.transparencyScore += 2
     if (totalScore.transparencyScore > totalScore.transparencyTotal) {
         totalScore.transparencyScore = totalScore.transparencyTotal
     }
-    totalScore.environmentScore += 2
+    totalScore.environmentScore += 1
     if (totalScore.environmentScore > totalScore.environmentTotal) {
         totalScore.environmentScore = totalScore.environmentTotal
     }
 
-    totalScore.humanRightsScore += 2
+    // totalScore.humanRightsScore += 2
     if (totalScore.humanRightsScore > totalScore.humanRightsTotal) {
         totalScore.humanRightsScore = totalScore.humanRightsTotal
     }

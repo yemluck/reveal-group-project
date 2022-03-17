@@ -12,6 +12,9 @@ const ScoreRules = () => {
     // console.log('membership rules', store.scoreRules);
     // console.log('score rules', store.scoreRules);
 
+    // setup dispatch
+    const dispatch = useDispatch();
+
     // function called with delete button
     const deleteScoreRule = (id) => {
         // console.log('in deleteScoreRule', id);

@@ -9,24 +9,9 @@ const MembershipRules = () => {
 
     // gain access to global variables
     const store = useReduxStore();
-    // console.log('membership rules', store.membershipRules);
-    // const mRules = store.membershipRules;
-
-    // setup membershipRules as a local variable for editing
-    // const [ contacts, setContacts ] = useState(mRules);
-    // // check data
-    // console.log('contacts are:', contacts);
-
-    // function called with edit button
-    // const editMembershipRule = (id) => {
-    //     console.log('in editMembershipRule', id);
-
-    //     // watch for rule saga
-    //     dispatch({
-    //         type: 'EDIT_MEMBERSHIP_RULE',
-    //         payload: id
-    //     });
-    // }
+   
+    // setup dispatch
+    const dispatch = useDispatch();
 
     // function called with delete button
     const deleteMembershipRule = (id) => {
@@ -74,19 +59,19 @@ const MembershipRules = () => {
                     {/* loop through membership rules */}
                 {store.membershipRules.map((rule, id) => (
                     <tr key={id}>
-                        <td>
+                        <td className="mR2">
                             {rule.organization}
                         </td>
 
-                        <td>
+                        <td className="mR2">
                             {rule.points}
                         </td>
 
-                        <td>
+                        <td className="mR3">
                             {rule.industry}
                         </td>
 
-                        <td>
+                        <td className="mR2">
                             {rule.value_id}
                         </td>
 

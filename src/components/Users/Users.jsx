@@ -55,7 +55,7 @@ const Users = () => {
                     {/*format number output to percentage*/}
                     {userPreferences.map((pref) => 
                     <div 
-                        className="table-data"
+                        className="table-data preference-average"
                         key={pref.value_id}
                     >
                         {Math.floor(pref.value_avg * 10)}%

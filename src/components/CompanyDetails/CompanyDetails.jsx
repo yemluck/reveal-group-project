@@ -193,7 +193,7 @@ function CompanyDetails() {
             <div id="metrics-container">
               <div id="transparency-breakdown" className="rating-item">
                 <p aria-describedby={id} onClick={handleClick}>
-                  Transparency<InfoIcon className="moreInfo" sx={{fontSize: 17, }} /> 
+                  Transparency <InfoIcon className="moreInfo" sx={{fontSize: 17, }} /> 
                   <i style={{fontSize: 10}}className="hide">Click for more information</i>
                 </p>
                 <p>
@@ -225,7 +225,7 @@ function CompanyDetails() {
 
               <div id="environment-breakdown" className="rating-item">
                 <p aria-describedby={id2} onClick={handleClick2}>
-                  Environment<InfoIcon className="moreInfo" sx={{ fontSize: 17, }} />
+                  Environment <InfoIcon className="moreInfo" sx={{ fontSize: 17, }} />
                   <i style={{ fontSize: 10 }} className="hide">Click for more information</i>
                 </p>
                 <p>
@@ -257,7 +257,7 @@ function CompanyDetails() {
 
               <div id="human-rights-breakdown" className="rating-item">
                 <p aria-describedby={id3} onClick={handleClick3}>
-                  Human Rights<InfoIcon className="moreInfo" sx={{ fontSize: 17, }} />
+                  Human Rights <InfoIcon className="moreInfo" sx={{ fontSize: 17, }} />
                   <i style={{ fontSize: 10 }} className="hide">Click for more information</i>
                 </p>
                 <p>

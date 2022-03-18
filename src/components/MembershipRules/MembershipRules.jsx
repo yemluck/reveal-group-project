@@ -5,8 +5,6 @@ import useReduxStore from '../../hooks/useReduxStore';
 import './MembershipRules.css';
 
 const MembershipRules = () => {
-    const dispatch = useDispatch();
-
     // gain access to global variables
     const store = useReduxStore();
    

@@ -11,20 +11,98 @@ table {
 
 #collected-user-data {
     display: flex;
-    align-content: center;
-    justify-content: space-between;
     text-align: center;
-    padding: 10px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+    margin-bottom: 0%;
+    padding-left: 65px;
+    padding-bottom: 50px;
+    width: 600px;
+    overflow-y: scroll;
+}
+
+#email-list {
+    align-items: center;
+    column-span: all;
+    width: inherit;
+    column-width: 100%;
 }
 
 #total-users {
-    background-color: #f6ded7;
-    color: black;
+    display: inline-flex;
+    align-items: center;
+    align-content: center;
     font-size: larger;
     font-weight: bold;
+    padding-left: 237px;
+    white-space: pre-wrap;
+}
+
+.admin-table-view {
+    background-color: #6d2978;
+}
+
+.category-header {
+    color: #f6ded7;
+    display: inline-table;
+    column-width: 100%;
+    font-size: large;
+    font-weight: bold;
+    margin: 26px;
+    height: 20px;
+    white-space: nowrap;
+}
+
+.table-row {
+    display: table-row;
+    align-items: center;
+    height: 50px;
+    padding-left: 4px;
+    white-space: nowrap;
+}
+
+.table-cell {
+    display: inline-table;
+    align-content: center;
+    column-width: 100%;
+    margin-left: 20px;
+    padding-left: 236px;
+    align-items: center;
+}
+
+.table-data {
+    display: inline-table;
+    align-content: center;
+    text-align: center;
+    vertical-align: middle;
+    border: 2px solid #6d2978;
+    background-color: #f6ded7;
+    margin-left: 10px;
+    padding-left: 4px;
+    height: 30px;;
+    width: 100%;
+}
+
+.email-header {
+    display: flex;
+    justify-content: center;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+    margin-bottom: 0%;
+    padding-left: 65px;
+}
+
+.user-email {
+    width: 31em;
 }
 
 .users-table-header {
-    align-items: center;
+    display: inline-table;
     color: #f7f7e0;
+    text-align: center;
+    font-size: larger;
+    font-weight: bolder;
+    margin: 20px;
 }

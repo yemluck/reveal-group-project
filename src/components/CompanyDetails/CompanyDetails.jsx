@@ -8,6 +8,7 @@ import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 import LinearProgress from '@mui/material/LinearProgress';
 import Popover from '@mui/material/Popover';
+import InfoIcon from '@mui/icons-material/Info';
 
 
 function CompanyDetails() {
@@ -192,7 +193,8 @@ function CompanyDetails() {
             <div id="metrics-container">
               <div id="transparency-breakdown" className="rating-item">
                 <p aria-describedby={id} onClick={handleClick}>
-                  Transparency⬇
+                  Transparency <InfoIcon className="moreInfo" sx={{fontSize: 17, }} /> 
+                  <i style={{fontSize: 10}}className="hide">Click for more information</i>
                 </p>
                 <p>
                   <Rating
@@ -223,7 +225,8 @@ function CompanyDetails() {
 
               <div id="environment-breakdown" className="rating-item">
                 <p aria-describedby={id2} onClick={handleClick2}>
-                  Environment⬇
+                  Environment <InfoIcon className="moreInfo" sx={{ fontSize: 17, }} />
+                  <i style={{ fontSize: 10 }} className="hide">Click for more information</i>
                 </p>
                 <p>
                   <Rating
@@ -254,7 +257,8 @@ function CompanyDetails() {
 
               <div id="human-rights-breakdown" className="rating-item">
                 <p aria-describedby={id3} onClick={handleClick3}>
-                  Human Rights⬇
+                  Human Rights <InfoIcon className="moreInfo" sx={{ fontSize: 17, }} />
+                  <i style={{ fontSize: 10 }} className="hide">Click for more information</i>
                 </p>
                 <p>
                   <Rating

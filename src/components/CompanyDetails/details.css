@@ -31,3 +31,12 @@
 .popover > .MuiPaper-root > p {
     margin: 5px;
 }
+
+.hide {
+    display: none;
+}
+
+.moreInfo:hover + .hide {
+    display: block;
+    color: blue;
+}

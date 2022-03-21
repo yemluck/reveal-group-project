@@ -82,14 +82,18 @@ function AddRules() {
           <div className="membership-rule-form" >
             <label 
               htmlFor="value-category-membership"
-              className="score-label" 
+              className="membership-label" 
             >
               Value Category
             </label>
             <select
               required
               id="value-category-membership"
-              className="form-control value-category"
+              className="
+                form-control 
+                value-category
+                value-category-membership
+                "
               placeholder="Value Category" 
               value={valueCategory}
               onChange={(evt) => setValueCategory(evt.target.value)}
@@ -112,7 +116,10 @@ function AddRules() {
               required
               type="text" 
               id="membership-name" 
-              className="form-control"
+              className="
+                form-control
+                membership-form-control
+                "
               placeholder="Membership Name" 
               value={membershipName}
               onChange={(evt) => setMembershipName(evt.target.value)}
@@ -202,6 +209,7 @@ function AddRules() {
           </div>
           <div className="score-rule-form" >
             <label 
+              className="score-label" 
               htmlFor="minimum-points-needed">
                 Minimum Points Needed
             </label>
@@ -216,7 +224,9 @@ function AddRules() {
             />
           </div>
           <div className="score-rule-form" >
-            <label htmlFor="points-earned-score">
+            <label 
+              className="score-label" 
+              htmlFor="points-earned-score">
               Points Earned
             </label>
             <input 
@@ -230,7 +240,9 @@ function AddRules() {
             />
           </div>
           <div className="score-rule-form" >
-            <label htmlFor="industry-category-score">
+            <label 
+              className="score-label" 
+              htmlFor="industry-category-score">
               Industry Category
             </label>
             <input 

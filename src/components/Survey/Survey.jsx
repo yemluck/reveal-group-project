@@ -44,11 +44,11 @@ function Survey() {
       <br />
       <form onSubmit={savePreference}>
         <div>
-          <label htmlFor='transparency' style={{marginRight: 30}}>
+          <label htmlFor='transparency' style={{margin: "auto"}}>
             Transparency 
           </label>
           <br></br>
-            <Slider sx={{width: 300, marginLeft: "5px", color: "#6d2978" }}
+            <Slider sx={{width: 400, marginLeft: "5px", color: "#6d2978" }}
               min={0}
               max={10}
               step={1}
@@ -64,11 +64,11 @@ function Survey() {
         </div>  
         <br></br>      
         <div>
-          <label htmlFor='environmental' style={{marginRight: 30}}>
+          <label htmlFor='environmental' style={{margin: "auto"}}>
             Environmental 
           </label>
           <br></br>
-          <Slider sx={{ width: 300, marginLeft: "5px", color: "#6d2978"}}
+          <Slider sx={{ width: 400, marginLeft: "5px", color: "#6d2978"}}
               value={preference.environmental}
               min={0}
               max={10}
@@ -85,10 +85,10 @@ function Survey() {
         </div>   
         <br></br>     
         <div>
-          <label htmlFor='humanRights' style={{marginRight: 30}}>
+          <label htmlFor='humanRights' style={{margin: "auto"}}>
             Human Rights 
           </label><br></br>
-          <Slider sx={{ width: 300, marginLeft: "5px", color: "#6d2978" }}
+          <Slider sx={{ width: 400, marginLeft: "5px", color: "#6d2978" }}
               value={preference.humanRights}
               min={0}
               max={10}

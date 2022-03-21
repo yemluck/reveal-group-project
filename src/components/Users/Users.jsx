@@ -40,39 +40,59 @@ const Users = () => {
         </center>
         {/*single table to display all user data*/}
         <div id="collected-user-data">
-            <table>
-                <thead>
-                    <tr><th ><h3 className="users-table-header"  >Average User Preferences</h3></th></tr>
-                    <tr>
-                        <th> Human Rights </th>
-                        <th> Environment </th>
-                        <th> Transparency </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        {/*format number output to percentage*/}
-                        {userPreferences.map((pref) => 
-                        <td key={pref.value_id}>
-                            {Math.floor(pref.value_avg * 10)}%
-                            </td>)}
-                    </tr>
-                </tbody>
-                <h3 className="users-table-header"  >Total Users</h3>
+            <section className="admin-table-view" >
+                <header>
+                    <div className="users-table-header"  >
+                        <h3>Average User Preferences</h3>
+                    </div>
+                    <div className="table-row">
+                        <div className="category-header" > Human Rights </div>
+                        <div className="category-header" > Environment </div>
+                        <div className="category-header" > Transparency </div>
+                    </div>
+                </header>
+                <div className="table-row">
+                    {/*format number output to percentage*/}
+                    {userPreferences.map((pref) => 
+                    <div 
+                        className="table-data preference-average"
+                        key={pref.value_id}
+                    >
+                        {Math.floor(pref.value_avg * 10)}%
+                        </div>)}
+                </div>
+                <header>
+                    <div>
+                        <div className="users-table-header"  >
+                            Total Users
+                        </div>
+                    </div>
+                </header>
                 {/*read length of userEmails array to provide total user count*/}
-                <p id="total-users">{Number(userEmails.length)}</p>
-                <thead>
-                    <tr>
-                        <th><h3 className="users-table-header" >User Emails</h3></th>
-                    </tr>
-                </thead>
-                <tbody id="email-list">
+                <div className="table-row" >
+                    <div 
+                        className="table-data" 
+                        id="total-users"
+                    >
+                        {Number(userEmails.length)}
+                    </div>
+                </div>
+                <header>
+                    <div className="table-row" >
+                        <div className="users-table-header emails-header" >User Emails</div>
+                    </div>
+                </header>
+                <div id="email-list">
                     {/*list all usernames (email addresses)*/}
                     {userEmails.map((email) => (
-                        <tr key={email.id}><td>{email.email_address}</td></tr>
+                        <div className="table-row" key={email.id}>
+                            <div className="table-data user-email" >
+                                {email.email_address}
+                            </div>
+                        </div>
                     ))}
-                </tbody>
-            </table>
+                </div>
+            </section>
             </div>
         </>
     );

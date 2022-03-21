@@ -1,13 +1,40 @@
 #value-category-membership {
+    align-content: center;
+    vertical-align: middle;
     box-sizing: border-box;
-    padding-bottom: 10px;
+    padding-bottom: 6px;
     margin-right: 6px;
 }
 
 #value-category-score {
+    align-content: center;
+    vertical-align: middle;
     box-sizing: border-box;
     margin-bottom: 6px;
     margin-right: 6px;
+}
+
+#membership-rule-button {
+    display: inline-flex;
+    justify-content: flex-end;
+    margin: 4rem 0 0 19rem;
+    align-self: flex-end;
+}
+
+#score-rule-button {
+    display: inline-flex;
+    justify-content: flex-end;
+    margin: 3rem 0 0 19rem;
+    align-self: flex-end;
+}
+
+.value-category {
+    align-content: center;
+    vertical-align: middle;
+    box-sizing: border-box;
+    padding-bottom: 10px;
+    margin-right: 6px;
+
 }
 
 .rules-form-container {
@@ -17,6 +44,12 @@
     margin-bottom: 3rem;
     padding-bottom: 3rem;
     margin-right: 1rem;
+}
+
+.form-control {
+    display: inline-flex;
+    align-items: flex-end;
+
 }
 
 .aR1 {
@@ -29,7 +62,11 @@
 }
 
 .aR {
+    display: inline-flex;
+    justify-content: flex-end;
     margin: 2rem 0 0 3rem;
+    padding-left: 30px;
+    align-self: flex-end;
 }
 
 .aR2 {

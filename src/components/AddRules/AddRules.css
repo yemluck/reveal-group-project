@@ -1,15 +1,14 @@
-#value-category-membership {
+.value-category {
+    align-content: center;
+    vertical-align: middle;
     box-sizing: border-box;
-    padding-bottom: 10px;
+    padding-bottom: 10px; 
     margin-right: 6px;
 }
 
-#value-category-score {
-    box-sizing: border-box;
-    margin-bottom: 6px;
-    margin-right: 6px;
+.value-category-membership {
+    margin-bottom: 10px;
 }
-
 .rules-form-container {
     background: linear-gradient(#f7f7e0, #f6ded7);
     display: grid;
@@ -17,6 +16,16 @@
     margin-bottom: 3rem;
     padding-bottom: 3rem;
     margin-right: 1rem;
+}
+
+.form-control {
+    display: inline-flex;
+    align-items: flex-end;
+
+}
+
+.membership-form-control {
+    margin-bottom: 20px;
 }
 
 .aR1 {
@@ -29,7 +38,11 @@
 }
 
 .aR {
-    margin: 2rem 0 0 3rem;
+    display: inline-flex;
+    justify-content: flex-end;
+    margin: 4rem 0 0 19rem;
+    padding-left: 30px;
+    align-self: flex-end;
 }
 
 .aR2 {
@@ -43,7 +56,7 @@
     margin-bottom: 2rem;
     margin-left: 37%;
     padding: 2rem;
-    transform: translateX(-50%);
+    transform: translateX(-28%);
     width: 400px;
 }
 
@@ -66,7 +79,7 @@
 .membership-label {
     display: flex;
     align-content: flex-start;
-    margin-bottom: 10px;
+    margin-bottom: 22px;
     width: 34em;
 }
 

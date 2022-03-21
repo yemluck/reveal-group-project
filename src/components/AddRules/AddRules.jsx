@@ -81,15 +81,19 @@ function AddRules() {
           <h3>Add Membership Rule</h3>
           <div className="membership-rule-form" >
             <label 
-              htmlFor="value-category"
-              className="score-label" 
+              htmlFor="value-category-membership"
+              className="membership-label" 
             >
               Value Category
             </label>
             <select
               required
-              id="value-category"
-              className="form-control"
+              id="value-category-membership"
+              className="
+                form-control 
+                value-category
+                value-category-membership
+                "
               placeholder="Value Category" 
               value={valueCategory}
               onChange={(evt) => setValueCategory(evt.target.value)}
@@ -112,7 +116,10 @@ function AddRules() {
               required
               type="text" 
               id="membership-name" 
-              className="form-control"
+              className="
+                form-control
+                membership-form-control
+                "
               placeholder="Membership Name" 
               value={membershipName}
               onChange={(evt) => setMembershipName(evt.target.value)}
@@ -154,6 +161,7 @@ function AddRules() {
           </div>
           <button 
             type="submit"
+            id="membership-rule-button"
             className="btn aR"
           >
             Submit
@@ -172,7 +180,7 @@ function AddRules() {
             <select
               required
               id="value-category-score"
-              className="score-form-control"
+              className="form-control value-category"
               placeholder="Value Category" 
               value={valueCategoryScore}
               onChange={(evt) => setValueCategoryScore(evt.target.value)}
@@ -193,7 +201,7 @@ function AddRules() {
               required
               type="text" 
               id="metric-name" 
-              className="score-form-control"
+              className="form-control"
               placeholder="Metric Name" 
               value={metricName}
               onChange={(evt) => setMetricName(evt.target.value)}
@@ -201,6 +209,7 @@ function AddRules() {
           </div>
           <div className="score-rule-form" >
             <label 
+              className="score-label" 
               htmlFor="minimum-points-needed">
                 Minimum Points Needed
             </label>
@@ -208,34 +217,38 @@ function AddRules() {
               required
               type="text" 
               id="minimum-points-needed" 
-              className="score-form-control"
+              className="form-control"
               placeholder="Minimum Points Needed" 
               value={minimumPointsNeeded}
               onChange={(evt) => setMinimumPointsNeeded(evt.target.value)}
             />
           </div>
           <div className="score-rule-form" >
-            <label htmlFor="points-earned-score">
+            <label 
+              className="score-label" 
+              htmlFor="points-earned-score">
               Points Earned
             </label>
             <input 
               required
               type="text" 
               id="points-earned-score" 
-              className="score-form-control"
+              className="form-control"
               placeholder="Points Earned" 
               value={pointsEarnedScore}
               onChange={(evt) => setPointsEarnedScore(evt.target.value)}
             />
           </div>
           <div className="score-rule-form" >
-            <label htmlFor="industry-category-score">
+            <label 
+              className="score-label" 
+              htmlFor="industry-category-score">
               Industry Category
             </label>
             <input 
               type="text" 
               id="industry-category-score" 
-              className="score-form-control"
+              className="form-control"
               placeholder="Industry Category" 
               value={industryCategoryScore}
               onChange={(evt) => setIndustryCategoryScore(evt.target.value)}
@@ -243,6 +256,7 @@ function AddRules() {
           </div>
           <button 
             type="submit"
+            id="membership-rule-button"
             className="btn aR"
           >
             Submit

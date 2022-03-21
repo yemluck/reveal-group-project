@@ -5,10 +5,6 @@ h2 {
     color: black;
 }
 
-table {
-    overflow: scroll;
-}
-
 #collected-user-data {
     display: flex;
     text-align: center;
@@ -85,7 +81,7 @@ table {
 }
 
 .email-header {
-    display: flex;
+    display: inline-flex;
     justify-content: center;
     margin-left: 50%;
     transform: translateX(-50%);

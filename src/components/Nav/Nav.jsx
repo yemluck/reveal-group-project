@@ -33,17 +33,18 @@ function Nav() {
         {/* If an admin is logged in, show these links */}
         {user.auth_level == 1 && (
           <>
-            <Link className="navLink" to="/admin/users">
-              Users
+            <Link className="navLink adminNavLink" to="/admin/messages">
+              Messages
             </Link>
 
-            <Link className="navLink" to="/admin/addRule">
+            <Link className="navLink adminNavLink" to="/admin/addRule">
               Add Rules
             </Link>
 
-            <Link className="navLink" to="/admin/messages">
-              Messages
+            <Link className="navLink adminNavLink" to="/admin/users">
+              Users
             </Link>
+
           </>
         )}
         <Link className="navLink" to="/about">

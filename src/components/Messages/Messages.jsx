@@ -49,7 +49,7 @@ function Messages() {
                     <thead>
                         <tr>
                             <th>
-                                email
+                                Email
                             </th>
 
                             <th>
@@ -57,7 +57,7 @@ function Messages() {
                             </th>
 
                             <th>
-                                message
+                                Message
                             </th>
 
                             <th></th>

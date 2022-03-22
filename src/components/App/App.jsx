@@ -50,8 +50,8 @@ function App() {
         <Nav />
         <Switch>
           {/* Visiting / or /home will redirect to /companies */}
-          <Redirect exact from="/" to="/companies" />
-          <Redirect exact from="/home" to="/companies" />
+          <Redirect exact from="/" to="/about" />
+          <Redirect exact from="/home" to="/about" />
 
           {/* Visiting /about will show the about page. */}
           <Route
@@ -153,7 +153,7 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect to /companies page
-              <Redirect to="/companies" />
+              <Redirect to="/about" />
               :
               // Otherwise, show the login page
               <LoginPage />
@@ -167,7 +167,7 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect them to the /about page
-              <Redirect to="/companies" />
+              <Redirect to="/about" />
               :
               // Otherwise, show the registration page
               <RegisterPage />

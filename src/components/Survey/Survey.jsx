@@ -27,7 +27,7 @@ function Survey() {
     history.push('/companies')
   } // end function savePreference
 
-  const marks = [{ value: 1, label: 1},
+  const marks = [{ value: 0, label: 0},{ value: 1},
                   {value: 2}, {value: 3}, {value: 4},
                   { value: 5, label: 5},
                   {value: 6}, {value: 7}, {value: 8}, {value: 9},
@@ -44,12 +44,12 @@ function Survey() {
       <br />
       <form onSubmit={savePreference}>
         <div>
-          <label htmlFor='transparency' style={{marginRight: 30}}>
+          <label htmlFor='transparency' style={{margin: "auto"}}>
             Transparency 
           </label>
           <br></br>
-            <Slider sx={{width: 300, marginLeft: "5px", color: "#6d2978" }}
-              min={1}
+            <Slider sx={{width: 400, marginLeft: "5px", color: "#6d2978" }}
+              min={0}
               max={10}
               step={1}
               marks={marks}
@@ -64,13 +64,13 @@ function Survey() {
         </div>  
         <br></br>      
         <div>
-          <label htmlFor='environmental' style={{marginRight: 30}}>
+          <label htmlFor='environmental' style={{margin: "auto"}}>
             Environmental 
           </label>
           <br></br>
-          <Slider sx={{ width: 300, marginLeft: "5px", color: "#6d2978"}}
+          <Slider sx={{ width: 400, marginLeft: "5px", color: "#6d2978"}}
               value={preference.environmental}
-              min={1}
+              min={0}
               max={10}
               step={1}
               marks={marks}
@@ -85,12 +85,12 @@ function Survey() {
         </div>   
         <br></br>     
         <div>
-          <label htmlFor='humanRights' style={{marginRight: 30}}>
+          <label htmlFor='humanRights' style={{margin: "auto"}}>
             Human Rights 
           </label><br></br>
-          <Slider sx={{ width: 300, marginLeft: "5px", color: "#6d2978" }}
+          <Slider sx={{ width: 400, marginLeft: "5px", color: "#6d2978" }}
               value={preference.humanRights}
-              min={1}
+              min={0}
               max={10}
               step={1}
               marks={marks}

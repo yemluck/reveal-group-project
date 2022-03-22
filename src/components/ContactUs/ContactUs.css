@@ -25,6 +25,20 @@
     grid-row-end: 4;
 } */
 
+.cu4 {
+    width: 30em;
+    background-color: #f7f7e0;
+    border: 3px solid #6d2978;
+}
+
+.cu6 {
+    background-color: #f7f7e0;
+    border: 3px solid #6d2978;
+    box-sizing: border-box;
+    height: 150px;
+    width: 50em;
+}
+
 .cuForm {
     margin-bottom: 5rem;
     margin-left: 50%;

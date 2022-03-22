@@ -13,18 +13,15 @@
 .rules-form-container {
     background: linear-gradient(#f7f7e0, #f6ded7);
     display: grid;
-    left: 50%;
-    margin-bottom: 3rem;
+    margin: -2rem 0 0 0;
     padding-bottom: 3rem;
-    margin-right: 1rem;
 }
 
 .aR1 {
     display: flex;
     grid-column-start: 1;
     grid-column-end: 3;
-    grid-row-start: 1;
-    grid-row-end: 2;
+    margin-top: 0;
     justify-content: center;
 }
 
@@ -40,11 +37,9 @@
     grid-column-end: 2;
     grid-row-start: 2;
     grid-row-end: 4;
-    margin-bottom: 2rem;
-    margin-left: 37%;
+    margin: 1rem;
     padding: 2rem;
-    transform: translateX(-50%);
-    width: 400px;
+    width: 350px;
 }
 
 .aR3 {
@@ -55,11 +50,9 @@
     grid-column-end: 3;
     grid-row-start: 2;
     grid-row-end: 4;
-    margin-bottom: 2em;
-    margin-left: 30%;
+    margin: 1rem;
     padding: 2rem;
-    transform: translateX(-50%);
-    width: 400px;
+    width: 350px;
 }
 
 

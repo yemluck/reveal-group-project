@@ -5,11 +5,12 @@
     grid-row-start: 4;
     grid-row-end: 7;
     height: 600px;
-    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 .ruleTable {
-    width: 100%;
+    width: 350px;
 }
 
 .rulesTableTitle {
@@ -17,12 +18,4 @@
     color: #f7f7e0;
 }
 
-.mR2 {
-    text-align: center;
-    width: 250px;
-}
-
-.mR3 {
-    width: 500px;
-}
 

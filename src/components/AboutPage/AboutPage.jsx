@@ -15,7 +15,7 @@ function AboutPage() {
         <p className="aboutP">Reveal is a nonprofit starting, aiming to put the power of investigation, reporting and honesty into the hands 
         of the people. Reveal aims to uncover the good, the bad, and the ugly about corporations and organizations in the areas of Human Rights, Transparency, and the Environment.</p>
       </div>
-      <Link to="/companies"><button className="btn">OK</button></Link>
+      <Link to="/survey"><button className="btn">OK</button></Link>
     </div>
   );
 }

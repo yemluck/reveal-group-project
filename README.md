@@ -49,9 +49,32 @@ Before you get started, make sure you have the following software installed on y
 - Run `npm run client`
 - Navigate to `localhost:3000`
 
+## Heroku Deployment
+
+To download the source code onto your computer to make changes to the website:
+
+Required dependencies to run the website locally:
+- NodeJS
+- PostgreSQL
+- Recommended to use VSCode to edit code, with built in terminal / powershell
+
+  - Log into the provided Github account or your own personal code.
+  - If using your own github account, Fork the repository to your own profile. 
+  - Click the green Code button, and then Clone HTTPS.
+  - Run >>> git clone https://github.com/Reveal-nonprofit/reveal-group-project.git <<< in your desired directory to clone the code from the website to your local computer
+  - Run npm install in the terminal to set up required libraries / dependencies.
+  - Run npm run database in terminal to setup database.
+  - Run npm run demoRules (to populate the application with example rules for demonstration purposes)
+
 ## Usage
 
 Register as a new user. If you want admin access, you will have to edit your database and set 'auth_level' for the admin user to 1. This will add new functionality to the application, including viewing messages, viewing user information, and most importantly, adding new rules to the database so that the scores have more functionality. The more rules that are added, the more accuracy that the scores will have.
+
+## API
+
+we use 
+
+## Algeritium 
 
 ## Acknowledgements
 

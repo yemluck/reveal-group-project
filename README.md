@@ -6,11 +6,10 @@
 - [Description](#description)
 - [Built With](#built-with)
 - [Getting Started](#getting-started)
+  - [Screenshots](#screenshots)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Usage](#usage)
-- [Acknowledgements](#acknowledgements)
-- [Contacts](#contacts)
 
 ## Description
 
@@ -25,6 +24,12 @@ Reveal, a nonprofit startup, hopes to change that. At its core, the platform wil
 # Getting Started
 This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
 
+## Screenshots
+
+<img src="src/photos/reveal_1.png" alt="reveal screenshot 1" height="700px" width="700px"/>
+<img src="src/photos/reveal_2.png" alt="reveal screenshot 2" height="700px" width="700px"/>
+<img src="src/photos/reveal_3.png" alt="reveal screenshot 3" height="700px" width="700px"/>
+<img src="src/photos/reveal_4.png" alt="reveal screenshot 4" height="700px" width="700px"/>
 
 ## Prerequisites
 
@@ -72,12 +77,10 @@ Register as a new user. If you want admin access, you will have to edit your dat
 
 ## API
 
-  Third party API
+  - Third party API
     - WikiRate
     - WikiPedia
 
-## Acknowledgements
 
-## Contacts
 
 

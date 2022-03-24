@@ -72,12 +72,11 @@ Register as a new user. If you want admin access, you will have to edit your dat
 
 ## API
 
-we use 
-
-## Algeritium 
+  Third party API
+    - WikiRate
+    - WikiPedia
 
 ## Acknowledgements
-
 
 ## Contacts
 

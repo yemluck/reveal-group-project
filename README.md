@@ -6,7 +6,7 @@
 - [Description](#description)
 - [Built With](#built-with)
 - [Getting Started](#getting-started)
-  - [Screenshots] (#screenshots)
+  - [Screenshots] 
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Usage](#usage)
@@ -28,10 +28,10 @@ This version uses React, Redux, Express, Passport, and PostgreSQL (a full list o
 
 ## Screenshots
 
-<img src=".src/photos/reveal_1.png" alt="reveal screenshot 1" height="200px" width="200px"/>
-<img src=".src/photos/reveal_2.png" alt="reveal screenshot 2" height="200px" width="200px"/>
-<img src=".src/photos/reveal_3.png" alt="reveal screenshot 3" height="200px" width="200px"/>
-<img src=".src/photos/reveal_4.png" alt="reveal screenshot 4" height="200px" width="200px"/>
+<img src="src/photos/reveal_1.png" alt="reveal screenshot 1" height="200px" width="200px"/>
+<img src="src/photos/reveal_2.png" alt="reveal screenshot 2" height="200px" width="200px"/>
+<img src="src/photos/reveal_3.png" alt="reveal screenshot 3" height="200px" width="200px"/>
+<img src="src/photos/reveal_4.png" alt="reveal screenshot 4" height="200px" width="200px"/>
 
 ## Prerequisites
 

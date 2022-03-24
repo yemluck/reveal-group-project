@@ -12,8 +12,10 @@
 .rules-form-container {
     background: linear-gradient(#f7f7e0, #f6ded7);
     display: grid;
-    margin: -2rem 0 0 0;
+    left: 50%;
+    margin-bottom: 3rem;
     padding-bottom: 3rem;
+    margin-right: 1rem;
 }
 
 .form-control {
@@ -30,7 +32,8 @@
     display: flex;
     grid-column-start: 1;
     grid-column-end: 3;
-    margin-top: 0;
+    grid-row-start: 1;
+    grid-row-end: 2;
     justify-content: center;
 }
 
@@ -50,7 +53,8 @@
     grid-column-end: 2;
     grid-row-start: 2;
     grid-row-end: 4;
-    margin: 1rem;
+    margin-bottom: 2rem;
+    margin-left: 37%;
     padding: 2rem;
     transform: translateX(-28%);
     width: 400px;
@@ -64,9 +68,11 @@
     grid-column-end: 3;
     grid-row-start: 2;
     grid-row-end: 4;
-    margin: 1rem;
+    margin-bottom: 2em;
+    margin-left: 30%;
     padding: 2rem;
-    width: 350px;
+    transform: translateX(-50%);
+    width: 400px;
 }
 
 

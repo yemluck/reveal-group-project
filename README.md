@@ -10,8 +10,6 @@
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Usage](#usage)
-- [Acknowledgements](#acknowledgements)
-- [Contacts](#contacts)
 
 ## Description
 
@@ -79,12 +77,10 @@ Register as a new user. If you want admin access, you will have to edit your dat
 
 ## API
 
-  Third party API
+  - Third party API
     - WikiRate
     - WikiPedia
 
-## Acknowledgements
 
-## Contacts
 
 
